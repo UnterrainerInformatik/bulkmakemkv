@@ -2,5 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="resources/commons-configuration-1.10/commons-configuration-1.10.jar" sourcepath="C:/Users/G/.m2/repository/commons-configuration/commons-configuration/1.10/commons-configuration-1.10-sources.jar"/>
+	<classpathentry kind="lib" path="resources/commons-lang-2.6/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="resources/commons-collections-3.2.1/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="resources/commons-logging-1.1.1/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

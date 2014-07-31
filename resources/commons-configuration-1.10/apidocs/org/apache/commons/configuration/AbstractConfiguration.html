@@ -1,0 +1,2018 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>AbstractConfiguration (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="AbstractConfiguration (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractConfiguration.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../org/apache/commons/configuration/AbstractFileConfiguration.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/AbstractConfiguration.html" target="_top">Frames</a></li>
+<li><a href="AbstractConfiguration.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration</div>
+<h2 title="Class AbstractConfiguration" class="title">Class AbstractConfiguration</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event">org.apache.commons.configuration.event.EventSource</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.AbstractConfiguration</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../org/apache/commons/configuration/web/AppletConfiguration.html" title="class in org.apache.commons.configuration.web">AppletConfiguration</a>, <a href="../../../../org/apache/commons/configuration/BaseConfiguration.html" title="class in org.apache.commons.configuration">BaseConfiguration</a>, <a href="../../../../org/apache/commons/configuration/CompositeConfiguration.html" title="class in org.apache.commons.configuration">CompositeConfiguration</a>, <a href="../../../../org/apache/commons/configuration/DatabaseConfiguration.html" title="class in org.apache.commons.configuration">DatabaseConfiguration</a>, <a href="../../../../org/apache/commons/configuration/DataConfiguration.html" title="class in org.apache.commons.configuration">DataConfiguration</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>, <a href="../../../../org/apache/commons/configuration/JNDIConfiguration.html" title="class in org.apache.commons.configuration">JNDIConfiguration</a>, <a href="../../../../org/apache/commons/configuration/MapConfiguration.html" title="class in org.apache.commons.configuration">MapConfiguration</a>, <a href="../../../../org/apache/commons/configuration/web/ServletConfiguration.html" title="class in org.apache.commons.configuration.web">ServletConfiguration</a>, <a href="../../../../org/apache/commons/configuration/web/ServletContextConfiguration.html" title="class in org.apache.commons.configuration.web">ServletContextConfiguration</a>, <a href="../../../../org/apache/commons/configuration/web/ServletFilterConfiguration.html" title="class in org.apache.commons.configuration.web">ServletFilterConfiguration</a>, <a href="../../../../org/apache/commons/configuration/web/ServletRequestConfiguration.html" title="class in org.apache.commons.configuration.web">ServletRequestConfiguration</a>, <a href="../../../../org/apache/commons/configuration/SubsetConfiguration.html" title="class in org.apache.commons.configuration">SubsetConfiguration</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public abstract class <span class="strong">AbstractConfiguration</span>
+extends <a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event">EventSource</a>
+implements <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></pre>
+<div class="block"><p>Abstract configuration class. Provides basic functionality but does not
+ store any data.</p>
+ <p>If you want to write your own Configuration class then you should
+ implement only abstract methods from this class. A lot of functionality
+ needed by typical implementations of the <code>Configuration</code>
+ interface is already provided by this base class. Following is a list of
+ features implemented here:
+ <ul><li>Data conversion support. The various data types required by the
+ <code>Configuration</code> interface are already handled by this base class.
+ A concrete sub class only needs to provide a generic <code>getProperty()</code>
+ method.</li>
+ <li>Support for variable interpolation. Property values containing special
+ variable tokens (like <code>${var}</code>) will be replaced by their
+ corresponding values.</li>
+ <li>Support for string lists. The values of properties to be added to this
+ configuration are checked whether they contain a list delimiter character. If
+ this is the case and if list splitting is enabled, the string is split and
+ multiple values are added for this property. (With the
+ <code>setListDelimiter()</code> method the delimiter character can be
+ specified; per default a comma is used. The
+ <code>setDelimiterParsingDisabled()</code> method can be used to disable
+ list splitting completely.)</li>
+ <li>Allows to specify how missing properties are treated. Per default the
+ get methods returning an object will return <b>null</b> if the searched
+ property key is not found (and no default value is provided). With the
+ <code>setThrowExceptionOnMissing()</code> method this behavior can be
+ changed to throw an exception when a requested property cannot be found.</li>
+ <li>Basic event support. Whenever this configuration is modified registered
+ event listeners are notified. Refer to the various <code>EVENT_XXX</code>
+ constants to get an impression about which event types are supported.</li>
+ </ul></p></div>
+<dl><dt><span class="strong">Version:</span></dt>
+  <dd>$Id: AbstractConfiguration.java 1534064 2013-10-21 08:44:33Z henning $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a href="mailto:ksh@scand.com">Konstantin Shaposhnikov </a>, <a href="mailto:hps@intermeta.de">Henning P. Schmiedehausen </a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#END_TOKEN">END_TOKEN</a></strong></code>
+<div class="block">end token</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_ADD_PROPERTY">EVENT_ADD_PROPERTY</a></strong></code>
+<div class="block">Constant for the add property event type.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_CLEAR">EVENT_CLEAR</a></strong></code>
+<div class="block">Constant for the clear configuration event type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_CLEAR_PROPERTY">EVENT_CLEAR_PROPERTY</a></strong></code>
+<div class="block">Constant for the clear property event type.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_READ_PROPERTY">EVENT_READ_PROPERTY</a></strong></code>
+<div class="block">Constant for the get property event type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_SET_PROPERTY">EVENT_SET_PROPERTY</a></strong></code>
+<div class="block">Constant for the set property event type.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#START_TOKEN">START_TOKEN</a></strong></code>
+<div class="block">start token</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#AbstractConfiguration()">AbstractConfiguration</a></strong>()</code>
+<div class="block">Creates a new instance of <code>AbstractConfiguration</code>.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#addErrorLogListener()">addErrorLogListener</a></strong>()</code>
+<div class="block">Adds a special
+ <a href="../../../../org/apache/commons/configuration/event/ConfigurationErrorListener.html" title="interface in org.apache.commons.configuration.event"><code>ConfigurationErrorListener</code></a>
+ object to this configuration that will log all internal errors.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#addProperty(java.lang.String, java.lang.Object)">addProperty</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Add a property to the configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected abstract void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#addPropertyDirect(java.lang.String, java.lang.Object)">addPropertyDirect</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                 <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Adds a key/value pair to the Configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#append(org.apache.commons.configuration.Configuration)">append</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;c)</code>
+<div class="block">Appends the content of the specified configuration to this configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#clear()">clear</a></strong>()</code>
+<div class="block">Remove all properties from the configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#clearProperty(java.lang.String)">clearProperty</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Removes the specified property from this configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#clearPropertyDirect(java.lang.String)">clearPropertyDirect</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Removes the specified property from this configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#copy(org.apache.commons.configuration.Configuration)">copy</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;c)</code>
+<div class="block">Copies the content of the specified configuration into this
+ configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#createInterpolator()">createInterpolator</a></strong>()</code>
+<div class="block">Creates the interpolator object that is responsible for variable
+ interpolation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigDecimal(java.lang.String)">getBigDecimal</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math"><code>BigDecimal</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigDecimal(java.lang.String, java.math.BigDecimal)">getBigDecimal</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math"><code>BigDecimal</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigInteger(java.lang.String)">getBigInteger</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math"><code>BigInteger</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigInteger(java.lang.String, java.math.BigInteger)">getBigInteger</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math"><code>BigInteger</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String)">getBoolean</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a boolean associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String, boolean)">getBoolean</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+          boolean&nbsp;defaultValue)</code>
+<div class="block">Get a boolean associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String, java.lang.Boolean)">getBoolean</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+          <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;defaultValue)</code>
+<div class="block">Obtains the value of the specified key and tries to convert it into a
+ <code>Boolean</code> object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>byte</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String)">getByte</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a byte associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>byte</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String, byte)">getByte</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       byte&nbsp;defaultValue)</code>
+<div class="block">Get a byte associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang">Byte</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String, java.lang.Byte)">getByte</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang">Byte</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang"><code>Byte</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static char</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDefaultListDelimiter()">getDefaultListDelimiter</a></strong>()</code>
+<div class="block">Retrieve the current delimiter.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static char</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDelimiter()">getDelimiter</a></strong>()</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use AbstractConfiguration.getDefaultListDelimiter() instead</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String)">getDouble</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a double associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>double</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String, double)">getDouble</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+         double&nbsp;defaultValue)</code>
+<div class="block">Get a double associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String, java.lang.Double)">getDouble</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String)">getFloat</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a float associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String, float)">getFloat</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+        float&nbsp;defaultValue)</code>
+<div class="block">Get a float associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String, java.lang.Float)">getFloat</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+        <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang"><code>Float</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInt(java.lang.String)">getInt</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a int associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInt(java.lang.String, int)">getInt</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+      int&nbsp;defaultValue)</code>
+<div class="block">Get a int associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInteger(java.lang.String, java.lang.Integer)">getInteger</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+          <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;defaultValue)</code>
+<div class="block">Get an <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInterpolator()">getInterpolator</a></strong>()</code>
+<div class="block">Returns the <code>ConfigurationInterpolator</code> object that manages
+ the lookup objects for resolving variables.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getKeys(java.lang.String)">getKeys</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</code>
+<div class="block">Get the list of the keys contained in the configuration that match the
+ specified prefix.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getList(java.lang.String)">getList</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a List of strings associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getList(java.lang.String, java.util.List)">getList</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;?&gt;&nbsp;defaultValue)</code>
+<div class="block">Get a List of strings associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>char</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getListDelimiter()">getListDelimiter</a></strong>()</code>
+<div class="block">Retrieve the delimiter for this configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>org.apache.commons.logging.Log</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLogger()">getLogger</a></strong>()</code>
+<div class="block">Returns the logger used by this configuration object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String)">getLong</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a long associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String, long)">getLong</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       long&nbsp;defaultValue)</code>
+<div class="block">Get a long associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String, java.lang.Long)">getLong</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getProperties(java.lang.String)">getProperties</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a list of properties associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getProperties(java.lang.String, java.util.Properties)">getProperties</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;defaults)</code>
+<div class="block">Get a list of properties associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>short</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String)">getShort</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a short associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>short</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String, short)">getShort</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+        short&nbsp;defaultValue)</code>
+<div class="block">Get a short associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang">Short</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String, java.lang.Short)">getShort</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+        <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang">Short</a>&nbsp;defaultValue)</code>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang"><code>Short</code></a> associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getString(java.lang.String)">getString</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get a string associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getString(java.lang.String, java.lang.String)">getString</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;defaultValue)</code>
+<div class="block">Get a string associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getStringArray(java.lang.String)">getStringArray</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Get an array of strings associated with the given configuration key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>org.apache.commons.lang.text.StrSubstitutor</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getSubstitutor()">getSubstitutor</a></strong>()</code>
+<div class="block">Returns the object that is responsible for variable interpolation.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolate(java.lang.Object)">interpolate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Returns the interpolated value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolate(java.lang.String)">interpolate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base)</code>
+<div class="block">interpolate key names to handle ${key} stuff</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolatedConfiguration()">interpolatedConfiguration</a></strong>()</code>
+<div class="block">Returns a configuration with the same content as this configuration, but
+ with all variables replaced by their actual values.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolateHelper(java.lang.String, java.util.List)">interpolateHelper</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+                 <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;?&gt;&nbsp;priorVariables)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Interpolation is now handled by
+ <a href="../../../../org/apache/commons/configuration/PropertyConverter.html" title="class in org.apache.commons.configuration"><code>PropertyConverter</code></a>; this method will no longer be
+ called</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isDelimiterParsingDisabled()">isDelimiterParsingDisabled</a></strong>()</code>
+<div class="block">Determine if this configuration is using delimiters when parsing
+ property values to convert them to lists of values.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isScalarValue(java.lang.Object)">isScalarValue</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Checks whether the specified object is a scalar value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isThrowExceptionOnMissing()">isThrowExceptionOnMissing</a></strong>()</code>
+<div class="block">Returns true if missing values throw Exceptions.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#resolveContainerStore(java.lang.String)">resolveContainerStore</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Returns an object from the store described by the key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDefaultListDelimiter(char)">setDefaultListDelimiter</a></strong>(char&nbsp;delimiter)</code>
+<div class="block">For configurations extending AbstractConfiguration, allow them to change
+ the listDelimiter from the default comma (",").</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDelimiter(char)">setDelimiter</a></strong>(char&nbsp;delimiter)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use AbstractConfiguration.setDefaultListDelimiter(char)
+ instead</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDelimiterParsingDisabled(boolean)">setDelimiterParsingDisabled</a></strong>(boolean&nbsp;delimiterParsingDisabled)</code>
+<div class="block">Set whether this configuration should use delimiters when parsing
+ property values to convert them to lists of values.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setListDelimiter(char)">setListDelimiter</a></strong>(char&nbsp;listDelimiter)</code>
+<div class="block">Change the list delimiter for this configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setLogger(org.apache.commons.logging.Log)">setLogger</a></strong>(org.apache.commons.logging.Log&nbsp;log)</code>
+<div class="block">Allows to set the logger to be used by this configuration object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setProperty(java.lang.String, java.lang.Object)">setProperty</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Set a property, this will replace any previously set values.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setThrowExceptionOnMissing(boolean)">setThrowExceptionOnMissing</a></strong>(boolean&nbsp;throwExceptionOnMissing)</code>
+<div class="block">Allows to set the <code>throwExceptionOnMissing</code> flag.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#subset(java.lang.String)">subset</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</code>
+<div class="block">Return a decorator Configuration containing every key from the current
+ Configuration that starts with the specified prefix.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.event.EventSource">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.event.<a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event">EventSource</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/event/EventSource.html#addConfigurationListener(org.apache.commons.configuration.event.ConfigurationListener)">addConfigurationListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#addErrorListener(org.apache.commons.configuration.event.ConfigurationErrorListener)">addErrorListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#clearConfigurationListeners()">clearConfigurationListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#clearErrorListeners()">clearErrorListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#clone()">clone</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#createErrorEvent(int, java.lang.String, java.lang.Object, java.lang.Throwable)">createErrorEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#createEvent(int, java.lang.String, java.lang.Object, boolean)">createEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#fireError(int, java.lang.String, java.lang.Object, java.lang.Throwable)">fireError</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#fireEvent(int, java.lang.String, java.lang.Object, boolean)">fireEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#getConfigurationListeners()">getConfigurationListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#getErrorListeners()">getErrorListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#isDetailEvents()">isDetailEvents</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#removeConfigurationListener(org.apache.commons.configuration.event.ConfigurationListener)">removeConfigurationListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#removeErrorListener(org.apache.commons.configuration.event.ConfigurationErrorListener)">removeErrorListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#setDetailEvents(boolean)">setDetailEvents</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.Configuration">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/Configuration.html#containsKey(java.lang.String)">containsKey</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getKeys()">getKeys</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getProperty(java.lang.String)">getProperty</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#isEmpty()">isEmpty</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="EVENT_ADD_PROPERTY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EVENT_ADD_PROPERTY</h4>
+<pre>public static final&nbsp;int EVENT_ADD_PROPERTY</pre>
+<div class="block">Constant for the add property event type.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.EVENT_ADD_PROPERTY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EVENT_CLEAR_PROPERTY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EVENT_CLEAR_PROPERTY</h4>
+<pre>public static final&nbsp;int EVENT_CLEAR_PROPERTY</pre>
+<div class="block">Constant for the clear property event type.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.EVENT_CLEAR_PROPERTY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EVENT_SET_PROPERTY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EVENT_SET_PROPERTY</h4>
+<pre>public static final&nbsp;int EVENT_SET_PROPERTY</pre>
+<div class="block">Constant for the set property event type.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.EVENT_SET_PROPERTY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EVENT_CLEAR">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EVENT_CLEAR</h4>
+<pre>public static final&nbsp;int EVENT_CLEAR</pre>
+<div class="block">Constant for the clear configuration event type.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.EVENT_CLEAR">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="EVENT_READ_PROPERTY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EVENT_READ_PROPERTY</h4>
+<pre>public static final&nbsp;int EVENT_READ_PROPERTY</pre>
+<div class="block">Constant for the get property event type. This event type is used for
+ error events.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.EVENT_READ_PROPERTY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="START_TOKEN">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>START_TOKEN</h4>
+<pre>protected static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> START_TOKEN</pre>
+<div class="block">start token</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.START_TOKEN">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="END_TOKEN">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>END_TOKEN</h4>
+<pre>protected static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> END_TOKEN</pre>
+<div class="block">end token</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.AbstractConfiguration.END_TOKEN">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="AbstractConfiguration()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>AbstractConfiguration</h4>
+<pre>public&nbsp;AbstractConfiguration()</pre>
+<div class="block">Creates a new instance of <code>AbstractConfiguration</code>.</div>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="setDefaultListDelimiter(char)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDefaultListDelimiter</h4>
+<pre>public static&nbsp;void&nbsp;setDefaultListDelimiter(char&nbsp;delimiter)</pre>
+<div class="block">For configurations extending AbstractConfiguration, allow them to change
+ the listDelimiter from the default comma (","). This value will be used
+ only when creating new configurations. Those already created will not be
+ affected by this change</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>delimiter</code> - The new listDelimiter</dd></dl>
+</li>
+</ul>
+<a name="setDelimiter(char)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDelimiter</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;void&nbsp;setDelimiter(char&nbsp;delimiter)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use AbstractConfiguration.setDefaultListDelimiter(char)
+ instead</i></div>
+<div class="block">Sets the default list delimiter.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>delimiter</code> - the delimiter character</dd></dl>
+</li>
+</ul>
+<a name="getDefaultListDelimiter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDefaultListDelimiter</h4>
+<pre>public static&nbsp;char&nbsp;getDefaultListDelimiter()</pre>
+<div class="block">Retrieve the current delimiter. By default this is a comma (",").</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The delimiter in use</dd></dl>
+</li>
+</ul>
+<a name="getDelimiter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDelimiter</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+public static&nbsp;char&nbsp;getDelimiter()</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Use AbstractConfiguration.getDefaultListDelimiter() instead</i></div>
+<div class="block">Returns the default list delimiter.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the default list delimiter</dd></dl>
+</li>
+</ul>
+<a name="setListDelimiter(char)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setListDelimiter</h4>
+<pre>public&nbsp;void&nbsp;setListDelimiter(char&nbsp;listDelimiter)</pre>
+<div class="block">Change the list delimiter for this configuration.
+
+ Note: this change will only be effective for new parsings. If you
+ want it to take effect for all loaded properties use the no arg constructor
+ and call this method before setting the source.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>listDelimiter</code> - The new listDelimiter</dd></dl>
+</li>
+</ul>
+<a name="getListDelimiter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getListDelimiter</h4>
+<pre>public&nbsp;char&nbsp;getListDelimiter()</pre>
+<div class="block">Retrieve the delimiter for this configuration. The default
+ is the value of defaultListDelimiter.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The listDelimiter in use</dd></dl>
+</li>
+</ul>
+<a name="isDelimiterParsingDisabled()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isDelimiterParsingDisabled</h4>
+<pre>public&nbsp;boolean&nbsp;isDelimiterParsingDisabled()</pre>
+<div class="block">Determine if this configuration is using delimiters when parsing
+ property values to convert them to lists of values. Defaults to false</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>true if delimiters are not being used</dd></dl>
+</li>
+</ul>
+<a name="setDelimiterParsingDisabled(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDelimiterParsingDisabled</h4>
+<pre>public&nbsp;void&nbsp;setDelimiterParsingDisabled(boolean&nbsp;delimiterParsingDisabled)</pre>
+<div class="block">Set whether this configuration should use delimiters when parsing
+ property values to convert them to lists of values. By default delimiter
+ parsing is enabled
+
+ Note: this change will only be effective for new parsings. If you
+ want it to take effect for all loaded properties use the no arg constructor
+ and call this method before setting source.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>delimiterParsingDisabled</code> - a flag whether delimiter parsing should
+ be disabled</dd></dl>
+</li>
+</ul>
+<a name="setThrowExceptionOnMissing(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setThrowExceptionOnMissing</h4>
+<pre>public&nbsp;void&nbsp;setThrowExceptionOnMissing(boolean&nbsp;throwExceptionOnMissing)</pre>
+<div class="block">Allows to set the <code>throwExceptionOnMissing</code> flag. This
+ flag controls the behavior of property getter methods that return
+ objects if the requested property is missing. If the flag is set to
+ <b>false</b> (which is the default value), these methods will return
+ <b>null</b>. If set to <b>true</b>, they will throw a
+ <code>NoSuchElementException</code> exception. Note that getter methods
+ for primitive data types are not affected by this flag.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>throwExceptionOnMissing</code> - The new value for the property</dd></dl>
+</li>
+</ul>
+<a name="isThrowExceptionOnMissing()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isThrowExceptionOnMissing</h4>
+<pre>public&nbsp;boolean&nbsp;isThrowExceptionOnMissing()</pre>
+<div class="block">Returns true if missing values throw Exceptions.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>true if missing values throw Exceptions</dd></dl>
+</li>
+</ul>
+<a name="getSubstitutor()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSubstitutor</h4>
+<pre>public&nbsp;org.apache.commons.lang.text.StrSubstitutor&nbsp;getSubstitutor()</pre>
+<div class="block">Returns the object that is responsible for variable interpolation.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the object responsible for variable interpolation</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="getInterpolator()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInterpolator</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;getInterpolator()</pre>
+<div class="block">Returns the <code>ConfigurationInterpolator</code> object that manages
+ the lookup objects for resolving variables. <em>Note:</em> If this
+ object is manipulated (e.g. new lookup objects added), synchronization
+ has to be manually ensured. Because
+ <code>ConfigurationInterpolator</code> is not thread-safe concurrent
+ access to properties of this configuration instance (which causes the
+ interpolator to be invoked) may cause race conditions.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the <code>ConfigurationInterpolator</code> associated with this
+ configuration</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="createInterpolator()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createInterpolator</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;createInterpolator()</pre>
+<div class="block">Creates the interpolator object that is responsible for variable
+ interpolation. This method is invoked on first access of the
+ interpolation features. It creates a new instance of
+ <code>ConfigurationInterpolator</code> and sets the default lookup
+ object to an implementation that queries this configuration.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the newly created interpolator object</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="getLogger()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLogger</h4>
+<pre>public&nbsp;org.apache.commons.logging.Log&nbsp;getLogger()</pre>
+<div class="block">Returns the logger used by this configuration object.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the logger</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="setLogger(org.apache.commons.logging.Log)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLogger</h4>
+<pre>public&nbsp;void&nbsp;setLogger(org.apache.commons.logging.Log&nbsp;log)</pre>
+<div class="block">Allows to set the logger to be used by this configuration object. This
+ method makes it possible for clients to exactly control logging behavior.
+ Per default a logger is set that will ignore all log messages. Derived
+ classes that want to enable logging should call this method during their
+ initialization with the logger to be used.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>log</code> - the new logger</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="addErrorLogListener()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addErrorLogListener</h4>
+<pre>public&nbsp;void&nbsp;addErrorLogListener()</pre>
+<div class="block">Adds a special
+ <a href="../../../../org/apache/commons/configuration/event/ConfigurationErrorListener.html" title="interface in org.apache.commons.configuration.event"><code>ConfigurationErrorListener</code></a>
+ object to this configuration that will log all internal errors. This
+ method is intended to be used by certain derived classes, for which it is
+ known that they can fail on property access (e.g.
+ <code>DatabaseConfiguration</code>).</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="addProperty(java.lang.String, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addProperty</h4>
+<pre>public&nbsp;void&nbsp;addProperty(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+               <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#addProperty(java.lang.String, java.lang.Object)">Configuration</a></code></strong></div>
+<div class="block">Add a property to the configuration. If it already exists then the value
+ stated here will be added to the configuration entry. For example, if
+ the property:
+
+ <pre>resource.loader = file</pre>
+
+ is already present in the configuration and you call
+
+ <pre>addProperty("resource.loader", "classpath")</pre>
+
+ Then you will end up with a List like the following:
+
+ <pre>["file", "classpath"]</pre></div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#addProperty(java.lang.String, java.lang.Object)">addProperty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The key to add the property to.</dd><dd><code>value</code> - The value to add.</dd></dl>
+</li>
+</ul>
+<a name="addPropertyDirect(java.lang.String, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addPropertyDirect</h4>
+<pre>protected abstract&nbsp;void&nbsp;addPropertyDirect(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                     <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block">Adds a key/value pair to the Configuration. Override this method to
+ provide write access to underlying Configuration store.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - key to use for mapping</dd><dd><code>value</code> - object to store</dd></dl>
+</li>
+</ul>
+<a name="interpolate(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>interpolate</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;interpolate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base)</pre>
+<div class="block">interpolate key names to handle ${key} stuff</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>base</code> - string to interpolate</dd>
+<dt><span class="strong">Returns:</span></dt><dd>returns the key name with the ${key} substituted</dd></dl>
+</li>
+</ul>
+<a name="interpolate(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>interpolate</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;interpolate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block">Returns the interpolated value. Non String values are returned without change.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - the value to interpolate</dd>
+<dt><span class="strong">Returns:</span></dt><dd>returns the value with variables substituted</dd></dl>
+</li>
+</ul>
+<a name="interpolateHelper(java.lang.String, java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>interpolateHelper</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Deprecated.html?is-external=true" title="class or interface in java.lang">@Deprecated</a>
+protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;interpolateHelper(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+                                  <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;?&gt;&nbsp;priorVariables)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Interpolation is now handled by
+ <a href="../../../../org/apache/commons/configuration/PropertyConverter.html" title="class in org.apache.commons.configuration"><code>PropertyConverter</code></a>; this method will no longer be
+ called</i></div>
+<div class="block">Recursive handler for multple levels of interpolation.
+
+ When called the first time, priorVariables should be null.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>base</code> - string with the ${key} variables</dd><dd><code>priorVariables</code> - serves two purposes: to allow checking for loops,
+ and creating a meaningful exception message should a loop occur. It's
+ 0'th element will be set to the value of base from the first call. All
+ subsequent interpolated variables are added afterward.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the string with the interpolation taken care of</dd></dl>
+</li>
+</ul>
+<a name="subset(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>subset</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;subset(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#subset(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Return a decorator Configuration containing every key from the current
+ Configuration that starts with the specified prefix. The prefix is
+ removed from the keys in the subset. For example, if the configuration
+ contains the following properties:
+
+ <pre>
+    prefix.number = 1
+    prefix.string = Apache
+    prefixed.foo = bar
+    prefix = Jakarta</pre>
+
+ the Configuration returned by <code>subset("prefix")</code> will contain
+ the properties:
+
+ <pre>
+    number = 1
+    string = Apache
+    = Jakarta</pre>
+
+ (The key for the value "Jakarta" is an empty string)
+ <p>
+ Since the subset is a decorator and not a modified copy of the initial
+ Configuration, any change made to the subset is available to the
+ Configuration, and reciprocally.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#subset(java.lang.String)">subset</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - The prefix used to select the properties.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a subset configuration</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/SubsetConfiguration.html" title="class in org.apache.commons.configuration"><code>SubsetConfiguration</code></a></dd></dl>
+</li>
+</ul>
+<a name="setProperty(java.lang.String, java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProperty</h4>
+<pre>public&nbsp;void&nbsp;setProperty(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+               <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#setProperty(java.lang.String, java.lang.Object)">Configuration</a></code></strong></div>
+<div class="block">Set a property, this will replace any previously set values. Set values
+ is implicitly a call to clearProperty(key), addProperty(key, value).</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#setProperty(java.lang.String, java.lang.Object)">setProperty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The key of the property to change</dd><dd><code>value</code> - The new value</dd></dl>
+</li>
+</ul>
+<a name="clearProperty(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearProperty</h4>
+<pre>public&nbsp;void&nbsp;clearProperty(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Removes the specified property from this configuration. This
+ implementation performs some preparations and then delegates to
+ <code>clearPropertyDirect()</code>, which will do the real work.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#clearProperty(java.lang.String)">clearProperty</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - the key to be removed</dd></dl>
+</li>
+</ul>
+<a name="clearPropertyDirect(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearPropertyDirect</h4>
+<pre>protected&nbsp;void&nbsp;clearPropertyDirect(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Removes the specified property from this configuration. This method is
+ called by <code>clearProperty()</code> after it has done some
+ preparations. It should be overridden in sub classes. This base
+ implementation is just left empty.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - the key to be removed</dd></dl>
+</li>
+</ul>
+<a name="clear()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clear</h4>
+<pre>public&nbsp;void&nbsp;clear()</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#clear()">Configuration</a></code></strong></div>
+<div class="block">Remove all properties from the configuration.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#clear()">clear</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getKeys(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getKeys</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getKeys(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</pre>
+<div class="block">Get the list of the keys contained in the configuration that match the
+ specified prefix. For instance, if the configuration contains the
+ following keys:<br>
+ <code>db.user, db.pwd, db.url, window.xpos, window.ypos</code>,<br>
+ an invocation of <code>getKeys("db");</code><br>
+ will return the keys below:<br>
+ <code>db.user, db.pwd, db.url</code>.<br>
+ Note that the prefix itself is included in the result set if there is a
+ matching key. The exact behavior - how the prefix is actually
+ interpreted - depends on a concrete implementation. This implementation returns keys that either match the
+ prefix or start with the prefix followed by a dot ('.'). So the call
+ <code>getKeys("db");</code> will find the keys <code>db</code>,
+ <code>db.user</code>, or <code>db.password</code>, but not the key
+ <code>dbdriver</code>.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getKeys(java.lang.String)">getKeys</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - The prefix to test against.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>An Iterator of keys that match the prefix.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/Configuration.html#getKeys()"><code>Configuration.getKeys()</code></a></dd></dl>
+</li>
+</ul>
+<a name="getProperties(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperties</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;getProperties(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getProperties(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a list of properties associated with the given configuration key.
+ This method expects the given key to have an arbitrary number of String
+ values, each of which is of the form {code key=value}. These
+ strings are split at the equals sign, and the key parts will become
+ keys of the returned <code>Properties</code> object, the value parts
+ become values.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getProperties(java.lang.String)">getProperties</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated properties if key is found.</dd></dl>
+</li>
+</ul>
+<a name="getProperties(java.lang.String, java.util.Properties)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperties</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;getProperties(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                       <a href="http://download.oracle.com/javase/6/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;defaults)</pre>
+<div class="block">Get a list of properties associated with the given configuration key.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaults</code> - Any default values for the returned
+ <code>Properties</code> object. Ignored if <code>null</code>.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated properties if key is found.</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConversionException.html" title="class in org.apache.commons.configuration">ConversionException</a></code> - is thrown if the key maps to an object that
+ is not a String/List of Strings.</dd>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if one of the tokens is malformed (does
+ not contain an equals sign).</dd></dl>
+</li>
+</ul>
+<a name="getBoolean(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBoolean</h4>
+<pre>public&nbsp;boolean&nbsp;getBoolean(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get a boolean associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String)">getBoolean</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated boolean.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/PropertyConverter.html#toBoolean(java.lang.Object)"><code>PropertyConverter.toBoolean(Object)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getBoolean(java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBoolean</h4>
+<pre>public&nbsp;boolean&nbsp;getBoolean(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                 boolean&nbsp;defaultValue)</pre>
+<div class="block">Get a boolean associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String, boolean)">getBoolean</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated boolean.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/PropertyConverter.html#toBoolean(java.lang.Object)"><code>PropertyConverter.toBoolean(Object)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getBoolean(java.lang.String, java.lang.Boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBoolean</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;getBoolean(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                 <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;defaultValue)</pre>
+<div class="block">Obtains the value of the specified key and tries to convert it into a
+ <code>Boolean</code> object. If the property has no value, the passed
+ in default value will be used.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String, java.lang.Boolean)">getBoolean</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - the key of the property</dd><dd><code>defaultValue</code> - the default value</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the value of this key converted to a <code>Boolean</code></dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConversionException.html" title="class in org.apache.commons.configuration">ConversionException</a></code> - if the value cannot be converted to a
+ <code>Boolean</code></dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/PropertyConverter.html#toBoolean(java.lang.Object)"><code>PropertyConverter.toBoolean(Object)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getByte(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByte</h4>
+<pre>public&nbsp;byte&nbsp;getByte(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a byte associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String)">getByte</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated byte.</dd></dl>
+</li>
+</ul>
+<a name="getByte(java.lang.String, byte)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByte</h4>
+<pre>public&nbsp;byte&nbsp;getByte(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           byte&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, byte)">Configuration</a></code></strong></div>
+<div class="block">Get a byte associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, byte)">getByte</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated byte.</dd></dl>
+</li>
+</ul>
+<a name="getByte(java.lang.String, java.lang.Byte)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getByte</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang">Byte</a>&nbsp;getByte(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang">Byte</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, java.lang.Byte)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Byte.html?is-external=true" title="class or interface in java.lang"><code>Byte</code></a> associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, java.lang.Byte)">getByte</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated byte if key is found and has valid format, default
+         value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getDouble(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDouble</h4>
+<pre>public&nbsp;double&nbsp;getDouble(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a double associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String)">getDouble</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated double.</dd></dl>
+</li>
+</ul>
+<a name="getDouble(java.lang.String, double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDouble</h4>
+<pre>public&nbsp;double&nbsp;getDouble(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+               double&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, double)">Configuration</a></code></strong></div>
+<div class="block">Get a double associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, double)">getDouble</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated double.</dd></dl>
+</li>
+</ul>
+<a name="getDouble(java.lang.String, java.lang.Double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDouble</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&nbsp;getDouble(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+               <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, java.lang.Double)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang"><code>Double</code></a> associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, java.lang.Double)">getDouble</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated double if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getFloat(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFloat</h4>
+<pre>public&nbsp;float&nbsp;getFloat(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a float associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String)">getFloat</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated float.</dd></dl>
+</li>
+</ul>
+<a name="getFloat(java.lang.String, float)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFloat</h4>
+<pre>public&nbsp;float&nbsp;getFloat(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             float&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, float)">Configuration</a></code></strong></div>
+<div class="block">Get a float associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, float)">getFloat</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated float.</dd></dl>
+</li>
+</ul>
+<a name="getFloat(java.lang.String, java.lang.Float)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFloat</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&nbsp;getFloat(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, java.lang.Float)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang"><code>Float</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, java.lang.Float)">getFloat</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated float if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getInt(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInt</h4>
+<pre>public&nbsp;int&nbsp;getInt(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a int associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String)">getInt</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated int.</dd></dl>
+</li>
+</ul>
+<a name="getInt(java.lang.String, int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInt</h4>
+<pre>public&nbsp;int&nbsp;getInt(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+         int&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String, int)">Configuration</a></code></strong></div>
+<div class="block">Get a int associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String, int)">getInt</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated int.</dd></dl>
+</li>
+</ul>
+<a name="getInteger(java.lang.String, java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInteger</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;getInteger(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                 <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInteger(java.lang.String, java.lang.Integer)">Configuration</a></code></strong></div>
+<div class="block">Get an <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang"><code>Integer</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getInteger(java.lang.String, java.lang.Integer)">getInteger</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated int if key is found and has valid format, default
+         value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getLong(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLong</h4>
+<pre>public&nbsp;long&nbsp;getLong(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a long associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String)">getLong</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated long.</dd></dl>
+</li>
+</ul>
+<a name="getLong(java.lang.String, long)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLong</h4>
+<pre>public&nbsp;long&nbsp;getLong(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           long&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, long)">Configuration</a></code></strong></div>
+<div class="block">Get a long associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, long)">getLong</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated long.</dd></dl>
+</li>
+</ul>
+<a name="getLong(java.lang.String, java.lang.Long)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLong</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getLong(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, java.lang.Long)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang"><code>Long</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, java.lang.Long)">getLong</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated long if key is found and has valid
+ format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getShort(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getShort</h4>
+<pre>public&nbsp;short&nbsp;getShort(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a short associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String)">getShort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated short.</dd></dl>
+</li>
+</ul>
+<a name="getShort(java.lang.String, short)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getShort</h4>
+<pre>public&nbsp;short&nbsp;getShort(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             short&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, short)">Configuration</a></code></strong></div>
+<div class="block">Get a short associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, short)">getShort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated short.</dd></dl>
+</li>
+</ul>
+<a name="getShort(java.lang.String, java.lang.Short)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getShort</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang">Short</a>&nbsp;getShort(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang">Short</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, java.lang.Short)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Short.html?is-external=true" title="class or interface in java.lang"><code>Short</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, java.lang.Short)">getShort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated short if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getBigDecimal(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBigDecimal</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a>&nbsp;getBigDecimal(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math"><code>BigDecimal</code></a> associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigDecimal(java.lang.String)">getBigDecimal</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated BigDecimal if key is found and has valid format</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setThrowExceptionOnMissing(boolean)"><code>setThrowExceptionOnMissing(boolean)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getBigDecimal(java.lang.String, java.math.BigDecimal)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBigDecimal</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a>&nbsp;getBigDecimal(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                       <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math">BigDecimal</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigDecimal(java.lang.String, java.math.BigDecimal)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigDecimal.html?is-external=true" title="class or interface in java.math"><code>BigDecimal</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigDecimal(java.lang.String, java.math.BigDecimal)">getBigDecimal</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated BigDecimal if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getBigInteger(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBigInteger</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a>&nbsp;getBigInteger(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math"><code>BigInteger</code></a> associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigInteger(java.lang.String)">getBigInteger</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated BigInteger if key is found and has valid format</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setThrowExceptionOnMissing(boolean)"><code>setThrowExceptionOnMissing(boolean)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getBigInteger(java.lang.String, java.math.BigInteger)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBigInteger</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a>&nbsp;getBigInteger(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                       <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math">BigInteger</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigInteger(java.lang.String, java.math.BigInteger)">Configuration</a></code></strong></div>
+<div class="block">Get a <a href="http://download.oracle.com/javase/6/docs/api/java/math/BigInteger.html?is-external=true" title="class or interface in java.math"><code>BigInteger</code></a> associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getBigInteger(java.lang.String, java.math.BigInteger)">getBigInteger</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated BigInteger if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getString(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getString</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getString(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get a string associated with the given configuration key.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getString(java.lang.String)">getString</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated string.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setThrowExceptionOnMissing(boolean)"><code>setThrowExceptionOnMissing(boolean)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getString(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getString</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getString(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+               <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getString(java.lang.String, java.lang.String)">Configuration</a></code></strong></div>
+<div class="block">Get a string associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getString(java.lang.String, java.lang.String)">getString</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated string if key is found and has valid
+         format, default value otherwise.</dd></dl>
+</li>
+</ul>
+<a name="getStringArray(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStringArray</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;getStringArray(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get an array of strings associated with the given configuration key.
+ If the key doesn't map to an existing object, an empty array is returned.
+ If a property is added to a configuration, it is checked whether it
+ contains multiple values. This is obvious if the added object is a list
+ or an array. For strings it is checked whether the string contains the
+ list delimiter character that can be specified using the
+ <code>setListDelimiter()</code> method. If this is the case, the string
+ is split at these positions resulting in a property with multiple
+ values.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getStringArray(java.lang.String)">getStringArray</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated string array if key is found.</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConversionException.html" title="class in org.apache.commons.configuration">ConversionException</a></code> - is thrown if the key maps to an
+         object that is not a String/List of Strings.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setListDelimiter(char)"><code>setListDelimiter(char)</code></a>, 
+<a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDelimiterParsingDisabled(boolean)"><code>setDelimiterParsingDisabled(boolean)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getList(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getList</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getList(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Get a List of strings associated with the given configuration key.
+ If the key doesn't map to an existing object an empty List is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getList(java.lang.String)">getList</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated List.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getStringArray(java.lang.String)"><code>getStringArray(String)</code></a></dd></dl>
+</li>
+</ul>
+<a name="getList(java.lang.String, java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getList</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getList(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                   <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;?&gt;&nbsp;defaultValue)</pre>
+<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html#getList(java.lang.String, java.util.List)">Configuration</a></code></strong></div>
+<div class="block">Get a List of strings associated with the given configuration key.
+ If the key doesn't map to an existing object, the default value
+ is returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/Configuration.html#getList(java.lang.String, java.util.List)">getList</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The configuration key.</dd><dd><code>defaultValue</code> - The default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The associated List of strings.</dd></dl>
+</li>
+</ul>
+<a name="resolveContainerStore(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>resolveContainerStore</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;resolveContainerStore(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Returns an object from the store described by the key. If the value is a
+ Collection object, replace it with the first object in the collection.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - The property key.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>value Value, transparently resolving a possible collection dependency.</dd></dl>
+</li>
+</ul>
+<a name="isScalarValue(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isScalarValue</h4>
+<pre>protected&nbsp;boolean&nbsp;isScalarValue(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block">Checks whether the specified object is a scalar value. This method is
+ called by <code>getList()</code> and <code>getStringArray()</code> if the
+ property requested is not a string, a list, or an array. If it returns
+ <b>true</b>, the calling method transforms the value to a string and
+ returns a list or an array with this single element. This implementation
+ returns <b>true</b> if the value is of a wrapper type for a primitive
+ type.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - the value to be checked</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a flag whether the value is a scalar</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.7</dd></dl>
+</li>
+</ul>
+<a name="copy(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>copy</h4>
+<pre>public&nbsp;void&nbsp;copy(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;c)</pre>
+<div class="block">Copies the content of the specified configuration into this
+ configuration. If the specified configuration contains a key that is also
+ present in this configuration, the value of this key will be replaced by
+ the new value. <em>Note:</em> This method won't work well when copying
+ hierarchical configurations because it is not able to copy information
+ about the properties' structure (i.e. the parent-child-relationships will
+ get lost). So when dealing with hierarchical configuration objects their
+ <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#clone()"><code>clone()</code></a> methods
+ should be used.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>c</code> - the configuration to copy (can be <b>null</b>, then this
+ operation will have no effect)</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.5</dd></dl>
+</li>
+</ul>
+<a name="append(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>append</h4>
+<pre>public&nbsp;void&nbsp;append(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;c)</pre>
+<div class="block">Appends the content of the specified configuration to this configuration.
+ The values of all properties contained in the specified configuration
+ will be appended to this configuration. So if a property is already
+ present in this configuration, its new value will be a union of the
+ values in both configurations. <em>Note:</em> This method won't work
+ well when appending hierarchical configurations because it is not able to
+ copy information about the properties' structure (i.e. the
+ parent-child-relationships will get lost). So when dealing with
+ hierarchical configuration objects their
+ <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#clone()"><code>clone()</code></a> methods
+ should be used.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>c</code> - the configuration to be appended (can be <b>null</b>, then this
+ operation will have no effect)</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.5</dd></dl>
+</li>
+</ul>
+<a name="interpolatedConfiguration()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>interpolatedConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;interpolatedConfiguration()</pre>
+<div class="block">Returns a configuration with the same content as this configuration, but
+ with all variables replaced by their actual values. This method tries to
+ clone the configuration and then perform interpolation on all properties.
+ So property values of the form <code>${var}</code> will be resolved as
+ far as possible (if a variable cannot be resolved, it remains unchanged).
+ This operation is useful if the content of a configuration is to be
+ exported or processed by an external component that does not support
+ variable interpolation.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>a configuration with all variables interpolated</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationRuntimeException.html" title="class in org.apache.commons.configuration">ConfigurationRuntimeException</a></code> - if this configuration cannot be
+ cloned</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.5</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/AbstractConfiguration.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../org/apache/commons/configuration/AbstractFileConfiguration.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/AbstractConfiguration.html" target="_top">Frames</a></li>
+<li><a href="AbstractConfiguration.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

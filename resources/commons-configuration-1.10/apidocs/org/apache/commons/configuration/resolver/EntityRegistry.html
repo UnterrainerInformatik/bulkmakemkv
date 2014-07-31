@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>EntityRegistry (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="EntityRegistry (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/EntityRegistry.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/resolver/DefaultEntityResolver.html" title="class in org.apache.commons.configuration.resolver"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/commons/configuration/resolver/EntityResolverSupport.html" title="interface in org.apache.commons.configuration.resolver"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/resolver/EntityRegistry.html" target="_top">Frames</a></li>
+<li><a href="EntityRegistry.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration.resolver</div>
+<h2 title="Interface EntityRegistry" class="title">Interface EntityRegistry</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder</a>, <a href="../../../../../org/apache/commons/configuration/resolver/DefaultEntityResolver.html" title="class in org.apache.commons.configuration.resolver">DefaultEntityResolver</a>, <a href="../../../../../org/apache/commons/configuration/HierarchicalXMLConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalXMLConfiguration</a>, <a href="../../../../../org/apache/commons/configuration/XMLConfiguration.html" title="class in org.apache.commons.configuration">XMLConfiguration</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public interface <span class="strong">EntityRegistry</span></pre>
+<div class="block">Interface used for registering and retrieving PUBLICID to URL mappings.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.7</dd>
+<dt><span class="strong">Version:</span></dt>
+  <dd>$Id: EntityRegistry.java 1206577 2011-11-26 20:25:52Z oheger $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a
+ href="http://commons.apache.org/configuration/team-list.html">Commons
+ Configuration team</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/resolver/EntityRegistry.html#getRegisteredEntities()">getRegisteredEntities</a></strong>()</code>
+<div class="block">Returns a map with the entity IDs that have been registered using the
+ <code>registerEntityId()</code> method.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/resolver/EntityRegistry.html#registerEntityId(java.lang.String, java.net.URL)">registerEntityId</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;publicId,
+                <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;entityURL)</code>
+<div class="block">
+ Registers the specified URL for the specified public identifier.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="registerEntityId(java.lang.String, java.net.URL)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerEntityId</h4>
+<pre>void&nbsp;registerEntityId(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;publicId,
+                    <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;entityURL)</pre>
+<div class="block"><p>
+ Registers the specified URL for the specified public identifier.
+ </p>
+ <p>
+ This implementation maps <code>PUBLICID</code>'s to URLs (from which
+ the resource will be loaded). A common use case for this method is to
+ register local URLs (possibly computed at runtime by a class loader) for
+ DTDs and Schemas. This allows the performance advantage of using a local
+ version without having to ensure every <code>SYSTEM</code> URI on every
+ processed XML document is local. This implementation provides only basic
+ functionality. If more sophisticated features are required, either calling
+ <code>XMLConfiguration.setDocumentBuilder(DocumentBuilder)</code> to set a custom
+ <code>DocumentBuilder</code> (which also can be initialized with a
+ custom <code>EntityResolver</code>) or creating a custom entity resolver
+ and registering it with the XMLConfiguration is recommended.
+ </p></div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>publicId</code> - Public identifier of the Entity to be resolved</dd><dd><code>entityURL</code> - The URL to use for reading this Entity</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the public ID is undefined</dd></dl>
+</li>
+</ul>
+<a name="getRegisteredEntities()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getRegisteredEntities</h4>
+<pre><a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&gt;&nbsp;getRegisteredEntities()</pre>
+<div class="block">Returns a map with the entity IDs that have been registered using the
+ <code>registerEntityId()</code> method.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>a map with the registered entity IDs</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/EntityRegistry.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/resolver/DefaultEntityResolver.html" title="class in org.apache.commons.configuration.resolver"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/commons/configuration/resolver/EntityResolverSupport.html" title="interface in org.apache.commons.configuration.resolver"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/resolver/EntityRegistry.html" target="_top">Frames</a></li>
+<li><a href="EntityRegistry.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

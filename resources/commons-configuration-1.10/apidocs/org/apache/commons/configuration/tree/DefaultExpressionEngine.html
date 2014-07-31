@@ -1,0 +1,869 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>DefaultExpressionEngine (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultExpressionEngine (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultExpressionEngine.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationNode.SubNodes.html" title="class in org.apache.commons.configuration.tree"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/tree/DefaultExpressionEngine.html" target="_top">Frames</a></li>
+<li><a href="DefaultExpressionEngine.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration.tree</div>
+<h2 title="Class DefaultExpressionEngine" class="title">Class DefaultExpressionEngine</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.tree.DefaultExpressionEngine</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">DefaultExpressionEngine</span>
+extends <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a></pre>
+<div class="block"><p>
+ A default implementation of the <code>ExpressionEngine</code> interface
+ providing the &quot;native&quote; expression language for hierarchical
+ configurations.
+ </p>
+ <p>
+ This class implements a rather simple expression language for navigating
+ through a hierarchy of configuration nodes. It supports the following
+ operations:
+ </p>
+ <p>
+ <ul>
+ <li>Navigating from a node to one of its children using the child node
+ delimiter, which is by the default a dot (&quot;.&quot;).</li>
+ <li>Navigating from a node to one of its attributes using the attribute node
+ delimiter, which by default follows the XPATH like syntax
+ <code>[@&lt;attributeName&gt;]</code>.</li>
+ <li>If there are multiple child or attribute nodes with the same name, a
+ specific node can be selected using a numerical index. By default indices are
+ written in parenthesis.</li>
+ </ul>
+ </p>
+ <p>
+ As an example consider the following XML document:
+ </p>
+
+ <pre>
+  &lt;database&gt;
+    &lt;tables&gt;
+      &lt;table type=&quot;system&quot;&gt;
+        &lt;name&gt;users&lt;/name&gt;
+        &lt;fields&gt;
+          &lt;field&gt;
+            &lt;name&gt;lid&lt;/name&gt;
+            &lt;type&gt;long&lt;/name&gt;
+          &lt;/field&gt;
+          &lt;field&gt;
+            &lt;name&gt;usrName&lt;/name&gt;
+            &lt;type&gt;java.lang.String&lt;/type&gt;
+          &lt;/field&gt;
+         ...
+        &lt;/fields&gt;
+      &lt;/table&gt;
+      &lt;table&gt;
+        &lt;name&gt;documents&lt;/name&gt;
+        &lt;fields&gt;
+          &lt;field&gt;
+            &lt;name&gt;docid&lt;/name&gt;
+            &lt;type&gt;long&lt;/type&gt;
+          &lt;/field&gt;
+          ...
+        &lt;/fields&gt;
+      &lt;/table&gt;
+      ...
+    &lt;/tables&gt;
+  &lt;/database&gt;
+ </pre>
+
+ </p>
+ <p>
+ If this document is parsed and stored in a hierarchical configuration object,
+ for instance the key <code>tables.table(0).name</code> can be used to find
+ out the name of the first table. In opposite <code>tables.table.name</code>
+ would return a collection with the names of all available tables. Similarly
+ the key <code>tables.table(1).fields.field.name</code> returns a collection
+ with the names of all fields of the second table. If another index is added
+ after the <code>field</code> element, a single field can be accessed:
+ <code>tables.table(1).fields.field(0).name</code>. The key
+ <code>tables.table(0)[@type]</code> would select the type attribute of the
+ first table.
+ </p>
+ <p>
+ This example works with the default values for delimiters and index markers.
+ It is also possible to set custom values for these properties so that you can
+ adapt a <code>DefaultExpressionEngine</code> to your personal needs.
+ </p></div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">Version:</span></dt>
+  <dd>$Id: DefaultExpressionEngine.java 1301991 2012-03-17 20:18:02Z sebb $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a
+ href="http://commons.apache.org/configuration/team-list.html">Commons
+ Configuration team</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_ATTRIBUTE_END">DEFAULT_ATTRIBUTE_END</a></strong></code>
+<div class="block">Constant for the default attribute end marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_ATTRIBUTE_START">DEFAULT_ATTRIBUTE_START</a></strong></code>
+<div class="block">Constant for the default attribute start marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_ESCAPED_DELIMITER">DEFAULT_ESCAPED_DELIMITER</a></strong></code>
+<div class="block">Constant for the default escaped property delimiter.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_INDEX_END">DEFAULT_INDEX_END</a></strong></code>
+<div class="block">Constant for the default index end marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_INDEX_START">DEFAULT_INDEX_START</a></strong></code>
+<div class="block">Constant for the default index start marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DEFAULT_PROPERTY_DELIMITER">DEFAULT_PROPERTY_DELIMITER</a></strong></code>
+<div class="block">Constant for the default property delimiter.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#DefaultExpressionEngine()">DefaultExpressionEngine</a></strong>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#findLastPathNode(org.apache.commons.configuration.tree.DefaultConfigurationKey.KeyIterator, org.apache.commons.configuration.tree.ConfigurationNode)">findLastPathNode</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationKey.KeyIterator.html" title="class in org.apache.commons.configuration.tree">DefaultConfigurationKey.KeyIterator</a>&nbsp;keyIt,
+                <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</code>
+<div class="block">Finds the last existing node for an add operation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#findNodesForKey(org.apache.commons.configuration.tree.DefaultConfigurationKey.KeyIterator, org.apache.commons.configuration.tree.ConfigurationNode, java.util.Collection)">findNodesForKey</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationKey.KeyIterator.html" title="class in org.apache.commons.configuration.tree">DefaultConfigurationKey.KeyIterator</a>&nbsp;keyPart,
+               <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node,
+               <a href="http://download.oracle.com/javase/6/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&gt;&nbsp;nodes)</code>
+<div class="block">Recursive helper method for evaluating a key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getAttributeEnd()">getAttributeEnd</a></strong>()</code>
+<div class="block">Sets the attribute end marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getAttributeStart()">getAttributeStart</a></strong>()</code>
+<div class="block">Returns the attribute start marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getEscapedDelimiter()">getEscapedDelimiter</a></strong>()</code>
+<div class="block">Returns the escaped property delimiter string.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getIndexEnd()">getIndexEnd</a></strong>()</code>
+<div class="block">Returns the index end marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getIndexStart()">getIndexStart</a></strong>()</code>
+<div class="block">Returns the index start marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#getPropertyDelimiter()">getPropertyDelimiter</a></strong>()</code>
+<div class="block">Returns the property delimiter.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#nodeKey(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">nodeKey</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node,
+       <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;parentKey)</code>
+<div class="block">Determines the key of the passed in node.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/commons/configuration/tree/NodeAddData.html" title="class in org.apache.commons.configuration.tree">NodeAddData</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#prepareAdd(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">prepareAdd</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;root,
+          <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">
+ Prepares Adding the property with the specified key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#query(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">query</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;root,
+     <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Evaluates the given key and returns all matching nodes.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setAttributeEnd(java.lang.String)">setAttributeEnd</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;attributeEnd)</code>
+<div class="block">Sets the attribute end marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setAttributeStart(java.lang.String)">setAttributeStart</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;attributeStart)</code>
+<div class="block">Sets the attribute start marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setEscapedDelimiter(java.lang.String)">setEscapedDelimiter</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;escapedDelimiter)</code>
+<div class="block">Sets the escaped property delimiter string.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setIndexEnd(java.lang.String)">setIndexEnd</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexEnd)</code>
+<div class="block">Sets the index end marker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setIndexStart(java.lang.String)">setIndexStart</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexStart)</code>
+<div class="block">Sets the index start marker.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/tree/DefaultExpressionEngine.html#setPropertyDelimiter(java.lang.String)">setPropertyDelimiter</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyDelimiter)</code>
+<div class="block">Sets the property delimiter.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="DEFAULT_PROPERTY_DELIMITER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_PROPERTY_DELIMITER</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_PROPERTY_DELIMITER</pre>
+<div class="block">Constant for the default property delimiter.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_PROPERTY_DELIMITER">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DEFAULT_ESCAPED_DELIMITER">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_ESCAPED_DELIMITER</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_ESCAPED_DELIMITER</pre>
+<div class="block">Constant for the default escaped property delimiter.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_ESCAPED_DELIMITER">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DEFAULT_ATTRIBUTE_START">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_ATTRIBUTE_START</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_ATTRIBUTE_START</pre>
+<div class="block">Constant for the default attribute start marker.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_ATTRIBUTE_START">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DEFAULT_ATTRIBUTE_END">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_ATTRIBUTE_END</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_ATTRIBUTE_END</pre>
+<div class="block">Constant for the default attribute end marker.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_ATTRIBUTE_END">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DEFAULT_INDEX_START">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DEFAULT_INDEX_START</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_INDEX_START</pre>
+<div class="block">Constant for the default index start marker.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_INDEX_START">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="DEFAULT_INDEX_END">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DEFAULT_INDEX_END</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_INDEX_END</pre>
+<div class="block">Constant for the default index end marker.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.tree.DefaultExpressionEngine.DEFAULT_INDEX_END">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="DefaultExpressionEngine()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DefaultExpressionEngine</h4>
+<pre>public&nbsp;DefaultExpressionEngine()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getAttributeEnd()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttributeEnd</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getAttributeEnd()</pre>
+<div class="block">Sets the attribute end marker.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the attribute end marker</dd></dl>
+</li>
+</ul>
+<a name="setAttributeEnd(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAttributeEnd</h4>
+<pre>public&nbsp;void&nbsp;setAttributeEnd(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;attributeEnd)</pre>
+<div class="block">Sets the attribute end marker.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>attributeEnd</code> - the attribute end marker; can be <b>null</b> if no
+ end marker is needed</dd></dl>
+</li>
+</ul>
+<a name="getAttributeStart()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAttributeStart</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getAttributeStart()</pre>
+<div class="block">Returns the attribute start marker.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the attribute start marker</dd></dl>
+</li>
+</ul>
+<a name="setAttributeStart(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAttributeStart</h4>
+<pre>public&nbsp;void&nbsp;setAttributeStart(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;attributeStart)</pre>
+<div class="block">Sets the attribute start marker. Attribute start and end marker are used
+ together to detect attributes in a property key.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>attributeStart</code> - the attribute start marker</dd></dl>
+</li>
+</ul>
+<a name="getEscapedDelimiter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEscapedDelimiter</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getEscapedDelimiter()</pre>
+<div class="block">Returns the escaped property delimiter string.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the escaped property delimiter</dd></dl>
+</li>
+</ul>
+<a name="setEscapedDelimiter(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEscapedDelimiter</h4>
+<pre>public&nbsp;void&nbsp;setEscapedDelimiter(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;escapedDelimiter)</pre>
+<div class="block">Sets the escaped property delimiter string. With this string a delimiter
+ that belongs to the key of a property can be escaped. If for instance
+ &quot;.&quot; is used as property delimiter, you can set the escaped
+ delimiter to &quot;\.&quot; and can then escape the delimiter with a back
+ slash.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>escapedDelimiter</code> - the escaped delimiter string</dd></dl>
+</li>
+</ul>
+<a name="getIndexEnd()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getIndexEnd</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getIndexEnd()</pre>
+<div class="block">Returns the index end marker.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the index end marker</dd></dl>
+</li>
+</ul>
+<a name="setIndexEnd(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setIndexEnd</h4>
+<pre>public&nbsp;void&nbsp;setIndexEnd(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexEnd)</pre>
+<div class="block">Sets the index end marker.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>indexEnd</code> - the index end marker</dd></dl>
+</li>
+</ul>
+<a name="getIndexStart()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getIndexStart</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getIndexStart()</pre>
+<div class="block">Returns the index start marker.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the index start marker</dd></dl>
+</li>
+</ul>
+<a name="setIndexStart(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setIndexStart</h4>
+<pre>public&nbsp;void&nbsp;setIndexStart(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;indexStart)</pre>
+<div class="block">Sets the index start marker. Index start and end marker are used together
+ to detect indices in a property key.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>indexStart</code> - the index start marker</dd></dl>
+</li>
+</ul>
+<a name="getPropertyDelimiter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPropertyDelimiter</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getPropertyDelimiter()</pre>
+<div class="block">Returns the property delimiter.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the property delimiter</dd></dl>
+</li>
+</ul>
+<a name="setPropertyDelimiter(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPropertyDelimiter</h4>
+<pre>public&nbsp;void&nbsp;setPropertyDelimiter(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyDelimiter)</pre>
+<div class="block">Sets the property delimiter. This string is used to split the parts of a
+ property key.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>propertyDelimiter</code> - the property delimiter</dd></dl>
+</li>
+</ul>
+<a name="query(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>query</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&gt;&nbsp;query(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;root,
+                            <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Evaluates the given key and returns all matching nodes. This method
+ supports the syntax as described in the class comment.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html#query(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">query</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>root</code> - the root node</dd><dd><code>key</code> - the key</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a list with the matching nodes</dd></dl>
+</li>
+</ul>
+<a name="nodeKey(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nodeKey</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeKey(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node,
+             <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;parentKey)</pre>
+<div class="block">Determines the key of the passed in node. This implementation takes the
+ given parent key, adds a property delimiter, and then adds the node's
+ name. (For attribute nodes the attribute delimiters are used instead.)
+ The name of the root node is a blanc string. Note that no indices will be
+ returned.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html#nodeKey(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">nodeKey</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>node</code> - the node whose key is to be determined</dd><dd><code>parentKey</code> - the key of this node's parent</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the key for the given node</dd></dl>
+</li>
+</ul>
+<a name="prepareAdd(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prepareAdd</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/commons/configuration/tree/NodeAddData.html" title="class in org.apache.commons.configuration.tree">NodeAddData</a>&nbsp;prepareAdd(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;root,
+                     <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block"><p>
+ Prepares Adding the property with the specified key.
+ </p>
+ <p>
+ To be able to deal with the structure supported by hierarchical
+ configuration implementations the passed in key is of importance,
+ especially the indices it might contain. The following example should
+ clarify this: Suppose the actual node structure looks like the
+ following:
+ </p>
+ <p>
+ <pre>
+  tables
+     +-- table
+             +-- name = user
+             +-- fields
+                     +-- field
+                             +-- name = uid
+                     +-- field
+                             +-- name = firstName
+                     ...
+     +-- table
+             +-- name = documents
+             +-- fields
+                    ...
+ </pre>
+ </p>
+ <p>
+ In this example a database structure is defined, e.g. all fields of the
+ first table could be accessed using the key
+ <code>tables.table(0).fields.field.name</code>. If now properties are
+ to be added, it must be exactly specified at which position in the
+ hierarchy the new property is to be inserted. So to add a new field name
+ to a table it is not enough to say just
+ </p>
+ <p>
+ <pre>
+ config.addProperty(&quot;tables.table.fields.field.name&quot;, &quot;newField&quot;);
+ </pre>
+ </p>
+ <p>
+ The statement given above contains some ambiguity. For instance it is not
+ clear, to which table the new field should be added. If this method finds
+ such an ambiguity, it is resolved by following the last valid path. Here
+ this would be the last table. The same is true for the <code>field</code>;
+ because there are multiple fields and no explicit index is provided, a
+ new <code>name</code> property would be added to the last field - which
+ is probably not what was desired.
+ </p>
+ <p>
+ To make things clear explicit indices should be provided whenever
+ possible. In the example above the exact table could be specified by
+ providing an index for the <code>table</code> element as in
+ <code>tables.table(1).fields</code>. By specifying an index it can
+ also be expressed that at a given position in the configuration tree a
+ new branch should be added. In the example above we did not want to add
+ an additional <code>name</code> element to the last field of the table,
+ but we want a complete new <code>field</code> element. This can be
+ achieved by specifying an invalid index (like -1) after the element where
+ a new branch should be created. Given this our example would run:
+ </p>
+ <p>
+ <pre>
+ config.addProperty(&quot;tables.table(1).fields.field(-1).name&quot;, &quot;newField&quot;);
+ </pre>
+ </p>
+ <p>
+ With this notation it is possible to add new branches everywhere. We
+ could for instance create a new <code>table</code> element by
+ specifying
+ </p>
+ <p>
+ <pre>
+ config.addProperty(&quot;tables.table(-1).fields.field.name&quot;, &quot;newField2&quot;);
+ </pre>
+ </p>
+ <p>
+ (Note that because after the <code>table</code> element a new branch is
+ created indices in following elements are not relevant; the branch is new
+ so there cannot be any ambiguities.)
+ </p></div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html#prepareAdd(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">prepareAdd</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>root</code> - the root node of the nodes hierarchy</dd><dd><code>key</code> - the key of the new property</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a data object with information needed for the add operation</dd></dl>
+</li>
+</ul>
+<a name="findNodesForKey(org.apache.commons.configuration.tree.DefaultConfigurationKey.KeyIterator, org.apache.commons.configuration.tree.ConfigurationNode, java.util.Collection)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>findNodesForKey</h4>
+<pre>protected&nbsp;void&nbsp;findNodesForKey(<a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationKey.KeyIterator.html" title="class in org.apache.commons.configuration.tree">DefaultConfigurationKey.KeyIterator</a>&nbsp;keyPart,
+                   <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node,
+                   <a href="http://download.oracle.com/javase/6/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&gt;&nbsp;nodes)</pre>
+<div class="block">Recursive helper method for evaluating a key. This method processes all
+ facets of a configuration key, traverses the tree of properties and
+ fetches the the nodes of all matching properties.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>keyPart</code> - the configuration key iterator</dd><dd><code>node</code> - the actual node</dd><dd><code>nodes</code> - here the found nodes are stored</dd></dl>
+</li>
+</ul>
+<a name="findLastPathNode(org.apache.commons.configuration.tree.DefaultConfigurationKey.KeyIterator, org.apache.commons.configuration.tree.ConfigurationNode)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>findLastPathNode</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;findLastPathNode(<a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationKey.KeyIterator.html" title="class in org.apache.commons.configuration.tree">DefaultConfigurationKey.KeyIterator</a>&nbsp;keyIt,
+                                 <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</pre>
+<div class="block">Finds the last existing node for an add operation. This method traverses
+ the configuration node tree along the specified key. The last existing
+ node on this path is returned.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>keyIt</code> - the key iterator</dd><dd><code>node</code> - the actual node</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the last existing node on the given path</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultExpressionEngine.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/tree/DefaultConfigurationNode.SubNodes.html" title="class in org.apache.commons.configuration.tree"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/tree/DefaultExpressionEngine.html" target="_top">Frames</a></li>
+<li><a href="DefaultExpressionEngine.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

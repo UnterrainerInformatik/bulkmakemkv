@@ -1,0 +1,730 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>XMLBeanDeclaration (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="XMLBeanDeclaration (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/XMLBeanDeclaration.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html" target="_top">Frames</a></li>
+<li><a href="XMLBeanDeclaration.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration.beanutils</div>
+<h2 title="Class XMLBeanDeclaration" class="title">Class XMLBeanDeclaration</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.beanutils.XMLBeanDeclaration</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">XMLBeanDeclaration</span>
+extends <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></pre>
+<div class="block"><p>
+ An implementation of the <code>BeanDeclaration</code> interface that is
+ suitable for XML configuration files.
+ </p>
+ <p>
+ This class defines the standard layout of a bean declaration in an XML
+ configuration file. Such a declaration must look like the following example
+ fragment:
+ </p>
+ <p>
+
+ <pre>
+   ...
+   &lt;personBean config-class=&quot;my.model.PersonBean&quot;
+       lastName=&quot;Doe&quot; firstName=&quot;John&quot;&gt;
+       &lt;address config-class=&quot;my.model.AddressBean&quot;
+           street=&quot;21st street 11&quot; zip=&quot;1234&quot;
+           city=&quot;TestCity&quot;/&gt;
+   &lt;/personBean&gt;
+ </pre>
+
+ </p>
+ <p>
+ The bean declaration can be contained in an arbitrary element. Here it is the
+ <code>personBean</code> element. In the attributes of this element
+ there can occur some reserved attributes, which have the following meaning:
+ <dl>
+ <dt><code>config-class</code></dt>
+ <dd>Here the full qualified name of the bean's class can be specified. An
+ instance of this class will be created. If this attribute is not specified,
+ the bean class must be provided in another way, e.g. as the
+ <code>defaultClass</code> passed to the <code>BeanHelper</code> class.</dd>
+ <dt><code>config-factory</code></dt>
+ <dd>This attribute can contain the name of the
+ <a href="../../../../../org/apache/commons/configuration/beanutils/BeanFactory.html" title="interface in org.apache.commons.configuration.beanutils"><code>BeanFactory</code></a> that should be used for creating the bean.
+ If it is defined, a factory with this name must have been registered at the
+ <code>BeanHelper</code> class. If this attribute is missing, the default
+ bean factory will be used.</dd>
+ <dt><code>config-factoryParam</code></dt>
+ <dd>With this attribute a parameter can be specified that will be passed to
+ the bean factory. This may be useful for custom bean factories.</dd>
+ </dl>
+ </p>
+ <p>
+ All further attributes starting with the <code>config-</code> prefix are
+ considered as meta data and will be ignored. All other attributes are treated
+ as properties of the bean to be created, i.e. corresponding setter methods of
+ the bean will be invoked with the values specified here.
+ </p>
+ <p>
+ If the bean to be created has also some complex properties (which are itself
+ beans), their values cannot be initialized from attributes. For this purpose
+ nested elements can be used. The example listing shows how an address bean
+ can be initialized. This is done in a nested element whose name must match
+ the name of a property of the enclosing bean declaration. The format of this
+ nested element is exactly the same as for the bean declaration itself, i.e.
+ it can have attributes defining meta data or bean properties and even further
+ nested elements for complex bean properties.
+ </p>
+ <p>
+ A <code>XMLBeanDeclaration</code> object is usually created from a
+ <code>HierarchicalConfiguration</code>. From this it will derive a
+ <code>SubnodeConfiguration</code>, which is used to access the needed
+ properties. This subnode configuration can be obtained using the
+ <a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getConfiguration()"><code>getConfiguration()</code></a> method. All of its properties can
+ be accessed in the usual way. To ensure that the property keys used by this
+ class are understood by the configuration, the default expression engine will
+ be set.
+ </p></div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">Version:</span></dt>
+  <dd>$Id: XMLBeanDeclaration.java 1301959 2012-03-17 16:43:18Z oheger $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a
+ href="http://commons.apache.org/configuration/team-list.html">Commons
+ Configuration team</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#ATTR_BEAN_CLASS">ATTR_BEAN_CLASS</a></strong></code>
+<div class="block">Constant for the bean class attribute.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#ATTR_BEAN_FACTORY">ATTR_BEAN_FACTORY</a></strong></code>
+<div class="block">Constant for the bean factory attribute.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#ATTR_FACTORY_PARAM">ATTR_FACTORY_PARAM</a></strong></code>
+<div class="block">Constant for the bean factory parameter attribute.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#ATTR_PREFIX">ATTR_PREFIX</a></strong></code>
+<div class="block">Constant for the prefix for reserved attributes.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#RESERVED_PREFIX">RESERVED_PREFIX</a></strong></code>
+<div class="block">Constant for the prefix of reserved attributes.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration)">XMLBeanDeclaration</a></strong>(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config)</code>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration, java.lang.String)">XMLBeanDeclaration</a></strong>(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config,
+                  <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration, java.lang.String, boolean)">XMLBeanDeclaration</a></strong>(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config,
+                  <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                  boolean&nbsp;optional)</code>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#XMLBeanDeclaration(org.apache.commons.configuration.SubnodeConfiguration, org.apache.commons.configuration.tree.ConfigurationNode)">XMLBeanDeclaration</a></strong>(<a href="../../../../../org/apache/commons/configuration/SubnodeConfiguration.html" title="class in org.apache.commons.configuration">SubnodeConfiguration</a>&nbsp;config,
+                  <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</code>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it with the configuration node that contains the bean
+ declaration.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#createBeanDeclaration(org.apache.commons.configuration.tree.ConfigurationNode)">createBeanDeclaration</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</code>
+<div class="block">Creates a new <code>BeanDeclaration</code> for a child node of the
+ current configuration node.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getBeanClassName()">getBeanClassName</a></strong>()</code>
+<div class="block">Returns the name of the class of the bean to be created.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getBeanFactoryName()">getBeanFactoryName</a></strong>()</code>
+<div class="block">Returns the name of the bean factory.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getBeanFactoryParameter()">getBeanFactoryParameter</a></strong>()</code>
+<div class="block">Returns a parameter for the bean factory.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getBeanProperties()">getBeanProperties</a></strong>()</code>
+<div class="block">Returns a map with the bean's (simple) properties.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/commons/configuration/SubnodeConfiguration.html" title="class in org.apache.commons.configuration">SubnodeConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getConfiguration()">getConfiguration</a></strong>()</code>
+<div class="block">Returns the configuration object this bean declaration is based on.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getNestedBeanDeclarations()">getNestedBeanDeclarations</a></strong>()</code>
+<div class="block">Returns a map with bean declarations for the complex properties of the
+ bean to be created.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#getNode()">getNode</a></strong>()</code>
+<div class="block">Returns the node that contains the bean declaration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#interpolate(java.lang.Object)">interpolate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Performs interpolation for the specified value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html#isReservedNode(org.apache.commons.configuration.tree.ConfigurationNode)">isReservedNode</a></strong>(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;nd)</code>
+<div class="block">Checks if the specified node is reserved and thus should be ignored.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="RESERVED_PREFIX">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RESERVED_PREFIX</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> RESERVED_PREFIX</pre>
+<div class="block">Constant for the prefix of reserved attributes.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.beanutils.XMLBeanDeclaration.RESERVED_PREFIX">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="ATTR_PREFIX">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ATTR_PREFIX</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ATTR_PREFIX</pre>
+<div class="block">Constant for the prefix for reserved attributes.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.beanutils.XMLBeanDeclaration.ATTR_PREFIX">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="ATTR_BEAN_CLASS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ATTR_BEAN_CLASS</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ATTR_BEAN_CLASS</pre>
+<div class="block">Constant for the bean class attribute.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.beanutils.XMLBeanDeclaration.ATTR_BEAN_CLASS">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="ATTR_BEAN_FACTORY">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ATTR_BEAN_FACTORY</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ATTR_BEAN_FACTORY</pre>
+<div class="block">Constant for the bean factory attribute.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.beanutils.XMLBeanDeclaration.ATTR_BEAN_FACTORY">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="ATTR_FACTORY_PARAM">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ATTR_FACTORY_PARAM</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ATTR_FACTORY_PARAM</pre>
+<div class="block">Constant for the bean factory parameter attribute.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.beanutils.XMLBeanDeclaration.ATTR_FACTORY_PARAM">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>XMLBeanDeclaration</h4>
+<pre>public&nbsp;XMLBeanDeclaration(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config,
+                  <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration. The passed in key points to
+ the bean declaration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration</dd><dd><code>key</code> - the key to the bean declaration (this key must point to
+ exactly one bean declaration or a <code>IllegalArgumentException</code>
+ exception will be thrown)</dd></dl>
+</li>
+</ul>
+<a name="XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration, java.lang.String, boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>XMLBeanDeclaration</h4>
+<pre>public&nbsp;XMLBeanDeclaration(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config,
+                  <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                  boolean&nbsp;optional)</pre>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration. The passed in key points to
+ the bean declaration. If the key does not exist and the boolean argument
+ is <b>true</b>, the declaration is initialized with an empty
+ configuration. It is possible to create objects from such an empty
+ declaration if a default class is provided. If the key on the other hand
+ has multiple values or is undefined and the boolean argument is <b>false</b>,
+ a <code>IllegalArgumentException</code> exception will be thrown.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration</dd><dd><code>key</code> - the key to the bean declaration</dd><dd><code>optional</code> - a flag whether this declaration is optional; if set to
+ <b>true</b>, no exception will be thrown if the passed in key is
+ undefined</dd></dl>
+</li>
+</ul>
+<a name="XMLBeanDeclaration(org.apache.commons.configuration.HierarchicalConfiguration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>XMLBeanDeclaration</h4>
+<pre>public&nbsp;XMLBeanDeclaration(<a href="../../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;config)</pre>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it from the given configuration. The configuration's root
+ node must contain the bean declaration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration with the bean declaration</dd></dl>
+</li>
+</ul>
+<a name="XMLBeanDeclaration(org.apache.commons.configuration.SubnodeConfiguration, org.apache.commons.configuration.tree.ConfigurationNode)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>XMLBeanDeclaration</h4>
+<pre>public&nbsp;XMLBeanDeclaration(<a href="../../../../../org/apache/commons/configuration/SubnodeConfiguration.html" title="class in org.apache.commons.configuration">SubnodeConfiguration</a>&nbsp;config,
+                  <a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</pre>
+<div class="block">Creates a new instance of <code>XMLBeanDeclaration</code> and
+ initializes it with the configuration node that contains the bean
+ declaration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration</dd><dd><code>node</code> - the node with the bean declaration.</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getConfiguration()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/commons/configuration/SubnodeConfiguration.html" title="class in org.apache.commons.configuration">SubnodeConfiguration</a>&nbsp;getConfiguration()</pre>
+<div class="block">Returns the configuration object this bean declaration is based on.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the associated configuration</dd></dl>
+</li>
+</ul>
+<a name="getNode()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getNode</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;getNode()</pre>
+<div class="block">Returns the node that contains the bean declaration.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the configuration node this bean declaration is based on</dd></dl>
+</li>
+</ul>
+<a name="getBeanFactoryName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBeanFactoryName</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getBeanFactoryName()</pre>
+<div class="block">Returns the name of the bean factory. This information is fetched from
+ the <code>config-factory</code> attribute.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html#getBeanFactoryName()">getBeanFactoryName</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the name of the bean factory</dd></dl>
+</li>
+</ul>
+<a name="getBeanFactoryParameter()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBeanFactoryParameter</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;getBeanFactoryParameter()</pre>
+<div class="block">Returns a parameter for the bean factory. This information is fetched
+ from the <code>config-factoryParam</code> attribute.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html#getBeanFactoryParameter()">getBeanFactoryParameter</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the parameter for the bean factory</dd></dl>
+</li>
+</ul>
+<a name="getBeanClassName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBeanClassName</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getBeanClassName()</pre>
+<div class="block">Returns the name of the class of the bean to be created. This information
+ is obtained from the <code>config-class</code> attribute.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html#getBeanClassName()">getBeanClassName</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the name of the bean's class</dd></dl>
+</li>
+</ul>
+<a name="getBeanProperties()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getBeanProperties</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getBeanProperties()</pre>
+<div class="block">Returns a map with the bean's (simple) properties. The properties are
+ collected from all attribute nodes, which are not reserved.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html#getBeanProperties()">getBeanProperties</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>a map with the bean's properties</dd></dl>
+</li>
+</ul>
+<a name="getNestedBeanDeclarations()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getNestedBeanDeclarations</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getNestedBeanDeclarations()</pre>
+<div class="block">Returns a map with bean declarations for the complex properties of the
+ bean to be created. These declarations are obtained from the child nodes
+ of this declaration's root node.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html#getNestedBeanDeclarations()">getNestedBeanDeclarations</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>a map with bean declarations for complex properties</dd></dl>
+</li>
+</ul>
+<a name="interpolate(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>interpolate</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;interpolate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block">Performs interpolation for the specified value. This implementation will
+ interpolate against the current subnode configuration's parent. If sub
+ classes need a different interpolation mechanism, they should override
+ this method.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - the value that is to be interpolated</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the interpolated value</dd></dl>
+</li>
+</ul>
+<a name="isReservedNode(org.apache.commons.configuration.tree.ConfigurationNode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isReservedNode</h4>
+<pre>protected&nbsp;boolean&nbsp;isReservedNode(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;nd)</pre>
+<div class="block">Checks if the specified node is reserved and thus should be ignored. This
+ method is called when the maps for the bean's properties and complex
+ properties are collected. It checks whether the given node is an
+ attribute node and if its name starts with the reserved prefix.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>nd</code> - the node to be checked</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a flag whether this node is reserved (and does not point to a
+ property)</dd></dl>
+</li>
+</ul>
+<a name="createBeanDeclaration(org.apache.commons.configuration.tree.ConfigurationNode)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>createBeanDeclaration</h4>
+<pre>protected&nbsp;<a href="../../../../../org/apache/commons/configuration/beanutils/BeanDeclaration.html" title="interface in org.apache.commons.configuration.beanutils">BeanDeclaration</a>&nbsp;createBeanDeclaration(<a href="../../../../../org/apache/commons/configuration/tree/ConfigurationNode.html" title="interface in org.apache.commons.configuration.tree">ConfigurationNode</a>&nbsp;node)</pre>
+<div class="block">Creates a new <code>BeanDeclaration</code> for a child node of the
+ current configuration node. This method is called by
+ <code>getNestedBeanDeclarations()</code> for all complex sub properties
+ detected by this method. Derived classes can hook in if they need a
+ specific initialization. This base implementation creates a
+ <code>XMLBeanDeclaration</code> that is properly initialized from the
+ passed in node.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>node</code> - the child node, for which a <code>BeanDeclaration</code> is
+        to be created</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the <code>BeanDeclaration</code> for this child node</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.6</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/XMLBeanDeclaration.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils"><span class="strong">Prev Class</span></a></li>
+<li>Next Class</li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html" target="_top">Frames</a></li>
+<li><a href="XMLBeanDeclaration.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

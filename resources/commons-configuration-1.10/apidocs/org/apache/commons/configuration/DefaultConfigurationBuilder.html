@@ -1,0 +1,1048 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>DefaultConfigurationBuilder (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultConfigurationBuilder (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultConfigurationBuilder.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/DataConfiguration.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/DefaultConfigurationBuilder.html" target="_top">Frames</a></li>
+<li><a href="DefaultConfigurationBuilder.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration</div>
+<h2 title="Class DefaultConfigurationBuilder" class="title">Class DefaultConfigurationBuilder</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event">org.apache.commons.configuration.event.EventSource</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">org.apache.commons.configuration.AbstractConfiguration</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">org.apache.commons.configuration.HierarchicalConfiguration</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html" title="class in org.apache.commons.configuration">org.apache.commons.configuration.AbstractHierarchicalFileConfiguration</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/XMLConfiguration.html" title="class in org.apache.commons.configuration">org.apache.commons.configuration.XMLConfiguration</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.DefaultConfigurationBuilder</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="http://download.oracle.com/javase/6/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Cloneable.html?is-external=true" title="class or interface in java.lang">Cloneable</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>, <a href="../../../../org/apache/commons/configuration/ConfigurationBuilder.html" title="interface in org.apache.commons.configuration">ConfigurationBuilder</a>, <a href="../../../../org/apache/commons/configuration/event/ConfigurationErrorListener.html" title="interface in org.apache.commons.configuration.event">ConfigurationErrorListener</a>, <a href="../../../../org/apache/commons/configuration/event/ConfigurationListener.html" title="interface in org.apache.commons.configuration.event">ConfigurationListener</a>, <a href="../../../../org/apache/commons/configuration/FileConfiguration.html" title="interface in org.apache.commons.configuration">FileConfiguration</a>, <a href="../../../../org/apache/commons/configuration/FileSystemBased.html" title="interface in org.apache.commons.configuration">FileSystemBased</a>, <a href="../../../../org/apache/commons/configuration/reloading/Reloadable.html" title="interface in org.apache.commons.configuration.reloading">Reloadable</a>, <a href="../../../../org/apache/commons/configuration/resolver/EntityRegistry.html" title="interface in org.apache.commons.configuration.resolver">EntityRegistry</a>, <a href="http://download.oracle.com/javase/6/docs/api/org/xml/sax/EntityResolver.html?is-external=true" title="class or interface in org.xml.sax">EntityResolver</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">DefaultConfigurationBuilder</span>
+extends <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html" title="class in org.apache.commons.configuration">XMLConfiguration</a>
+implements <a href="../../../../org/apache/commons/configuration/ConfigurationBuilder.html" title="interface in org.apache.commons.configuration">ConfigurationBuilder</a></pre>
+<div class="block"><p>
+ A factory class that creates a composite configuration from an XML based
+ <em>configuration definition file</em>.
+ </p>
+ <p>
+ This class provides an easy and flexible means for loading multiple
+ configuration sources and combining the results into a single configuration
+ object. The sources to be loaded are defined in an XML document that can
+ contain certain tags representing the different supported configuration
+ classes. If such a tag is found, the corresponding <code>Configuration</code>
+ class is instantiated and initialized using the classes of the
+ <code>beanutils</code> package (namely
+ <a href="../../../../org/apache/commons/configuration/beanutils/XMLBeanDeclaration.html" title="class in org.apache.commons.configuration.beanutils"><code>XMLBeanDeclaration</code></a>
+ will be used to extract the configuration's initialization parameters, which
+ allows for complex initialization scenarios).
+ </p>
+ <p>
+ It is also possible to add custom tags to the configuration definition file.
+ For this purpose register your own <code>ConfigurationProvider</code>
+ implementation for your tag using the <code>addConfigurationProvider()</code>
+ method. This provider will then be called when the corresponding custom tag
+ is detected. For the default configuration classes providers are already
+ registered.
+ </p>
+ <p>
+ The configuration definition file has the following basic structure:
+ </p>
+ <p>
+
+ <pre>
+ &lt;configuration systemProperties="properties file name"&gt;
+   &lt;header&gt;
+     &lt;!-- Optional meta information about the composite configuration --&gt;
+   &lt;/header&gt;
+   &lt;override&gt;
+     &lt;!-- Declarations for override configurations --&gt;
+   &lt;/override&gt;
+   &lt;additional&gt;
+     &lt;!-- Declarations for union configurations --&gt;
+   &lt;/additional&gt;
+ &lt;/configuration&gt;
+ </pre>
+
+ </p>
+ <p>
+ The name of the root element (here <code>configuration</code>) is
+ arbitrary. The optional systemProperties attribute identifies the path to
+ a property file containing properties that should be added to the system
+ properties. If specified on the root element, the system properties are
+ set before the rest of the configuration is processed.
+ </p>
+ <p>
+ There are two sections (both of them are optional) for declaring
+ <em>override</em> and <em>additional</em> configurations. Configurations
+ in the former section are evaluated in the order of their declaration, and
+ properties of configurations declared earlier hide those of configurations
+ declared later. Configurations in the latter section are combined to a union
+ configuration, i.e. all of their properties are added to a large hierarchical
+ configuration. Configuration declarations that occur as direct children of
+ the root element are treated as override declarations.
+ </p>
+ <p>
+ Each configuration declaration consists of a tag whose name is associated
+ with a <code>ConfigurationProvider</code>. This can be one of the
+ predefined tags like <code>properties</code>, or <code>xml</code>, or
+ a custom tag, for which a configuration provider was registered. Attributes
+ and sub elements with specific initialization parameters can be added. There
+ are some reserved attributes with a special meaning that can be used in every
+ configuration declaration:
+ </p>
+ <p>
+ <table border="1">
+ <tr>
+ <th>Attribute</th>
+ <th>Meaning</th>
+ </tr>
+ <tr>
+ <td valign="top"><code>config-name</code></td>
+ <td>Allows to specify a name for this configuration. This name can be used
+ to obtain a reference to the configuration from the resulting combined
+ configuration (see below).</td>
+ </tr>
+ <tr>
+ <td valign="top"><code>config-at</code></td>
+ <td>With this attribute an optional prefix can be specified for the
+ properties of the corresponding configuration.</td>
+ </tr>
+ <tr>
+ <td valign="top"><code>config-optional</code></td>
+ <td>Declares a configuration as optional. This means that errors that occur
+ when creating the configuration are ignored. (However
+ <a href="../../../../org/apache/commons/configuration/event/ConfigurationErrorListener.html" title="interface in org.apache.commons.configuration.event"><code>ConfigurationErrorListener</code></a>s
+ registered at the builder instance will get notified about this error: they
+ receive an event of type <code>EVENT_ERR_LOAD_OPTIONAL</code>. The key
+ property of this event contains the name of the optional configuration source
+ that caused this problem.)</td>
+ </tr>
+ </table>
+ </p>
+ <p>
+ The optional <em>header</em> section can contain some meta data about the
+ created configuration itself. For instance, it is possible to set further
+ properties of the <code>NodeCombiner</code> objects used for constructing
+ the resulting configuration.
+ </p>
+ <p>
+ The default configuration object returned by this builder is an instance of the
+ <a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration"><code>CombinedConfiguration</code></a> class. The return value of the
+ <code>getConfiguration()</code> method can be casted to this type, and the
+ <code>getConfiguration(boolean)</code> method directly declares
+ <code>CombinedConfiguration</code> as return type. This allows for
+ convenient access to the configuration objects maintained by the combined
+ configuration (e.g. for updates of single configuration objects). It has also
+ the advantage that the properties stored in all declared configuration
+ objects are collected and transformed into a single hierarchical structure,
+ which can be accessed using different expression engines. The actual CombinedConfiguration
+ implementation can be overridden by specifying the class in the <em>config-class</em>
+ attribute of the result element.
+ </p>
+ <p>
+ A custom EntityResolver can be used for all XMLConfigurations by adding
+ <pre>
+ &lt;entity-resolver config-class="EntityResolver fully qualified class name"&gt;
+ </pre>
+ The CatalogResolver can be used for all XMLConfiguration by adding
+ <pre>
+ &lt;entity-resolver catalogFiles="comma separated list of catalog files"&gt;
+ </pre>
+ </p>
+ <p>
+ Additional ConfigurationProviders can be added by configuring them in the <em>header</em>
+ section.
+ <pre>
+ &lt;providers&gt;
+   &lt;provider config-tag="tag name" config-class="provider fully qualified class name"/&gt;
+ &lt;/providers&gt;
+ </pre>
+ </p>
+ <p>
+ Additional variable resolvers can be added by configuring them in the <em>header</em>
+ section.
+ <pre>
+ &lt;lookups&gt;
+   &lt;lookup config-prefix="prefix" config-class="StrLookup fully qualified class name"/&gt;
+ &lt;/lookups&gt;
+ </pre>
+ </p>
+ <p>
+ All declared override configurations are directly added to the resulting
+ combined configuration. If they are given names (using the
+ <code>config-name</code> attribute), they can directly be accessed using
+ the <code>getConfiguration(String)</code> method of
+ <code>CombinedConfiguration</code>. The additional configurations are
+ altogether added to another combined configuration, which uses a union
+ combiner. Then this union configuration is added to the resulting combined
+ configuration under the name defined by the <code>ADDITIONAL_NAME</code>
+ constant.
+ </p>
+ <p>
+ Implementation note: This class is not thread-safe. Especially the
+ <code>getConfiguration()</code> methods should be called by a single thread
+ only.
+ </p></div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd>
+<dt><span class="strong">Version:</span></dt>
+  <dd>$Id: DefaultConfigurationBuilder.java 1366930 2012-07-29 20:05:36Z oheger $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a
+ href="http://commons.apache.org/configuration/team-list.html">Commons
+ Configuration team</a></dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../serialized-form.html#org.apache.commons.configuration.DefaultConfigurationBuilder">Serialized Form</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested_class_summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a></strong></code>
+<div class="block">
+ A specialized <code>BeanDeclaration</code> implementation that
+ represents the declaration of a configuration source.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a></strong></code>
+<div class="block">
+ A base class for creating and initializing configuration sources.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.FileConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.FileConfigurationProvider</a></strong></code>
+<div class="block">A specialized provider implementation that deals with file based
+ configurations.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.XMLConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.XMLConfigurationProvider</a></strong></code>
+<div class="block">A specialized configuration provider for XML configurations.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="nested_classes_inherited_from_class_org.apache.commons.configuration.AbstractHierarchicalFileConfiguration">
+<!--   -->
+</a>
+<h3>Nested classes/interfaces inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html" title="class in org.apache.commons.configuration">AbstractHierarchicalFileConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.FileConfigurationDelegate.html" title="class in org.apache.commons.configuration">AbstractHierarchicalFileConfiguration.FileConfigurationDelegate</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="nested_classes_inherited_from_class_org.apache.commons.configuration.HierarchicalConfiguration">
+<!--   -->
+</a>
+<h3>Nested classes/interfaces inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.BuilderVisitor.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration.BuilderVisitor</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.Node.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration.Node</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.NodeVisitor.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration.NodeVisitor</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#ADDITIONAL_NAME">ADDITIONAL_NAME</a></strong></code>
+<div class="block">Constant for the name of the additional configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#EVENT_ERR_LOAD_OPTIONAL">EVENT_ERR_LOAD_OPTIONAL</a></strong></code>
+<div class="block">Constant for the type of error events caused by optional configurations
+ that cannot be loaded.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.commons.configuration.HierarchicalConfiguration">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#EVENT_ADD_NODES">EVENT_ADD_NODES</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#EVENT_CLEAR_TREE">EVENT_CLEAR_TREE</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#EVENT_SUBNODE_CHANGED">EVENT_SUBNODE_CHANGED</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.commons.configuration.AbstractConfiguration">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#END_TOKEN">END_TOKEN</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_ADD_PROPERTY">EVENT_ADD_PROPERTY</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_CLEAR">EVENT_CLEAR</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_CLEAR_PROPERTY">EVENT_CLEAR_PROPERTY</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_READ_PROPERTY">EVENT_READ_PROPERTY</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#EVENT_SET_PROPERTY">EVENT_SET_PROPERTY</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#START_TOKEN">START_TOKEN</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#DefaultConfigurationBuilder()">DefaultConfigurationBuilder</a></strong>()</code>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code>.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#DefaultConfigurationBuilder(java.io.File)">DefaultConfigurationBuilder</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#DefaultConfigurationBuilder(java.lang.String)">DefaultConfigurationBuilder</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileName)</code>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#DefaultConfigurationBuilder(java.net.URL)">DefaultConfigurationBuilder</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#addConfigurationProvider(java.lang.String, org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationProvider)">addConfigurationProvider</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName,
+                        <a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a>&nbsp;provider)</code>
+<div class="block">Adds a configuration provider for the specified tag.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#configureEntityResolver()">configureEntityResolver</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#createAdditionalsConfiguration(org.apache.commons.configuration.CombinedConfiguration)">createAdditionalsConfiguration</a></strong>(<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;resultConfig)</code>
+<div class="block">Creates the <code>CombinedConfiguration</code> for the configuration
+ sources in the <code>&lt;additional&gt;</code> section.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#createResultConfiguration()">createResultConfiguration</a></strong>()</code>
+<div class="block">Creates the resulting combined configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#getConfiguration()">getConfiguration</a></strong>()</code>
+<div class="block">Returns the configuration provided by this builder.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#getConfiguration(boolean)">getConfiguration</a></strong>(boolean&nbsp;load)</code>
+<div class="block">Returns the configuration provided by this builder.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#getConfigurationBasePath()">getConfigurationBasePath</a></strong>()</code>
+<div class="block">Returns the base path for the configuration sources to load.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#initCombinedConfiguration(org.apache.commons.configuration.CombinedConfiguration, java.util.List, java.lang.String)">initCombinedConfiguration</a></strong>(<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;config,
+                         <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&gt;&nbsp;containedConfigs,
+                         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keyListNodes)</code>
+<div class="block">Initializes a combined configuration for the configurations of a specific
+ section.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#initFileSystem()">initFileSystem</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#initSystemProperties()">initSystemProperties</a></strong>()</code>
+<div class="block">If a property file is configured add the properties to the System properties.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#interpolate(java.lang.Object)">interpolate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Performs interpolation.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#providerForTag(java.lang.String)">providerForTag</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName)</code>
+<div class="block">Returns the configuration provider for the given tag.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#registerConfiguredLookups()">registerConfiguredLookups</a></strong>()</code>
+<div class="block">Registers StrLookups defined in the configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#registerConfiguredProviders()">registerConfiguredProviders</a></strong>()</code>
+<div class="block">Registers providers defined in the configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#registerDefaultProviders()">registerDefaultProviders</a></strong>()</code>
+<div class="block">Registers the default configuration providers supported by this class.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#removeConfigurationProvider(java.lang.String)">removeConfigurationProvider</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName)</code>
+<div class="block">Removes the configuration provider for the specified tag name.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html#setConfigurationBasePath(java.lang.String)">setConfigurationBasePath</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configurationBasePath)</code>
+<div class="block">Sets the base path for the configuration sources to load.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.XMLConfiguration">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/XMLConfiguration.html" title="class in org.apache.commons.configuration">XMLConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#addNodes(java.lang.String, java.util.Collection)">addNodes</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#clear()">clear</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#clone()">clone</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#createDelegate()">createDelegate</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#createDocument()">createDocument</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#createDocumentBuilder()">createDocumentBuilder</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#createNode(java.lang.String)">createNode</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#createTransformer()">createTransformer</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getDocument()">getDocument</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getDocumentBuilder()">getDocumentBuilder</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getEntityResolver()">getEntityResolver</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getPublicID()">getPublicID</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getRegisteredEntities()">getRegisteredEntities</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getRootElementName()">getRootElementName</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#getSystemID()">getSystemID</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#initProperties(org.w3c.dom.Document, boolean)">initProperties</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#isAttributeSplittingDisabled()">isAttributeSplittingDisabled</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#isSchemaValidation()">isSchemaValidation</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#isValidating()">isValidating</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#load(java.io.InputStream)">load</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#load(java.io.Reader)">load</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#registerEntityId(java.lang.String, java.net.URL)">registerEntityId</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#resolveEntity(java.lang.String, java.lang.String)">resolveEntity</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#save(java.io.Writer)">save</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setAttributeSplittingDisabled(boolean)">setAttributeSplittingDisabled</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setDocumentBuilder(javax.xml.parsers.DocumentBuilder)">setDocumentBuilder</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setEntityResolver(org.xml.sax.EntityResolver)">setEntityResolver</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setPublicID(java.lang.String)">setPublicID</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setRootElementName(java.lang.String)">setRootElementName</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setSchemaValidation(boolean)">setSchemaValidation</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setSystemID(java.lang.String)">setSystemID</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#setValidating(boolean)">setValidating</a>, <a href="../../../../org/apache/commons/configuration/XMLConfiguration.html#validate()">validate</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.AbstractHierarchicalFileConfiguration">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html" title="class in org.apache.commons.configuration">AbstractHierarchicalFileConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#addPropertyDirect(java.lang.String, java.lang.Object)">addPropertyDirect</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#clearProperty(java.lang.String)">clearProperty</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#clearTree(java.lang.String)">clearTree</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#configurationChanged(org.apache.commons.configuration.event.ConfigurationEvent)">configurationChanged</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#configurationError(org.apache.commons.configuration.event.ConfigurationErrorEvent)">configurationError</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#containsKey(java.lang.String)">containsKey</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#fetchNodeList(java.lang.String)">fetchNodeList</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getBasePath()">getBasePath</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getDelegate()">getDelegate</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getEncoding()">getEncoding</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getFile()">getFile</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getFileName()">getFileName</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getFileSystem()">getFileSystem</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getKeys()">getKeys</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getKeys(java.lang.String)">getKeys</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getProperty(java.lang.String)">getProperty</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getReloadingStrategy()">getReloadingStrategy</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getReloadLock()">getReloadLock</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#getURL()">getURL</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#isAutoSave()">isAutoSave</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#isEmpty()">isEmpty</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#load()">load</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#load(java.io.File)">load</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#load(java.io.InputStream, java.lang.String)">load</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#load(java.lang.String)">load</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#load(java.net.URL)">load</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#refresh()">refresh</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#reload()">reload</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#resetFileSystem()">resetFileSystem</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save()">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save(java.io.File)">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save(java.io.OutputStream)">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save(java.io.OutputStream, java.lang.String)">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save(java.lang.String)">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#save(java.net.URL)">save</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setAutoSave(boolean)">setAutoSave</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setBasePath(java.lang.String)">setBasePath</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setDelegate(org.apache.commons.configuration.AbstractHierarchicalFileConfiguration.FileConfigurationDelegate)">setDelegate</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setEncoding(java.lang.String)">setEncoding</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setFile(java.io.File)">setFile</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setFileName(java.lang.String)">setFileName</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setFileSystem(org.apache.commons.configuration.FileSystem)">setFileSystem</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setProperty(java.lang.String, java.lang.Object)">setProperty</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setReloadingStrategy(org.apache.commons.configuration.reloading.ReloadingStrategy)">setReloadingStrategy</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#setURL(java.net.URL)">setURL</a>, <a href="../../../../org/apache/commons/configuration/AbstractHierarchicalFileConfiguration.html#subnodeConfigurationChanged(org.apache.commons.configuration.event.ConfigurationEvent)">subnodeConfigurationChanged</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.HierarchicalConfiguration">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#clearNode(org.apache.commons.configuration.tree.ConfigurationNode)">clearNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#clearNode(org.apache.commons.configuration.HierarchicalConfiguration.Node)">clearNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#clearReferences(org.apache.commons.configuration.tree.ConfigurationNode)">clearReferences</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#configurationAt(java.lang.String)">configurationAt</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#configurationAt(java.lang.String, boolean)">configurationAt</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#configurationsAt(java.lang.String)">configurationsAt</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#createAddPath(org.apache.commons.configuration.ConfigurationKey.KeyIterator, org.apache.commons.configuration.HierarchicalConfiguration.Node)">createAddPath</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#createSubnodeConfiguration(org.apache.commons.configuration.tree.ConfigurationNode)">createSubnodeConfiguration</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#createSubnodeConfiguration(org.apache.commons.configuration.tree.ConfigurationNode, java.lang.String)">createSubnodeConfiguration</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#fetchAddNode(org.apache.commons.configuration.ConfigurationKey.KeyIterator, org.apache.commons.configuration.HierarchicalConfiguration.Node)">fetchAddNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#findLastPathNode(org.apache.commons.configuration.ConfigurationKey.KeyIterator, org.apache.commons.configuration.HierarchicalConfiguration.Node)">findLastPathNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#findPropertyNodes(org.apache.commons.configuration.ConfigurationKey.KeyIterator, org.apache.commons.configuration.HierarchicalConfiguration.Node, java.util.Collection)">findPropertyNodes</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#getDefaultExpressionEngine()">getDefaultExpressionEngine</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#getExpressionEngine()">getExpressionEngine</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#getMaxIndex(java.lang.String)">getMaxIndex</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#getRoot()">getRoot</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#getRootNode()">getRootNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#interpolatedConfiguration()">interpolatedConfiguration</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#nodeDefined(org.apache.commons.configuration.tree.ConfigurationNode)">nodeDefined</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#nodeDefined(org.apache.commons.configuration.HierarchicalConfiguration.Node)">nodeDefined</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#removeNode(org.apache.commons.configuration.tree.ConfigurationNode)">removeNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#removeNode(org.apache.commons.configuration.HierarchicalConfiguration.Node)">removeNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#setDefaultExpressionEngine(org.apache.commons.configuration.tree.ExpressionEngine)">setDefaultExpressionEngine</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#setExpressionEngine(org.apache.commons.configuration.tree.ExpressionEngine)">setExpressionEngine</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#setRoot(org.apache.commons.configuration.HierarchicalConfiguration.Node)">setRoot</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#setRootNode(org.apache.commons.configuration.tree.ConfigurationNode)">setRootNode</a>, <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html#subset(java.lang.String)">subset</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.AbstractConfiguration">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#addErrorLogListener()">addErrorLogListener</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#addProperty(java.lang.String, java.lang.Object)">addProperty</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#append(org.apache.commons.configuration.Configuration)">append</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#clearPropertyDirect(java.lang.String)">clearPropertyDirect</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#copy(org.apache.commons.configuration.Configuration)">copy</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#createInterpolator()">createInterpolator</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigDecimal(java.lang.String)">getBigDecimal</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigDecimal(java.lang.String, java.math.BigDecimal)">getBigDecimal</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigInteger(java.lang.String)">getBigInteger</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBigInteger(java.lang.String, java.math.BigInteger)">getBigInteger</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String, boolean)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getBoolean(java.lang.String, java.lang.Boolean)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String)">getByte</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String, byte)">getByte</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getByte(java.lang.String, java.lang.Byte)">getByte</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDefaultListDelimiter()">getDefaultListDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDelimiter()">getDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String, double)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getDouble(java.lang.String, java.lang.Double)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String, float)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getFloat(java.lang.String, java.lang.Float)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInt(java.lang.String)">getInt</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInt(java.lang.String, int)">getInt</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInteger(java.lang.String, java.lang.Integer)">getInteger</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getInterpolator()">getInterpolator</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getList(java.lang.String)">getList</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getList(java.lang.String, java.util.List)">getList</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getListDelimiter()">getListDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLogger()">getLogger</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String)">getLong</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String, long)">getLong</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getLong(java.lang.String, java.lang.Long)">getLong</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getProperties(java.lang.String)">getProperties</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getProperties(java.lang.String, java.util.Properties)">getProperties</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String)">getShort</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String, short)">getShort</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getShort(java.lang.String, java.lang.Short)">getShort</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getString(java.lang.String)">getString</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getString(java.lang.String, java.lang.String)">getString</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getStringArray(java.lang.String)">getStringArray</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#getSubstitutor()">getSubstitutor</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolate(java.lang.String)">interpolate</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolateHelper(java.lang.String, java.util.List)">interpolateHelper</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isDelimiterParsingDisabled()">isDelimiterParsingDisabled</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isScalarValue(java.lang.Object)">isScalarValue</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#isThrowExceptionOnMissing()">isThrowExceptionOnMissing</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#resolveContainerStore(java.lang.String)">resolveContainerStore</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDefaultListDelimiter(char)">setDefaultListDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDelimiter(char)">setDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setDelimiterParsingDisabled(boolean)">setDelimiterParsingDisabled</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setListDelimiter(char)">setListDelimiter</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setLogger(org.apache.commons.logging.Log)">setLogger</a>, <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#setThrowExceptionOnMissing(boolean)">setThrowExceptionOnMissing</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.event.EventSource">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.event.<a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event">EventSource</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/event/EventSource.html#addConfigurationListener(org.apache.commons.configuration.event.ConfigurationListener)">addConfigurationListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#addErrorListener(org.apache.commons.configuration.event.ConfigurationErrorListener)">addErrorListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#clearConfigurationListeners()">clearConfigurationListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#clearErrorListeners()">clearErrorListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#createErrorEvent(int, java.lang.String, java.lang.Object, java.lang.Throwable)">createErrorEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#createEvent(int, java.lang.String, java.lang.Object, boolean)">createEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#fireError(int, java.lang.String, java.lang.Object, java.lang.Throwable)">fireError</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#fireEvent(int, java.lang.String, java.lang.Object, boolean)">fireEvent</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#getConfigurationListeners()">getConfigurationListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#getErrorListeners()">getErrorListeners</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#isDetailEvents()">isDetailEvents</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#removeConfigurationListener(org.apache.commons.configuration.event.ConfigurationListener)">removeConfigurationListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#removeErrorListener(org.apache.commons.configuration.event.ConfigurationErrorListener)">removeErrorListener</a>, <a href="../../../../org/apache/commons/configuration/event/EventSource.html#setDetailEvents(boolean)">setDetailEvents</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.Configuration">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.commons.configuration.<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/Configuration.html#addProperty(java.lang.String, java.lang.Object)">addProperty</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBigDecimal(java.lang.String)">getBigDecimal</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBigDecimal(java.lang.String, java.math.BigDecimal)">getBigDecimal</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBigInteger(java.lang.String)">getBigInteger</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBigInteger(java.lang.String, java.math.BigInteger)">getBigInteger</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String, boolean)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getBoolean(java.lang.String, java.lang.Boolean)">getBoolean</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String)">getByte</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, byte)">getByte</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getByte(java.lang.String, java.lang.Byte)">getByte</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, double)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getDouble(java.lang.String, java.lang.Double)">getDouble</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, float)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getFloat(java.lang.String, java.lang.Float)">getFloat</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String)">getInt</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getInt(java.lang.String, int)">getInt</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getInteger(java.lang.String, java.lang.Integer)">getInteger</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getList(java.lang.String)">getList</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getList(java.lang.String, java.util.List)">getList</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String)">getLong</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, long)">getLong</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getLong(java.lang.String, java.lang.Long)">getLong</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getProperties(java.lang.String)">getProperties</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String)">getShort</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, short)">getShort</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getShort(java.lang.String, java.lang.Short)">getShort</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getString(java.lang.String)">getString</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getString(java.lang.String, java.lang.String)">getString</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#getStringArray(java.lang.String)">getStringArray</a>, <a href="../../../../org/apache/commons/configuration/Configuration.html#subset(java.lang.String)">subset</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="ADDITIONAL_NAME">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ADDITIONAL_NAME</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ADDITIONAL_NAME</pre>
+<div class="block">Constant for the name of the additional configuration. If the
+ configuration definition file contains an <code>additional</code>
+ section, a special union configuration is created and added under this
+ name to the resulting combined configuration.</div>
+</li>
+</ul>
+<a name="EVENT_ERR_LOAD_OPTIONAL">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>EVENT_ERR_LOAD_OPTIONAL</h4>
+<pre>public static final&nbsp;int EVENT_ERR_LOAD_OPTIONAL</pre>
+<div class="block">Constant for the type of error events caused by optional configurations
+ that cannot be loaded.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../constant-values.html#org.apache.commons.configuration.DefaultConfigurationBuilder.EVENT_ERR_LOAD_OPTIONAL">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="DefaultConfigurationBuilder()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder()</pre>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code>. A
+ configuration definition file is not yet loaded. Use the diverse setter
+ methods provided by file based configurations to specify the
+ configuration definition file.</div>
+</li>
+</ul>
+<a name="DefaultConfigurationBuilder(java.io.File)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder(<a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</pre>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>file</code> - the configuration definition file</dd></dl>
+</li>
+</ul>
+<a name="DefaultConfigurationBuilder(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileName)
+                            throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>fileName</code> - the name of the configuration definition file</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs when the file is loaded</dd></dl>
+</li>
+</ul>
+<a name="DefaultConfigurationBuilder(java.net.URL)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder(<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)
+                            throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Creates a new instance of <code>DefaultConfigurationBuilder</code> and
+ sets the specified configuration definition file.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>url</code> - the URL to the configuration definition file</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs when the file is loaded</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getConfigurationBasePath()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfigurationBasePath</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getConfigurationBasePath()</pre>
+<div class="block">Returns the base path for the configuration sources to load. This path is
+ used to resolve relative paths in the configuration definition file.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the base path for configuration sources</dd></dl>
+</li>
+</ul>
+<a name="setConfigurationBasePath(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConfigurationBasePath</h4>
+<pre>public&nbsp;void&nbsp;setConfigurationBasePath(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configurationBasePath)</pre>
+<div class="block">Sets the base path for the configuration sources to load. Normally a base
+ path need not to be set because it is determined by the location of the
+ configuration definition file to load. All relative paths in this file
+ are resolved relative to this file. Setting a base path makes sense if
+ such relative paths should be otherwise resolved, e.g. if the
+ configuration file is loaded from the class path and all sub
+ configurations it refers to are stored in a special config directory.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configurationBasePath</code> - the new base path to set</dd></dl>
+</li>
+</ul>
+<a name="addConfigurationProvider(java.lang.String, org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationProvider)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addConfigurationProvider</h4>
+<pre>public&nbsp;void&nbsp;addConfigurationProvider(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName,
+                            <a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a>&nbsp;provider)</pre>
+<div class="block">Adds a configuration provider for the specified tag. Whenever this tag is
+ encountered in the configuration definition file this provider will be
+ called to create the configuration object.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>tagName</code> - the name of the tag in the configuration definition file</dd><dd><code>provider</code> - the provider for this tag</dd></dl>
+</li>
+</ul>
+<a name="removeConfigurationProvider(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeConfigurationProvider</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a>&nbsp;removeConfigurationProvider(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName)</pre>
+<div class="block">Removes the configuration provider for the specified tag name.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>tagName</code> - the tag name</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the removed configuration provider or <b>null</b> if none was
+ registered for that tag</dd></dl>
+</li>
+</ul>
+<a name="providerForTag(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>providerForTag</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationProvider</a>&nbsp;providerForTag(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;tagName)</pre>
+<div class="block">Returns the configuration provider for the given tag.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>tagName</code> - the name of the tag</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the provider that was registered for this tag or <b>null</b> if
+ there is none</dd></dl>
+</li>
+</ul>
+<a name="getConfiguration()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;getConfiguration()
+                               throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Returns the configuration provided by this builder. Loads and parses the
+ configuration definition file and creates instances for the declared
+ configurations.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationBuilder.html#getConfiguration()">getConfiguration</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/commons/configuration/ConfigurationBuilder.html" title="interface in org.apache.commons.configuration">ConfigurationBuilder</a></code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the configuration</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="getConfiguration(boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;getConfiguration(boolean&nbsp;load)
+                                       throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Returns the configuration provided by this builder. If the boolean
+ parameter is <b>true</b>, the configuration definition file will be
+ loaded. It will then be parsed, and instances for the declared
+ configurations will be created.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>load</code> - a flag whether the configuration definition file should be
+ loaded; a value of <b>false</b> would make sense if the file has already
+ been created or its content was manipulated using some of the property
+ accessor methods</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the configuration</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="createResultConfiguration()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createResultConfiguration</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;createResultConfiguration()
+                                                   throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Creates the resulting combined configuration. This method is called by
+ <code>getConfiguration()</code>. It checks whether the
+ <code>header</code> section of the configuration definition file
+ contains a <code>result</code> element. If this is the case, it will be
+ used to initialize the properties of the newly created configuration
+ object.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the resulting configuration object</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="createAdditionalsConfiguration(org.apache.commons.configuration.CombinedConfiguration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createAdditionalsConfiguration</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;createAdditionalsConfiguration(<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;resultConfig)</pre>
+<div class="block">Creates the <code>CombinedConfiguration</code> for the configuration
+ sources in the <code>&lt;additional&gt;</code> section. This method is
+ called when the builder constructs the final configuration. It creates a
+ new <code>CombinedConfiguration</code> and initializes some properties
+ from the result configuration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>resultConfig</code> - the result configuration (this is the configuration
+        that will be returned by the builder)</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the <code>CombinedConfiguration</code> for the additional
+         configuration sources</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.7</dd></dl>
+</li>
+</ul>
+<a name="initCombinedConfiguration(org.apache.commons.configuration.CombinedConfiguration, java.util.List, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initCombinedConfiguration</h4>
+<pre>protected&nbsp;void&nbsp;initCombinedConfiguration(<a href="../../../../org/apache/commons/configuration/CombinedConfiguration.html" title="class in org.apache.commons.configuration">CombinedConfiguration</a>&nbsp;config,
+                             <a href="http://download.oracle.com/javase/6/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&gt;&nbsp;containedConfigs,
+                             <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keyListNodes)
+                                  throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Initializes a combined configuration for the configurations of a specific
+ section. This method is called for the override and for the additional
+ section (if it exists).</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration to be initialized</dd><dd><code>containedConfigs</code> - the list with the declarations of the contained
+ configurations</dd><dd><code>keyListNodes</code> - a list with the declaration of list nodes</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="registerDefaultProviders()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerDefaultProviders</h4>
+<pre>protected&nbsp;void&nbsp;registerDefaultProviders()</pre>
+<div class="block">Registers the default configuration providers supported by this class.
+ This method will be called during initialization. It registers
+ configuration providers for the tags that are supported by default.</div>
+</li>
+</ul>
+<a name="registerConfiguredProviders()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerConfiguredProviders</h4>
+<pre>protected&nbsp;void&nbsp;registerConfiguredProviders()
+                                    throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Registers providers defined in the configuration.</div>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="registerConfiguredLookups()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerConfiguredLookups</h4>
+<pre>protected&nbsp;void&nbsp;registerConfiguredLookups()
+                                  throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">Registers StrLookups defined in the configuration.</div>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="initFileSystem()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initFileSystem</h4>
+<pre>protected&nbsp;void&nbsp;initFileSystem()
+                       throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code></dd></dl>
+</li>
+</ul>
+<a name="initSystemProperties()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initSystemProperties</h4>
+<pre>protected&nbsp;void&nbsp;initSystemProperties()
+                             throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<div class="block">If a property file is configured add the properties to the System properties.</div>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code> - if an error occurs.</dd></dl>
+</li>
+</ul>
+<a name="configureEntityResolver()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>configureEntityResolver</h4>
+<pre>protected&nbsp;void&nbsp;configureEntityResolver()
+                                throws <a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></pre>
+<dl><dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationException.html" title="class in org.apache.commons.configuration">ConfigurationException</a></code></dd></dl>
+</li>
+</ul>
+<a name="interpolate(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>interpolate</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;interpolate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block">Performs interpolation. This method will not only take this configuration
+ instance into account (which is the one that loaded the configuration
+ definition file), but also the so far constructed combined configuration.
+ So variables can be used that point to properties that are defined in
+ configuration sources loaded by this builder.</div>
+<dl>
+<dt><strong>Overrides:</strong></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html#interpolate(java.lang.Object)">interpolate</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - the value to be interpolated</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the interpolated value</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultConfigurationBuilder.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/DataConfiguration.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/DefaultConfigurationBuilder.html" target="_top">Frames</a></li>
+<li><a href="DefaultConfigurationBuilder.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

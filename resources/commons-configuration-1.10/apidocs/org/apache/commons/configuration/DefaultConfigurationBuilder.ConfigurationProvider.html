@@ -1,0 +1,513 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>DefaultConfigurationBuilder.ConfigurationProvider (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultConfigurationBuilder.ConfigurationProvider (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultConfigurationBuilder.ConfigurationProvider.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.FileConfigurationProvider.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" target="_top">Frames</a></li>
+<li><a href="DefaultConfigurationBuilder.ConfigurationProvider.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.commons.configuration.beanutils.DefaultBeanFactory">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration</div>
+<h2 title="Class DefaultConfigurationBuilder.ConfigurationProvider" class="title">Class DefaultConfigurationBuilder.ConfigurationProvider</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils">org.apache.commons.configuration.beanutils.DefaultBeanFactory</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationProvider</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../org/apache/commons/configuration/beanutils/BeanFactory.html" title="interface in org.apache.commons.configuration.beanutils">BeanFactory</a></dd>
+</dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.FileConfigurationProvider.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.FileConfigurationProvider</a></dd>
+</dl>
+<dl>
+<dt>Enclosing class:</dt>
+<dd><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public static class <span class="strong">DefaultConfigurationBuilder.ConfigurationProvider</span>
+extends <a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils">DefaultBeanFactory</a></pre>
+<div class="block"><p>
+ A base class for creating and initializing configuration sources.
+ </p>
+ <p>
+ Concrete sub classes of this base class are responsible for creating
+ specific <code>Configuration</code> objects for the tags in the
+ configuration definition file. The configuration factory will parse the
+ definition file and try to find a matching
+ <code>ConfigurationProvider</code> for each encountered tag. This
+ provider is then asked to create a corresponding
+ <code>Configuration</code> object. It is up to a concrete
+ implementation how this object is created and initialized.
+ </p>
+ <p>
+ Note that at the moment only configuration classes derived from
+ <a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration"><code>AbstractConfiguration</code></a> are supported.
+ </p></div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields_inherited_from_class_org.apache.commons.configuration.beanutils.DefaultBeanFactory">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.apache.commons.configuration.beanutils.<a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils">DefaultBeanFactory</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#INSTANCE">INSTANCE</a></code></li>
+</ul>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#DefaultConfigurationBuilder.ConfigurationProvider()">DefaultConfigurationBuilder.ConfigurationProvider</a></strong>()</code>
+<div class="block">Creates a new uninitialized instance of <code>ConfigurationProvider</code>.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#DefaultConfigurationBuilder.ConfigurationProvider(java.lang.Class)">DefaultConfigurationBuilder.ConfigurationProvider</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;configClass)</code>
+<div class="block">Creates a new instance of <code>ConfigurationProvider</code> and
+ sets the class of the configuration created by this provider.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#DefaultConfigurationBuilder.ConfigurationProvider(java.lang.String)">DefaultConfigurationBuilder.ConfigurationProvider</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configClassName)</code>
+<div class="block">Creates a new instance of <code>ConfigurationProvider</code> and
+ sets the name of the class of the configuration created by this
+ provider.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#fetchConfigurationClass()">fetchConfigurationClass</a></strong>()</code>
+<div class="block">Returns the configuration class supported by this provider.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#getConfiguration(org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationDeclaration)">getConfiguration</a></strong>(<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a>&nbsp;decl)</code>
+<div class="block">Returns the configuration.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#getConfigurationClass()">getConfigurationClass</a></strong>()</code>
+<div class="block">Returns the class of the configuration returned by this provider.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#getConfigurationClassName()">getConfigurationClassName</a></strong>()</code>
+<div class="block">Returns the name of the configuration class returned by this
+ provider.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#getEmptyConfiguration(org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationDeclaration)">getEmptyConfiguration</a></strong>(<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a>&nbsp;decl)</code>
+<div class="block">Returns an uninitialized configuration of the represented type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#loadClass(java.lang.String)">loadClass</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;className)</code>
+<div class="block">Loads the class with the specified name dynamically.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#setConfigurationClass(java.lang.Class)">setConfigurationClass</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;configurationClass)</code>
+<div class="block">Sets the class of the configuration returned by this provider.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html#setConfigurationClassName(java.lang.String)">setConfigurationClassName</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configurationClassName)</code>
+<div class="block">Sets the name of the configuration class returned by this provider.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.configuration.beanutils.DefaultBeanFactory">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.configuration.beanutils.<a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html" title="class in org.apache.commons.configuration.beanutils">DefaultBeanFactory</a></h3>
+<code><a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#createBean(java.lang.Class, org.apache.commons.configuration.beanutils.BeanDeclaration, java.lang.Object)">createBean</a>, <a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#createBeanInstance(java.lang.Class, org.apache.commons.configuration.beanutils.BeanDeclaration)">createBeanInstance</a>, <a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#getDefaultBeanClass()">getDefaultBeanClass</a>, <a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#initBeanInstance(java.lang.Object, org.apache.commons.configuration.beanutils.BeanDeclaration)">initBeanInstance</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="DefaultConfigurationBuilder.ConfigurationProvider()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder.ConfigurationProvider</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder.ConfigurationProvider()</pre>
+<div class="block">Creates a new uninitialized instance of <code>ConfigurationProvider</code>.</div>
+</li>
+</ul>
+<a name="DefaultConfigurationBuilder.ConfigurationProvider(java.lang.Class)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder.ConfigurationProvider</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder.ConfigurationProvider(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;configClass)</pre>
+<div class="block">Creates a new instance of <code>ConfigurationProvider</code> and
+ sets the class of the configuration created by this provider.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configClass</code> - the configuration class</dd></dl>
+</li>
+</ul>
+<a name="DefaultConfigurationBuilder.ConfigurationProvider(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DefaultConfigurationBuilder.ConfigurationProvider</h4>
+<pre>public&nbsp;DefaultConfigurationBuilder.ConfigurationProvider(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configClassName)</pre>
+<div class="block">Creates a new instance of <code>ConfigurationProvider</code> and
+ sets the name of the class of the configuration created by this
+ provider.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configClassName</code> - the name of the configuration class</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getConfigurationClass()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfigurationClass</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;getConfigurationClass()</pre>
+<div class="block">Returns the class of the configuration returned by this provider.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the class of the provided configuration</dd></dl>
+</li>
+</ul>
+<a name="setConfigurationClass(java.lang.Class)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConfigurationClass</h4>
+<pre>public&nbsp;void&nbsp;setConfigurationClass(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;configurationClass)</pre>
+<div class="block">Sets the class of the configuration returned by this provider.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configurationClass</code> - the configuration class</dd></dl>
+</li>
+</ul>
+<a name="getConfigurationClassName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfigurationClassName</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getConfigurationClassName()</pre>
+<div class="block">Returns the name of the configuration class returned by this
+ provider.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the configuration class name</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="setConfigurationClassName(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setConfigurationClassName</h4>
+<pre>public&nbsp;void&nbsp;setConfigurationClassName(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configurationClassName)</pre>
+<div class="block">Sets the name of the configuration class returned by this provider.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configurationClassName</code> - the name of the configuration class</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="getConfiguration(org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationDeclaration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a>&nbsp;getConfiguration(<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a>&nbsp;decl)
+                                       throws <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block">Returns the configuration. This method is called to fetch the
+ configuration from the provider. This implementation will call the
+ inherited <a href="../../../../org/apache/commons/configuration/beanutils/DefaultBeanFactory.html#createBean(java.lang.Class, org.apache.commons.configuration.beanutils.BeanDeclaration, java.lang.Object)"><code>createBean()</code></a> method to create a new instance of the
+ configuration class.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>decl</code> - the bean declaration with initialization parameters for
+ the configuration</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the new configuration object</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code> - if an error occurs</dd></dl>
+</li>
+</ul>
+<a name="getEmptyConfiguration(org.apache.commons.configuration.DefaultConfigurationBuilder.ConfigurationDeclaration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEmptyConfiguration</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/commons/configuration/AbstractConfiguration.html" title="class in org.apache.commons.configuration">AbstractConfiguration</a>&nbsp;getEmptyConfiguration(<a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration">DefaultConfigurationBuilder.ConfigurationDeclaration</a>&nbsp;decl)
+                                            throws <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block">Returns an uninitialized configuration of the represented type. This
+ method will be called for optional configurations when the
+ <code>getConfiguration()</code> method caused an error and the
+ <code>forceCreate</code> attribute is set. A concrete sub class can
+ here try to create an uninitialized, empty configuration, which may
+ be possible if the error was created during initialization. This base
+ implementation just returns <b>null</b>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>decl</code> - the bean declaration with initialization parameters for
+ the configuration</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the new configuration object</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code> - if an error occurs</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="fetchConfigurationClass()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetchConfigurationClass</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;fetchConfigurationClass()
+                                    throws <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block">Returns the configuration class supported by this provider. If a
+ class object was set, it is returned. Otherwise the method tries to
+ resolve the class name.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the class of the configuration to be created</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+<a name="loadClass(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>loadClass</h4>
+<pre>protected&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Class.html?is-external=true" title="class or interface in java.lang">Class</a>&lt;?&gt;&nbsp;loadClass(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;className)
+                      throws <a href="http://download.oracle.com/javase/6/docs/api/java/lang/ClassNotFoundException.html?is-external=true" title="class or interface in java.lang">ClassNotFoundException</a></pre>
+<div class="block">Loads the class with the specified name dynamically. If the class's
+ name is <b>null</b>, <b>null</b> will also be returned.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>className</code> - the name of the class to be loaded</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the class object</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/ClassNotFoundException.html?is-external=true" title="class or interface in java.lang">ClassNotFoundException</a></code> - if class loading fails</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/DefaultConfigurationBuilder.ConfigurationProvider.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationDeclaration.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/DefaultConfigurationBuilder.FileConfigurationProvider.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/DefaultConfigurationBuilder.ConfigurationProvider.html" target="_top">Frames</a></li>
+<li><a href="DefaultConfigurationBuilder.ConfigurationProvider.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#fields_inherited_from_class_org.apache.commons.configuration.beanutils.DefaultBeanFactory">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

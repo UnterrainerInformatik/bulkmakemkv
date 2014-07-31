@@ -1,0 +1,690 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>ConfigurationInterpolator (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ConfigurationInterpolator (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ConfigurationInterpolator.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../../org/apache/commons/configuration/interpol/ConstantLookup.html" title="class in org.apache.commons.configuration.interpol"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" target="_top">Frames</a></li>
+<li><a href="ConfigurationInterpolator.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration.interpol</div>
+<h2 title="Class ConfigurationInterpolator" class="title">Class ConfigurationInterpolator</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.lang.text.StrLookup</li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.interpol.ConfigurationInterpolator</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public class <span class="strong">ConfigurationInterpolator</span>
+extends org.apache.commons.lang.text.StrLookup</pre>
+<div class="block"><p>
+ A class that handles interpolation (variable substitution) for configuration
+ objects.
+ </p>
+ <p>
+ Each instance of <code>AbstractConfiguration</code> is associated with an
+ object of this class. All interpolation tasks are delegated to this object.
+ </p>
+ <p>
+ <code>ConfigurationInterpolator</code> works together with the
+ <code>StrSubstitutor</code> class from <a
+ href="http://commons.apache.org/lang">Commons Lang</a>. By extending
+ <code>StrLookup</code> it is able to provide values for variables that
+ appear in expressions.
+ </p>
+ <p>
+ The basic idea of this class is that it can maintain a set of primitive
+ <code>StrLookup</code> objects, each of which is identified by a special
+ prefix. The variables to be processed have the form
+ <code>${prefix:name}</code>. <code>ConfigurationInterpolator</code> will
+ extract the prefix and determine, which primitive lookup object is registered
+ for it. Then the name of the variable is passed to this object to obtain the
+ actual value. It is also possible to define a default lookup object, which
+ will be used for variables that do not have a prefix or that cannot be
+ resolved by their associated lookup object.
+ </p>
+ <p>
+ When a new instance of this class is created it is initialized with a default
+ set of primitive lookup objects. This set can be customized using the static
+ methods <code>registerGlobalLookup()</code> and
+ <code>deregisterGlobalLookup()</code>. Per default it contains the
+ following standard lookup objects:
+ </p>
+ <p>
+ <table border="1">
+ <tr>
+ <th>Prefix</th>
+ <th>Lookup object</th>
+ </tr>
+ <tr>
+ <td valign="top">sys</td>
+ <td>With this prefix a lookup object is associated that is able to resolve
+ system properties.</td>
+ </tr>
+ <tr>
+ <td valign="top">const</td>
+ <td>The <code>const</code> prefix indicates that a variable is to be
+ interpreted as a constant member field of a class (i.e. a field with the
+ <b>static final</b> modifiers). The name of the variable must be of the form
+ <code>&lt;full qualified class name&gt;.&lt;field name&gt;</code>, e.g.
+ <code>org.apache.commons.configuration.interpol.ConfigurationInterpolator.PREFIX_CONSTANTS</code>.
+ </td>
+ </tr>
+ </table>
+ </p>
+ <p>
+ After an instance has been created the current set of lookup objects can be
+ modified using the <code>registerLookup()</code> and
+ <code>deregisterLookup()</code> methods. The default lookup object (that is
+ invoked for variables without a prefix) can be set with the
+ <code>setDefaultLookup()</code> method. (If a
+ <code>ConfigurationInterpolator</code> instance is created by a
+ configuration object, this lookup points to the configuration itself, so that
+ variables are resolved using the configuration's properties. This ensures
+ backward compatibility to earlier version of Commons Configuration.)
+ </p>
+ <p>
+ Implementation node: Instances of this class are not thread-safe related to
+ modifications of their current set of registered lookup objects. It is
+ intended that each instance is associated with a single
+ <code>Configuration</code> object and used for its interpolation tasks.
+ </p></div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.4</dd>
+<dt><span class="strong">Version:</span></dt>
+  <dd>$Id: ConfigurationInterpolator.java 1295276 2012-02-29 21:11:35Z oheger $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a
+ href="http://commons.apache.org/configuration/team-list.html">Commons
+ Configuration team</a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#PREFIX_CONSTANTS">PREFIX_CONSTANTS</a></strong></code>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ constant values.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#PREFIX_ENVIRONMENT">PREFIX_ENVIRONMENT</a></strong></code>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ environment properties.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#PREFIX_SYSPROPERTIES">PREFIX_SYSPROPERTIES</a></strong></code>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ system properties.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#ConfigurationInterpolator()">ConfigurationInterpolator</a></strong>()</code>
+<div class="block">Creates a new instance of <code>ConfigurationInterpolator</code>.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#deregisterGlobalLookup(java.lang.String)">deregisterGlobalLookup</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</code>
+<div class="block">Deregisters the global lookup object for the specified prefix.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#deregisterLookup(java.lang.String)">deregisterLookup</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</code>
+<div class="block">Deregisters the lookup object for the specified prefix at this instance.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected org.apache.commons.lang.text.StrLookup</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#fetchLookupForPrefix(java.lang.String)">fetchLookupForPrefix</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</code>
+<div class="block">Obtains the lookup object for the specified prefix.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected org.apache.commons.lang.text.StrLookup</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#fetchNoPrefixLookup()">fetchNoPrefixLookup</a></strong>()</code>
+<div class="block">Returns the lookup object to be used for variables without a prefix.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>org.apache.commons.lang.text.StrLookup</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#getDefaultLookup()">getDefaultLookup</a></strong>()</code>
+<div class="block">Returns the default lookup object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#getParentInterpolator()">getParentInterpolator</a></strong>()</code>
+<div class="block">Requests the parent interpolator.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#lookup(java.lang.String)">lookup</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;var)</code>
+<div class="block">Resolves the specified variable.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://download.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#prefixSet()">prefixSet</a></strong>()</code>
+<div class="block">Returns a set with the prefixes, for which lookup objects are registered
+ at this instance.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#registerGlobalLookup(java.lang.String, org.apache.commons.lang.text.StrLookup)">registerGlobalLookup</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
+                    org.apache.commons.lang.text.StrLookup&nbsp;lookup)</code>
+<div class="block">Registers the given lookup object for the specified prefix globally.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#registerLocalLookups(org.apache.commons.configuration.interpol.ConfigurationInterpolator)">registerLocalLookups</a></strong>(<a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;interpolator)</code>
+<div class="block">Registers the local lookup instances for the given interpolator.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#registerLookup(java.lang.String, org.apache.commons.lang.text.StrLookup)">registerLookup</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
+              org.apache.commons.lang.text.StrLookup&nbsp;lookup)</code>
+<div class="block">Registers the given lookup object for the specified prefix at this
+ instance.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#setDefaultLookup(org.apache.commons.lang.text.StrLookup)">setDefaultLookup</a></strong>(org.apache.commons.lang.text.StrLookup&nbsp;defaultLookup)</code>
+<div class="block">Sets the default lookup object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html#setParentInterpolator(org.apache.commons.configuration.interpol.ConfigurationInterpolator)">setParentInterpolator</a></strong>(<a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;parentInterpolator)</code>
+<div class="block">Sets the parent interpolator.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_org.apache.commons.lang.text.StrLookup">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.commons.lang.text.StrLookup</h3>
+<code>mapLookup, noneLookup, systemPropertiesLookup</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field_detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="PREFIX_SYSPROPERTIES">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PREFIX_SYSPROPERTIES</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> PREFIX_SYSPROPERTIES</pre>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ system properties.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.interpol.ConfigurationInterpolator.PREFIX_SYSPROPERTIES">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PREFIX_CONSTANTS">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>PREFIX_CONSTANTS</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> PREFIX_CONSTANTS</pre>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ constant values.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.interpol.ConfigurationInterpolator.PREFIX_CONSTANTS">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+<a name="PREFIX_ENVIRONMENT">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>PREFIX_ENVIRONMENT</h4>
+<pre>public static final&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> PREFIX_ENVIRONMENT</pre>
+<div class="block">Constant for the prefix of the standard lookup object for resolving
+ environment properties.</div>
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.7</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../constant-values.html#org.apache.commons.configuration.interpol.ConfigurationInterpolator.PREFIX_ENVIRONMENT">Constant Field Values</a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="ConfigurationInterpolator()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>ConfigurationInterpolator</h4>
+<pre>public&nbsp;ConfigurationInterpolator()</pre>
+<div class="block">Creates a new instance of <code>ConfigurationInterpolator</code>.</div>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="registerGlobalLookup(java.lang.String, org.apache.commons.lang.text.StrLookup)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerGlobalLookup</h4>
+<pre>public static&nbsp;void&nbsp;registerGlobalLookup(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
+                        org.apache.commons.lang.text.StrLookup&nbsp;lookup)</pre>
+<div class="block">Registers the given lookup object for the specified prefix globally. This
+ means that all instances that are created later will use this lookup
+ object for this prefix. If for this prefix a lookup object is already
+ registered, the new lookup object will replace the old one. Note that the
+ lookup objects registered here will be shared between multiple clients.
+ So they should be thread-safe.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - the variable prefix (must not be <b>null</b>)</dd><dd><code>lookup</code> - the lookup object to be used for this prefix (must not be
+ <b>null</b>)</dd></dl>
+</li>
+</ul>
+<a name="deregisterGlobalLookup(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>deregisterGlobalLookup</h4>
+<pre>public static&nbsp;boolean&nbsp;deregisterGlobalLookup(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</pre>
+<div class="block">Deregisters the global lookup object for the specified prefix. This means
+ that this lookup object won't be available for later created instances
+ any more. For already existing instances this operation does not have any
+ impact.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - the variable prefix</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a flag whether for this prefix a lookup object had been
+ registered</dd></dl>
+</li>
+</ul>
+<a name="registerLookup(java.lang.String, org.apache.commons.lang.text.StrLookup)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerLookup</h4>
+<pre>public&nbsp;void&nbsp;registerLookup(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix,
+                  org.apache.commons.lang.text.StrLookup&nbsp;lookup)</pre>
+<div class="block">Registers the given lookup object for the specified prefix at this
+ instance. From now on this lookup object will be used for variables that
+ have the specified prefix.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - the variable prefix (must not be <b>null</b>)</dd><dd><code>lookup</code> - the lookup object to be used for this prefix (must not be
+ <b>null</b>)</dd></dl>
+</li>
+</ul>
+<a name="deregisterLookup(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>deregisterLookup</h4>
+<pre>public&nbsp;boolean&nbsp;deregisterLookup(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</pre>
+<div class="block">Deregisters the lookup object for the specified prefix at this instance.
+ It will be removed from this instance.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - the variable prefix</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a flag whether for this prefix a lookup object had been
+ registered</dd></dl>
+</li>
+</ul>
+<a name="prefixSet()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prefixSet</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;prefixSet()</pre>
+<div class="block">Returns a set with the prefixes, for which lookup objects are registered
+ at this instance. This means that variables with these prefixes can be
+ processed.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>a set with the registered variable prefixes</dd></dl>
+</li>
+</ul>
+<a name="getDefaultLookup()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDefaultLookup</h4>
+<pre>public&nbsp;org.apache.commons.lang.text.StrLookup&nbsp;getDefaultLookup()</pre>
+<div class="block">Returns the default lookup object.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the default lookup object</dd></dl>
+</li>
+</ul>
+<a name="setDefaultLookup(org.apache.commons.lang.text.StrLookup)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDefaultLookup</h4>
+<pre>public&nbsp;void&nbsp;setDefaultLookup(org.apache.commons.lang.text.StrLookup&nbsp;defaultLookup)</pre>
+<div class="block">Sets the default lookup object. This lookup object will be used for all
+ variables without a special prefix. If it is set to <b>null</b>, such
+ variables won't be processed.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>defaultLookup</code> - the new default lookup object</dd></dl>
+</li>
+</ul>
+<a name="lookup(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lookup</h4>
+<pre>public&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;lookup(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;var)</pre>
+<div class="block">Resolves the specified variable. This implementation will try to extract
+ a variable prefix from the given variable name (the first colon (':') is
+ used as prefix separator). It then passes the name of the variable with
+ the prefix stripped to the lookup object registered for this prefix. If
+ no prefix can be found or if the associated lookup object cannot resolve
+ this variable, the default lookup object will be used.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>lookup</code>&nbsp;in class&nbsp;<code>org.apache.commons.lang.text.StrLookup</code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>var</code> - the name of the variable whose value is to be looked up</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the value of this variable or <b>null</b> if it cannot be
+ resolved</dd></dl>
+</li>
+</ul>
+<a name="fetchNoPrefixLookup()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetchNoPrefixLookup</h4>
+<pre>protected&nbsp;org.apache.commons.lang.text.StrLookup&nbsp;fetchNoPrefixLookup()</pre>
+<div class="block">Returns the lookup object to be used for variables without a prefix. This
+ implementation will check whether a default lookup object was set. If
+ this is the case, it will be returned. Otherwise a <b>null</b> lookup
+ object will be returned (never <b>null</b>).</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the lookup object to be used for variables without a prefix</dd></dl>
+</li>
+</ul>
+<a name="fetchLookupForPrefix(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fetchLookupForPrefix</h4>
+<pre>protected&nbsp;org.apache.commons.lang.text.StrLookup&nbsp;fetchLookupForPrefix(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;prefix)</pre>
+<div class="block">Obtains the lookup object for the specified prefix. This method is called
+ by the <code>lookup()</code> method. This implementation will check
+ whether a lookup object is registered for the given prefix. If not, a
+ <b>null</b> lookup object will be returned (never <b>null</b>).</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>prefix</code> - the prefix</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the lookup object to be used for this prefix</dd></dl>
+</li>
+</ul>
+<a name="registerLocalLookups(org.apache.commons.configuration.interpol.ConfigurationInterpolator)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerLocalLookups</h4>
+<pre>public&nbsp;void&nbsp;registerLocalLookups(<a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;interpolator)</pre>
+<div class="block">Registers the local lookup instances for the given interpolator.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>interpolator</code> - the instance receiving the local lookups</dd><dt><span class="strong">Since:</span></dt>
+  <dd>upcoming</dd></dl>
+</li>
+</ul>
+<a name="setParentInterpolator(org.apache.commons.configuration.interpol.ConfigurationInterpolator)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setParentInterpolator</h4>
+<pre>public&nbsp;void&nbsp;setParentInterpolator(<a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;parentInterpolator)</pre>
+<div class="block">Sets the parent interpolator. This object is used if the interpolation is nested
+ hierarchically and the current interpolation object cannot resolve a variable.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>parentInterpolator</code> - the parent interpolator object or <b>null</b></dd><dt><span class="strong">Since:</span></dt>
+  <dd>upcoming</dd></dl>
+</li>
+</ul>
+<a name="getParentInterpolator()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getParentInterpolator</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" title="class in org.apache.commons.configuration.interpol">ConfigurationInterpolator</a>&nbsp;getParentInterpolator()</pre>
+<div class="block">Requests the parent interpolator. This object is used if the interpolation is nested
+ hierarchically and the current interpolation</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>the parent interpolator or <b>null</b></dd><dt><span class="strong">Since:</span></dt>
+  <dd>upcoming</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ConfigurationInterpolator.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../../index-all.html">Index</a></li>
+<li><a href="../../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../../../../org/apache/commons/configuration/interpol/ConstantLookup.html" title="class in org.apache.commons.configuration.interpol"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../../index.html?org/apache/commons/configuration/interpol/ConfigurationInterpolator.html" target="_top">Frames</a></li>
+<li><a href="ConfigurationInterpolator.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#field_summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li><a href="#field_detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>

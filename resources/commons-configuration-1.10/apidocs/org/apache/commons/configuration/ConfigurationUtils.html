@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="iso-8859-1">
+<title>ConfigurationUtils (Apache Commons Configuration 1.10 API)</title>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="ConfigurationUtils (Apache Commons Configuration 1.10 API)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ConfigurationUtils.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/ConfigurationRuntimeException.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/ConfigurationXMLReader.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/ConfigurationUtils.html" target="_top">Frames</a></li>
+<li><a href="ConfigurationUtils.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">org.apache.commons.configuration</div>
+<h2 title="Class ConfigurationUtils" class="title">Class ConfigurationUtils</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li>
+<ul class="inheritance">
+<li>org.apache.commons.configuration.ConfigurationUtils</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public final class <span class="strong">ConfigurationUtils</span>
+extends <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+<div class="block">Miscellaneous utility methods for configurations.</div>
+<dl><dt><span class="strong">Version:</span></dt>
+  <dd>$Id: ConfigurationUtils.java 1208795 2011-11-30 21:18:17Z oheger $</dd>
+<dt><span class="strong">Author:</span></dt>
+  <dd><a href="mailto:herve.quiroz@esil.univ-mrs.fr">Herve Quiroz</a>, Emmanuel Bourg</dd>
+<dt><span class="strong">See Also:</span></dt><dd><a href="../../../../org/apache/commons/configuration/ConfigurationConverter.html" title="class in org.apache.commons.configuration"><code>Utility methods to convert configurations.</code></a></dd></dl>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#append(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.Configuration)">append</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;source,
+      <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;target)</code>
+<div class="block">Append all properties from the source configuration to the target
+ configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#cloneConfiguration(org.apache.commons.configuration.Configuration)">cloneConfiguration</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;config)</code>
+<div class="block">Clones the given configuration object if this is possible.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#convertToHierarchical(org.apache.commons.configuration.Configuration)">convertToHierarchical</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;conf)</code>
+<div class="block">Converts the passed in configuration to a hierarchical one.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#convertToHierarchical(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.tree.ExpressionEngine)">convertToHierarchical</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;conf,
+                     <a href="../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a>&nbsp;engine)</code>
+<div class="block">Converts the passed in <code>Configuration</code> object to a
+ hierarchical one using the specified <code>ExpressionEngine</code>.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#copy(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.Configuration)">copy</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;source,
+    <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;target)</code>
+<div class="block">Copy all properties from the source configuration to the target
+ configuration.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#dump(org.apache.commons.configuration.Configuration, java.io.PrintStream)">dump</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration,
+    <a href="http://download.oracle.com/javase/6/docs/api/java/io/PrintStream.html?is-external=true" title="class or interface in java.io">PrintStream</a>&nbsp;out)</code>
+<div class="block">Dump the configuration key/value mappings to some ouput stream.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#dump(org.apache.commons.configuration.Configuration, java.io.PrintWriter)">dump</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration,
+    <a href="http://download.oracle.com/javase/6/docs/api/java/io/PrintWriter.html?is-external=true" title="class or interface in java.io">PrintWriter</a>&nbsp;out)</code>
+<div class="block">Dump the configuration key/value mappings to some writer.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#enableRuntimeExceptions(org.apache.commons.configuration.Configuration)">enableRuntimeExceptions</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;src)</code>
+<div class="block">Enables runtime exceptions for the specified configuration object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#fileFromURL(java.net.URL)">fileFromURL</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</code>
+<div class="block">Tries to convert the specified URL to a file object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#getFile(java.lang.String, java.lang.String)">getFile</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;basePath,
+       <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileName)</code>
+<div class="block">Tries to convert the specified base path and file name into a file object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#getURL(java.lang.String, java.lang.String)">getURL</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;basePath,
+      <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;file)</code>
+<div class="block">Constructs a URL from a base path and a file name.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#locate(org.apache.commons.configuration.FileSystem, java.lang.String, java.lang.String)">locate</a></strong>(<a href="../../../../org/apache/commons/configuration/FileSystem.html" title="class in org.apache.commons.configuration">FileSystem</a>&nbsp;fileSystem,
+      <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+      <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#locate(java.lang.String)">locate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#locate(java.lang.String, java.lang.String)">locate</a></strong>(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+      <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><strong><a href="../../../../org/apache/commons/configuration/ConfigurationUtils.html#toString(org.apache.commons.configuration.Configuration)">toString</a></strong>(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration)</code>
+<div class="block">Get a string representation of the key/value mappings of a
+ configuration.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</a>, <a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="dump(org.apache.commons.configuration.Configuration, java.io.PrintStream)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dump</h4>
+<pre>public static&nbsp;void&nbsp;dump(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration,
+        <a href="http://download.oracle.com/javase/6/docs/api/java/io/PrintStream.html?is-external=true" title="class or interface in java.io">PrintStream</a>&nbsp;out)</pre>
+<div class="block">Dump the configuration key/value mappings to some ouput stream.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configuration</code> - the configuration</dd><dd><code>out</code> - the output stream to dump the configuration to</dd></dl>
+</li>
+</ul>
+<a name="dump(org.apache.commons.configuration.Configuration, java.io.PrintWriter)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dump</h4>
+<pre>public static&nbsp;void&nbsp;dump(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration,
+        <a href="http://download.oracle.com/javase/6/docs/api/java/io/PrintWriter.html?is-external=true" title="class or interface in java.io">PrintWriter</a>&nbsp;out)</pre>
+<div class="block">Dump the configuration key/value mappings to some writer.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configuration</code> - the configuration</dd><dd><code>out</code> - the writer to dump the configuration to</dd></dl>
+</li>
+</ul>
+<a name="toString(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;configuration)</pre>
+<div class="block">Get a string representation of the key/value mappings of a
+ configuration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>configuration</code> - the configuration</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a string representation of the configuration</dd></dl>
+</li>
+</ul>
+<a name="copy(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>copy</h4>
+<pre>public static&nbsp;void&nbsp;copy(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;source,
+        <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;target)</pre>
+<div class="block"><p>Copy all properties from the source configuration to the target
+ configuration. Properties in the target configuration are replaced with
+ the properties with the same key in the source configuration.</p>
+ <p><em>Note:</em> This method is not able to handle some specifics of
+ configurations derived from <code>AbstractConfiguration</code> (e.g.
+ list delimiters). For a full support of all of these features the
+ <code>copy()</code> method of <code>AbstractConfiguration</code> should
+ be used. In a future release this method might become deprecated.</p></div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>source</code> - the source configuration</dd><dd><code>target</code> - the target configuration</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.1</dd></dl>
+</li>
+</ul>
+<a name="append(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>append</h4>
+<pre>public static&nbsp;void&nbsp;append(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;source,
+          <a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;target)</pre>
+<div class="block"><p>Append all properties from the source configuration to the target
+ configuration. Properties in the source configuration are appended to
+ the properties with the same key in the target configuration.</p>
+ <p><em>Note:</em> This method is not able to handle some specifics of
+ configurations derived from <code>AbstractConfiguration</code> (e.g.
+ list delimiters). For a full support of all of these features the
+ <code>copy()</code> method of <code>AbstractConfiguration</code> should
+ be used. In a future release this method might become deprecated.</p></div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>source</code> - the source configuration</dd><dd><code>target</code> - the target configuration</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.1</dd></dl>
+</li>
+</ul>
+<a name="convertToHierarchical(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>convertToHierarchical</h4>
+<pre>public static&nbsp;<a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;convertToHierarchical(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;conf)</pre>
+<div class="block">Converts the passed in configuration to a hierarchical one. If the
+ configuration is already hierarchical, it is directly returned. Otherwise
+ all properties are copied into a new hierarchical configuration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>conf</code> - the configuration to convert</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the new hierarchical configuration (the result is <b>null</b> if
+ and only if the passed in configuration is <b>null</b>)</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd></dl>
+</li>
+</ul>
+<a name="convertToHierarchical(org.apache.commons.configuration.Configuration, org.apache.commons.configuration.tree.ExpressionEngine)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>convertToHierarchical</h4>
+<pre>public static&nbsp;<a href="../../../../org/apache/commons/configuration/HierarchicalConfiguration.html" title="class in org.apache.commons.configuration">HierarchicalConfiguration</a>&nbsp;convertToHierarchical(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;conf,
+                                              <a href="../../../../org/apache/commons/configuration/tree/ExpressionEngine.html" title="interface in org.apache.commons.configuration.tree">ExpressionEngine</a>&nbsp;engine)</pre>
+<div class="block">Converts the passed in <code>Configuration</code> object to a
+ hierarchical one using the specified <code>ExpressionEngine</code>. This
+ conversion works by adding the keys found in the configuration to a newly
+ created hierarchical configuration. When adding new keys to a
+ hierarchical configuration the keys are interpreted by its
+ <code>ExpressionEngine</code>. If they contain special characters (e.g.
+ brackets) that are treated in a special way by the default expression
+ engine, it may be necessary using a specific engine that can deal with
+ such characters. Otherwise <b>null</b> can be passed in for the
+ <code>ExpressionEngine</code>; then the default expression engine is
+ used. If the passed in configuration is already hierarchical, it is
+ directly returned. (However, the <code>ExpressionEngine</code> is set if
+ it is not <b>null</b>.) Otherwise all properties are copied into a new
+ hierarchical configuration.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>conf</code> - the configuration to convert</dd><dd><code>engine</code> - the <code>ExpressionEngine</code> for the hierarchical
+        configuration or <b>null</b> for the default</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the new hierarchical configuration (the result is <b>null</b> if
+         and only if the passed in configuration is <b>null</b>)</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.6</dd></dl>
+</li>
+</ul>
+<a name="cloneConfiguration(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cloneConfiguration</h4>
+<pre>public static&nbsp;<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;cloneConfiguration(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;config)
+                                        throws <a href="../../../../org/apache/commons/configuration/ConfigurationRuntimeException.html" title="class in org.apache.commons.configuration">ConfigurationRuntimeException</a></pre>
+<div class="block">Clones the given configuration object if this is possible. If the passed
+ in configuration object implements the <code>Cloneable</code>
+ interface, its <code>clone()</code> method will be invoked. Otherwise
+ an exception will be thrown.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the configuration object to be cloned (can be <b>null</b>)</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the cloned configuration (<b>null</b> if the argument was
+ <b>null</b>, too)</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/commons/configuration/ConfigurationRuntimeException.html" title="class in org.apache.commons.configuration">ConfigurationRuntimeException</a></code> - if cloning is not supported for
+ this object</dd><dt><span class="strong">Since:</span></dt>
+  <dd>1.3</dd></dl>
+</li>
+</ul>
+<a name="getURL(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getURL</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;getURL(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;basePath,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;file)
+                  throws <a href="http://download.oracle.com/javase/6/docs/api/java/net/MalformedURLException.html?is-external=true" title="class or interface in java.net">MalformedURLException</a></pre>
+<div class="block">Constructs a URL from a base path and a file name. The file name can
+ be absolute, relative or a full URL. If necessary the base path URL is
+ applied.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>basePath</code> - the base path URL (can be <b>null</b>)</dd><dd><code>file</code> - the file name</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the resulting URL</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code><a href="http://download.oracle.com/javase/6/docs/api/java/net/MalformedURLException.html?is-external=true" title="class or interface in java.net">MalformedURLException</a></code> - if URLs are invalid</dd></dl>
+</li>
+</ul>
+<a name="locate(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>locate</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;locate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - the name of the resource</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the location of the resource</dd></dl>
+</li>
+</ul>
+<a name="locate(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>locate</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;locate(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>base</code> - the base path of the resource</dd><dd><code>name</code> - the name of the resource</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the location of the resource</dd></dl>
+</li>
+</ul>
+<a name="locate(org.apache.commons.configuration.FileSystem, java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>locate</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;locate(<a href="../../../../org/apache/commons/configuration/FileSystem.html" title="class in org.apache.commons.configuration">FileSystem</a>&nbsp;fileSystem,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;base,
+         <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<div class="block">Return the location of the specified resource by searching the user home
+ directory, the current classpath and the system classpath.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>fileSystem</code> - the FileSystem to use.</dd><dd><code>base</code> - the base path of the resource</dd><dd><code>name</code> - the name of the resource</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the location of the resource</dd></dl>
+</li>
+</ul>
+<a name="getFile(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFile</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;getFile(<a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;basePath,
+           <a href="http://download.oracle.com/javase/6/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileName)</pre>
+<div class="block">Tries to convert the specified base path and file name into a file object.
+ This method is called e.g. by the save() methods of file based
+ configurations. The parameter strings can be relative files, absolute
+ files and URLs as well. This implementation checks first whether the passed in
+ file name is absolute. If this is the case, it is returned. Otherwise
+ further checks are performed whether the base path and file name can be
+ combined to a valid URL or a valid file name. <em>Note:</em> The test
+ if the passed in file name is absolute is performed using
+ <code>java.io.File.isAbsolute()</code>. If the file name starts with a
+ slash, this method will return <b>true</b> on Unix, but <b>false</b> on
+ Windows. So to ensure correct behavior for relative file names on all
+ platforms you should never let relative paths start with a slash. E.g.
+ in a configuration definition file do not use something like that:
+ <pre>
+ &lt;properties fileName="/subdir/my.properties"/&gt;
+ </pre>
+ Under Windows this path would be resolved relative to the configuration
+ definition file. Under Unix this would be treated as an absolute path
+ name.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>basePath</code> - the base path</dd><dd><code>fileName</code> - the file name</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the file object (<b>null</b> if no file can be obtained)</dd></dl>
+</li>
+</ul>
+<a name="fileFromURL(java.net.URL)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fileFromURL</h4>
+<pre>public static&nbsp;<a href="http://download.oracle.com/javase/6/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fileFromURL(<a href="http://download.oracle.com/javase/6/docs/api/java/net/URL.html?is-external=true" title="class or interface in java.net">URL</a>&nbsp;url)</pre>
+<div class="block">Tries to convert the specified URL to a file object. If this fails,
+ <b>null</b> is returned. Note: This code has been copied from the
+ <code>FileUtils</code> class from <em>Commons IO</em>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>url</code> - the URL</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the resulting file object</dd></dl>
+</li>
+</ul>
+<a name="enableRuntimeExceptions(org.apache.commons.configuration.Configuration)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>enableRuntimeExceptions</h4>
+<pre>public static&nbsp;void&nbsp;enableRuntimeExceptions(<a href="../../../../org/apache/commons/configuration/Configuration.html" title="interface in org.apache.commons.configuration">Configuration</a>&nbsp;src)</pre>
+<div class="block">Enables runtime exceptions for the specified configuration object. This
+ method can be used for configuration implementations that may face errors
+ on normal property access, e.g. <code>DatabaseConfiguration</code> or
+ <code>JNDIConfiguration</code>. Per default such errors are simply
+ logged and then ignored. This implementation will register a special
+ <a href="../../../../org/apache/commons/configuration/event/ConfigurationErrorListener.html" title="interface in org.apache.commons.configuration.event"><code>ConfigurationErrorListener</code></a> that throws a runtime
+ exception (namely a <code>ConfigurationRuntimeException</code>) on
+ each received error event.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>src</code> - the configuration, for which runtime exceptions are to be
+ enabled; this configuration must be derived from
+ <a href="../../../../org/apache/commons/configuration/event/EventSource.html" title="class in org.apache.commons.configuration.event"><code>EventSource</code></a></dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="class-use/ConfigurationUtils.html">Use</a></li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../../../org/apache/commons/configuration/ConfigurationRuntimeException.html" title="class in org.apache.commons.configuration"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../../../org/apache/commons/configuration/ConfigurationXMLReader.html" title="class in org.apache.commons.configuration"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../../../index.html?org/apache/commons/configuration/ConfigurationUtils.html" target="_top">Frames</a></li>
+<li><a href="ConfigurationUtils.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+<p class="legalCopy"><small>Copyright &#169; 2001&#x2013;2013 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
+</body>
+</html>
