@@ -18,40 +18,57 @@
  ***************************************************************************/
 ```
  
-# General JAVA Tools
+# Disclaimer
 
-The general JAVA tools section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
+This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
 In order to get help with basic GIT commands you may try [the GIT cheat-sheet][2] on our [homepage][1].
 
-## SplitStopWatch
+# BulkMakeMKV
 
-This class implements a stopWatch.
+MakeMKV is a program that extracts MKV-files from DVD-rips that are saved as an image (ISO) or a DVD in general (a mounted one, preferably).
 
-Additionally to the normal stopWatch-functionality it may be used to debug out split-times as well. It measures the split-times and keeps track of the overall times in a variable.
-Don't be afraid to stop the watch. Stopping doesn't mean you loose any value whatsoever. Think of it as a real-life stopWatch where you may press the start-button at any time after previously pressing the stop-button.
+You may get it from here [makeMKV][3]. You will need it in order to use this tool.  
 
-This class provides useful overloads that allow writing to a PrintStream in a way that your measurement doesn't get compromised (the stopWatch is paused while writing to the stream). You may initialize it with a PrintStream so that you can use all the overloads that take a string-argument or System.out is used as a default.
-All the write-operations are performed as a printLine-call, so you don't need to close your assigned text with a newline-character.
+The program is used by starting the jar-file (located in the `target` directory of the project). The program is configurated using the file `config.properties` which it will expect to find next to itself (the same directory or on the path).
 
-This class is automatically created using millisecond-precision. If you want to enable nanoseconds-precision albeit performance impacts, though the impact of this is very small indeed, you may do so after creating the stopWatch via the setIsNanoPrecision-Setter.
-
-All public methods within this class are synchronized so you may use it concurrently within many threads.
-It has a property 'isActive' that defaults to true. When this is set to false all calls to this class are aborted within a single if-statement in the called method. This is a convenience function so that you may leave your logging-code in the production code.
-
-### Example
-	
-```java
-SplitStopWatch ssw = new SplitStopWatch();
-ssw.start("started.");
-  Thread.sleep(10);
-ssw.split("split.");
-  Thread.sleep(10);
-ssw.stop("stopped.");
+Start the program, as you would start any jar by typing:
+```
+java -jar bulkMakeMkv.jar
+```
+or put these lines in a batch-file (should be more convenient):
+```
+java -jar bulkMakeMkv.jar
+pause
 ```
 
-## CsvTools
+## The Config File  
 
-under construction.
+Here is an example of a config-file. I like to think it is very self-descriptive:
+
+``` properties
+# The directory where your ISO-files are located.
+isoDir = \\\\computername\\f$\\DVDs 
+
+# This is the temporary directory which is used when makeMKV is working.
+# Be sure it doesn't contain files named "title<NN>.mkv" (the program 
+# checks for any mkv-files starting with "title") since that would collide 
+# with the files makeMKV wants to make.
+# Other that that you may chose any directory.
+tempDir = c:\\temp
+
+# This is the directory where the program will create the right directories 
+# in containing the resulting MKV-files.
+mkvDir = D:\\Movies\\new
+
+# The location of your local makeMKV-installation. Be sure to contain the 
+# name of the runtime as well, not only the directory.
+makeMkvCommand = C:/Program Files (x86)/MakeMKV/makemkvcon.exe
+
+makeMkvTempFileExtension = mkv
+mkvFileExtension = mkv
+isoFileExtension = iso
+```
 
 [1]: http://www.unterrainer.info
 [2]: http://www.unterrainer.info/Home/Coding
+[3]: http://www.makemkv.com/
