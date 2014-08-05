@@ -88,9 +88,9 @@ Examples:
 
 #### Movies/TV-Series
 *ISO-file name:* (normal DVD/BR)  
-`A Crime [A Crime - Späte Rache] (o).iso`  
+`A Crime [A Crime - Spaete Rache] (o).iso`  
 *Resulting target-folder / file-name:*  
-`\A Crime [A Crime - Späte Rache]\A Crime.mkv`  
+`\A Crime [A Crime - Spaete Rache]\A Crime.mkv`  
 
 *ISO-file name:* (normal DVD/BR)  
 `Dogma (c) (german).iso`  
