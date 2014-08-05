@@ -25,7 +25,7 @@ In order to get help with basic GIT commands you may try [the GIT cheat-sheet][2
 
 # BulkMakeMKV
 
-MakeMKV is a program that extracts MKV-files from DVD-rips that are saved as an image (ISO) or a DVD in general (a mounted one, preferably).
+MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).
 
 You may get it from here [makeMKV][3]. You will need it in order to use this tool.  
 
@@ -68,6 +68,57 @@ makeMkvTempFileExtension = mkv
 mkvFileExtension = mkv
 isoFileExtension = iso
 ```
+
+## The Naming Conventions For Source-Files  
+
+In order to use several functions of this converter you need to honor a naming-style in your ISO source files.  
+
+Basically it strips everything within braces (round or square) with a few exceptions. These are (always in round braces. *EVERYTHING* within square braces gets removed):
+
+ - `side <c>`  
+   Where `<c>` is a character like in `side A`.  
+ - `part <n>`
+   Where `<n>` is a positive integer like in `part 1`.
+ - `<year>`  
+   Like in `1967`.
+ - `english`
+ - `german`
+
+Examples:  
+
+#### Movies/TV-Series
+*ISO-file name:* (normal DVD/BR)  
+`A Crime [A Crime - Späte Rache] (o).iso`  
+*Resulting target-folder / file-name:*  
+`\A Crime [A Crime - Späte Rache]\A Crime.mkv`  
+
+*ISO-file name:* (normal DVD/BR)  
+`Dogma (c) (german).iso`  
+*Resulting target-folder / file-name:*  
+`\Dogma (german)\Dogma (german).mkv`  
+
+*ISO-file name:* (two-sided DVD/BR)  
+`Analyze This [Reine Nervensache] (side A) (o).iso`  
+*Resulting target-folder / file-name:*  
+`\Analyze This [Reine Nervensache] (side A)\Analyze This (side A).mkv`  
+
+#### TV-Series Only  
+*ISO-file name:* (multiple episodes on disc)  
+`Avatar - The Last Airbender - s01e05-e08 (c).iso`  
+*Resulting target-folder / file-names:*  
+`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e05.mkv`  
+`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e06.mkv`  
+`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e07.mkv`  
+`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e08.mkv`  
+
+*ISO-file name:* (single episode on disc)  
+`Avatar - The Last Airbender - s01e14 (c).iso`  
+*Resulting target-folder / file-name:*  
+`\Avatar - The Last Airbender - s01e14\Avatar - The Last Airbender - s01e014.mkv`  
+
+Sometimes, when dealing with series, makeMKV does a 'catch-all' track containing all other tracks on the DVD/BR. The script recognizes this and removes this 'catch-all' track automatically.  
+
+In addition to that the script doesn't convert bonus-discs. A bonus disc is identified by a trailing `bonus` or `Bonus` at the end of the regular file-name. When the script encounters that it displays a proper message and skipps the file. Just as it would do when the encountered file-name results in a folder-name that already exists.
 
 [1]: http://www.unterrainer.info
 [2]: http://www.unterrainer.info/Home/Coding

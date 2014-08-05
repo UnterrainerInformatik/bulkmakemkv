@@ -144,6 +144,16 @@ public class FileName {
 				result += " (" + s + ")";
 			}
 		}
+		for (String s : roundBracketContents) {
+			if (s.toLowerCase().startsWith("english")) {
+				result += " (" + s + ")";
+			}
+		}
+		for (String s : roundBracketContents) {
+			if (s.toLowerCase().startsWith("german")) {
+				result += " (" + s + ")";
+			}
+		}
 		return result;
 	}
 
@@ -156,6 +166,16 @@ public class FileName {
 		}
 		for (String s : roundBracketContents) {
 			if (s.toLowerCase().startsWith("part")) {
+				result += " (" + s + ")";
+			}
+		}
+		for (String s : roundBracketContents) {
+			if (s.toLowerCase().startsWith("english")) {
+				result += " (" + s + ")";
+			}
+		}
+		for (String s : roundBracketContents) {
+			if (s.toLowerCase().startsWith("german")) {
 				result += " (" + s + ")";
 			}
 		}
