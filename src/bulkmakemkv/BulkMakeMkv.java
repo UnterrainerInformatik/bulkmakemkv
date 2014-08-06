@@ -19,6 +19,10 @@ public class BulkMakeMkv {
 	private static String			isoDir;
 	private static String			tempDir;
 	private static String			mkvDir;
+	private static String			forceMkvDir;
+
+	private static boolean			convertShows;
+	private static boolean			convertMovies;
 
 	private static String			isoFileExtension;
 	private static String			mkvFileExtension;
@@ -37,9 +41,13 @@ public class BulkMakeMkv {
 		isoDir = Tools.normalizeDirectory(config.getString("isoDir"));
 		tempDir = Tools.normalizeDirectory(config.getString("tempDir"));
 		mkvDir = Tools.normalizeDirectory(config.getString("mkvDir"));
+		forceMkvDir = Tools.normalizeDirectory(config.getString("forceMkvDir"));
 
 		isoFileExtension = config.getString("isoFileExtension");
 		mkvFileExtension = config.getString("mkvFileExtension");
+
+		convertShows = config.getBoolean("convertShows");
+		convertMovies = config.getBoolean("convertMovies");
 
 		makeMkvCommand = config.getString("makeMkvCommand");
 		makeMkvTempFileExtension = config.getString("makeMkvTempFileExtension");
@@ -55,6 +63,18 @@ public class BulkMakeMkv {
 					File d = new File((mkvDir + name.getFolderName() + "/").replace("/", "\\"));
 					if (!d.exists()) {
 						if (!name.isBonusDisc()) {
+							if (!name.getEpisodesLongContents().isEmpty() || !name.getEpisodesShortContents().isEmpty()) {
+								// This is a TV-show.
+								if (!convertShows) {
+									continue;
+								}
+							}
+							else {
+								// This is a movie.
+								if (!convertMovies) {
+									continue;
+								}
+							}
 							System.out.println("converting: " + name.getName());
 							convert(name);
 							List<FileName> tempFiles = scanTempDirectory();
@@ -119,7 +139,11 @@ public class BulkMakeMkv {
 			}
 		}
 
-		File d = new File((mkvDir + file.getFolderName() + "/").replace("/", "\\"));
+		String dir = forceMkvDir;
+		if (dir == null || dir.equals("")) {
+			dir = mkvDir;
+		}
+		File d = new File((dir + file.getFolderName() + "/").replace("/", "\\"));
 		String dString = (d.toPath() + "/").replace("/", "\\");
 		try {
 			Files.createDirectory(d.toPath());
