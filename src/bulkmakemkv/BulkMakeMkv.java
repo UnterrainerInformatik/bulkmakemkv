@@ -19,7 +19,7 @@ public class BulkMakeMkv {
 	private static String			isoDir;
 	private static String			tempDir;
 	private static String			mkvDir;
-	private static String			forceMkvDir;
+	private static List<String>		observeMkvDirs;
 
 	private static boolean			convertShows;
 	private static boolean			convertMovies;
@@ -41,7 +41,17 @@ public class BulkMakeMkv {
 		isoDir = Tools.normalizeDirectory(config.getString("isoDir"));
 		tempDir = Tools.normalizeDirectory(config.getString("tempDir"));
 		mkvDir = Tools.normalizeDirectory(config.getString("mkvDir"));
-		forceMkvDir = Tools.normalizeDirectory(config.getString("forceMkvDir"));
+
+		String[] t = config.getStringArray("observeMkvDirs");
+		observeMkvDirs = new ArrayList<String>();
+		observeMkvDirs.add(mkvDir);
+		if (t != null) {
+			for (String s : t) {
+				if (s != null && !s.equals("")) {
+					observeMkvDirs.add(Tools.normalizeDirectory(s));
+				}
+			}
+		}
 
 		isoFileExtension = config.getString("isoFileExtension");
 		mkvFileExtension = config.getString("mkvFileExtension");
@@ -55,38 +65,46 @@ public class BulkMakeMkv {
 		checkTempDir();
 		checkMkvDir();
 
-		File[] isoFiles = new File(isoDir).listFiles();
+		File iso = new File(isoDir);
+		if (!iso.exists()) {
+			System.out.println("The isoDir you specified [" + iso.toString() + "] doesn't exist.");
+			System.exit(1);
+		}
+		File[] isoFiles = iso.listFiles();
+
 		for (File file : isoFiles) {
 			if (!file.isDirectory()) {
 				FileName name = new FileName(file);
 				if (name.getExtension().toLowerCase().equals("iso")) {
-					File d = new File((mkvDir + name.getFolderName() + "/").replace("/", "\\"));
-					if (!d.exists()) {
-						if (!name.isBonusDisc()) {
-							if (!name.getEpisodesLongContents().isEmpty() || !name.getEpisodesShortContents().isEmpty()) {
-								// This is a TV-show.
-								if (!convertShows) {
-									continue;
-								}
-							}
-							else {
-								// This is a movie.
-								if (!convertMovies) {
-									continue;
-								}
-							}
-							System.out.println("converting: " + name.getName());
-							convert(name);
-							List<FileName> tempFiles = scanTempDirectory();
-							moveAndRename(name, tempFiles);
+					if (name.isBonusDisc()) {
+						System.out.println("skipping: " + name.getName() + " (is bonus disc)");
+						continue;
+					}
+					List<String> p = exists(name);
+					if (!p.isEmpty()) {
+						String out = "skipping: " + name.getName() + ". Already exists in... ";
+						for (String s : p) {
+							out += "\n    " + s;
 						}
-						else {
-							System.out.println("skipping: " + name.getName() + " (is bonus disc)");
+						System.out.println(out);
+						continue;
+					}
+					if (!name.getEpisodesLongContents().isEmpty() || !name.getEpisodesShortContents().isEmpty()) {
+						// This is a TV-show.
+						if (!convertShows) {
+							continue;
 						}
 					}
 					else {
-						System.out.println("skipping: " + name.getName() + " (already exists)");
+						// This is a movie.
+						if (!convertMovies) {
+							continue;
+						}
 					}
+					System.out.println("converting: " + name.getName());
+					convert(name);
+					List<FileName> tempFiles = scanTempDirectory();
+					moveAndRename(name, tempFiles);
 				}
 				else {
 					System.out.println("skipping: "
@@ -97,6 +115,21 @@ public class BulkMakeMkv {
 				}
 			}
 		}
+	}
+
+	private static List<String> exists(FileName file) {
+		List<String> result = new ArrayList<String>();
+		for (String s : observeMkvDirs) {
+			DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName());
+			try {
+				Files.walkFileTree(new File(s).toPath(), v);
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			result.addAll(v.getResult());
+		}
+		return result;
 	}
 
 	private static void convert(FileName file) {
@@ -139,11 +172,7 @@ public class BulkMakeMkv {
 			}
 		}
 
-		String dir = forceMkvDir;
-		if (dir == null || dir.equals("")) {
-			dir = mkvDir;
-		}
-		File d = new File((dir + file.getFolderName() + "/").replace("/", "\\"));
+		File d = new File((mkvDir + file.getFolderName() + "/").replace("/", "\\"));
 		String dString = (d.toPath() + "/").replace("/", "\\");
 		try {
 			Files.createDirectory(d.toPath());
