@@ -19,7 +19,7 @@ public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 	@Override
 	public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
 		String curr = Tools.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
-		if (dirName.toLowerCase().equals(curr)) {
+		if (dirName.toLowerCase().equals(curr.toLowerCase())) {
 			result.add(dir.toString());
 		}
 		return FileVisitResult.CONTINUE;
