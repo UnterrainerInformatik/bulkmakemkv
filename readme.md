@@ -46,23 +46,62 @@ pause
 Here is an example of a config-file. I like to think it is very self-descriptive:
 
 ``` properties
-# The directory where your ISO-files are located.
-isoDir = \\\\computername\\f$\\DVDs 
+# Here you can specify how the program behaves. We have several modes
+# at your disposal which are described in detail below.
+#
+# Currently supported modes are:
+#  scan    		Don't do a conversion but only scan target-directories
+#				for peculiar things (zero-size files, empty directories,
+#				etc...) and display a summary at the end.
+#  convert		Do a real conversion of all files and scan afterwards.
+mode = scan
+
+# The directories where your ISO-files are located.
+#
+# If you want to specify more than one, just add another isoDirs-parameter
+# (same name) below the current one.
+isoDirs = \\\\computername\\f$
 
 # This is the temporary directory which is used when makeMKV is working.
 # Be sure it doesn't contain files named "title<NN>.mkv" (the program 
 # checks for any mkv-files starting with "title") since that would collide 
 # with the files makeMKV wants to make.
 # Other that that you may chose any directory.
-tempDir = c:\\temp
+# It stands to reason for this directory to be on the same drive as the
+# mkvDir, since the copy-process won't involve any real data-transfer this
+# way.
+tempDir = \\\\computername\\Movies1\\temp
 
 # This is the directory where the program will create the right directories 
 # in containing the resulting MKV-files.
-mkvDir = D:\\Movies\\new
+mkvDir = d\:\\temp\\VIDEO\\mkv
+
+# This is a list of directories the program will look for already converted
+# MKV-files in. The directories will be searched recursively.
+# The mkvDir is in this list by default. No need to add it manually.
+#
+# If you want to specify more than one, just add another observeMkvDirs-
+# parameter (same name) below the current one.
+observeMkvDirs = \\\\computername\\Movies1\\SERIES
+observeMkvDirs = \\\\computername\\Movies1\\SERIES_18
+observeMkvDirs = \\\\computername\\Movies1\\MOVIES
+observeMkvDirs = \\\\computername\\Movies1\\MOVIES_18
+observeMkvDirs = \\\\computername\\Movies2\\SERIES
+observeMkvDirs = \\\\computername\\Movies2\\SERIES_18
+observeMkvDirs = \\\\computername\\Movies2\\MOVIES
+observeMkvDirs = \\\\computername\\Movies2\\MOVIES_18
+
+# If set to true, then all series are converted. If not present or set to
+# false, all series are omitted.
+convertShows = true
+
+# If set to true, then all movies are converted. If not present or set to
+# false, all movies are omitted.
+convertMovies = true
 
 # The location of your local makeMKV-installation. Be sure to contain the 
 # name of the runtime as well, not only the directory.
-makeMkvCommand = C:/Program Files (x86)/MakeMKV/makemkvcon.exe
+makeMkvCommand = D:/Program Files (x86)/MakeMKV/makemkvcon.exe
 
 makeMkvTempFileExtension = mkv
 mkvFileExtension = mkv
@@ -84,11 +123,19 @@ Basically it strips everything within braces (round or square) with a few except
  - `english`
  - `german`
 
-Examples:  
+### Real-Life Examples  
 
 #### Movies/TV-Series
+The script doesn't convert bonus-discs. A bonus disc is identified by a trailing `bonus` or `Bonus` at the end of the regular file-name. When the script encounters that it displays a proper message and skipps the file. Just as it would do when the encountered file-name results in a folder-name that already exists.
+
 *ISO-file name:* (normal DVD/BR)  
 `A Crime [A Crime - Spaete Rache] (o).iso`  
+*Resulting target-folder / file-name:*  
+`\A Crime [A Crime - Spaete Rache]\A Crime.mkv`  
+
+*ISO-file name:* (normal DVD/BR bonus disc)  
+`A Crime [A Crime - Spaete Rache] - bonus (o).iso` or  
+`A Crime Bonus [A Crime - Spaete Rache] (o).iso`  
 *Resulting target-folder / file-name:*  
 `\A Crime [A Crime - Spaete Rache]\A Crime.mkv`  
 
@@ -103,6 +150,10 @@ Examples:
 `\Analyze This [Reine Nervensache] (side A)\Analyze This (side A).mkv`  
 
 #### TV-Series Only  
+In order for the program to recognize a file as part of a series, you have to add a string in the form of:
+`s<nn>e<nn>-e<nn>` if the ISO file contains multiple episodes, or `s<nn>e<nn>` if it only contains a single episode. This is important since it will react differently after ripping the MKV-files.  
+Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track containing all other tracks on the DVD/BR. The script recognizes this and removes this 'catch-all' track automatically.  
+
 *ISO-file name:* (multiple episodes on disc)  
 `Avatar - The Last Airbender - s01e05-e08 (c).iso`  
 *Resulting target-folder / file-names:*  
@@ -115,10 +166,6 @@ Examples:
 `Avatar - The Last Airbender - s01e14 (c).iso`  
 *Resulting target-folder / file-name:*  
 `\Avatar - The Last Airbender - s01e14\Avatar - The Last Airbender - s01e014.mkv`  
-
-Sometimes, when dealing with series, makeMKV does a 'catch-all' track containing all other tracks on the DVD/BR. The script recognizes this and removes this 'catch-all' track automatically.  
-
-In addition to that the script doesn't convert bonus-discs. A bonus disc is identified by a trailing `bonus` or `Bonus` at the end of the regular file-name. When the script encounters that it displays a proper message and skipps the file. Just as it would do when the encountered file-name results in a folder-name that already exists.
 
 [1]: http://www.unterrainer.info
 [2]: http://www.unterrainer.info/Home/Coding
