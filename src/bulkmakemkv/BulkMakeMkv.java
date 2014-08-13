@@ -111,6 +111,7 @@ public class BulkMakeMkv {
 		if (mode.equals("scan")) {
 			scan();
 		}
+		System.out.println("Done.");
 	}
 
 	private static void scan() {
@@ -137,6 +138,8 @@ public class BulkMakeMkv {
 		System.out.println(" ");
 		System.out.println("Empty files (files with size zero):");
 		printList(emptyFiles, "  ");
+
+		System.out.println("Done scanning.");
 	}
 
 	private static void printList(List<String> list, String prefix) {
@@ -146,6 +149,8 @@ public class BulkMakeMkv {
 	}
 
 	private static void convert() {
+		System.out.println("Converting... (this will definitely take a while depending on the number of "
+				+ "unconverted files in your observeMkvDirs directories)");
 		for (String isoDir : isoDirs) {
 			File iso = new File(isoDir);
 			File[] isoFiles = iso.listFiles();
@@ -194,6 +199,7 @@ public class BulkMakeMkv {
 				}
 			}
 		}
+		System.out.println("Done converting.");
 	}
 
 	private static void checkExists(List<String> dirs, String parameterName) {
