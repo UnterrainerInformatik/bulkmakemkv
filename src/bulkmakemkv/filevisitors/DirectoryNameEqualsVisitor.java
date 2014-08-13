@@ -11,6 +11,7 @@ import bulkmakemkv.Tools;
 
 public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 
+	private List<Path>		cache	= new ArrayList<Path>();
 	private List<String>	result	= new ArrayList<String>();
 	private String			dirName;
 
@@ -20,6 +21,7 @@ public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 
 	@Override
 	public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
+		cache.add(dir);
 		String curr = Tools.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
 		if (dirName.toLowerCase().equals(curr.toLowerCase())) {
 			result.add(dir.toString());
@@ -37,5 +39,9 @@ public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 
 	public List<String> getResult() {
 		return result;
+	}
+
+	public List<Path> getCache() {
+		return cache;
 	}
 }

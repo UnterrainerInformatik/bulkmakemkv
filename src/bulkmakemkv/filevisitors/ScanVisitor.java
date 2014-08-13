@@ -9,10 +9,14 @@ import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
+import bulkmakemkv.EpisodeNumber;
+import bulkmakemkv.Tools;
+
 public class ScanVisitor extends SimpleFileVisitor<Path> {
 
-	private List<String>	emptyDirectories	= new ArrayList<String>();
-	private List<String>	emptyFiles			= new ArrayList<String>();
+	private List<String>	emptyDirectories		= new ArrayList<String>();
+	private List<String>	emptyFiles				= new ArrayList<String>();
+	private List<String>	wrongNumberOfEpisodes	= new ArrayList<String>();
 	private String			mkvFileExtension;
 
 	public ScanVisitor(String mkvFileExtension) {
@@ -24,7 +28,21 @@ public class ScanVisitor extends SimpleFileVisitor<Path> {
 		File[] files = dir.toFile().listFiles();
 		if (files == null || files.length == 0) {
 			emptyDirectories.add(dir.toString());
-			return FileVisitResult.CONTINUE;
+		}
+		else {
+			EpisodeNumber ep = Tools.scanEpisodeNumber(dir.getFileName().toString());
+			if (ep != null) {
+				int count = 0;
+				for (File file : files) {
+					EpisodeNumber fep = Tools.scanEpisodeNumber(file.getName());
+					if (fep != null) {
+						count += fep.getCount();
+					}
+				}
+				if (count != ep.getCount()) {
+					wrongNumberOfEpisodes.add(dir.toString());
+				}
+			}
 		}
 		return FileVisitResult.CONTINUE;
 	}
@@ -55,5 +73,9 @@ public class ScanVisitor extends SimpleFileVisitor<Path> {
 
 	public List<String> getEmptyFiles() {
 		return emptyFiles;
+	}
+
+	public List<String> getWrongNumberOfEpisodes() {
+		return wrongNumberOfEpisodes;
 	}
 }

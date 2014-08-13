@@ -3,6 +3,7 @@ package bulkmakemkv;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,8 @@ public class BulkMakeMkv {
 
 	private static String			makeMkvCommand;
 	private static String			makeMkvTempFileExtension;
+
+	private static List<Path>		cache;
 
 	public static void main(String[] args) {
 		try {
@@ -120,6 +123,8 @@ public class BulkMakeMkv {
 
 		List<String> emptyDirectories = new ArrayList<String>();
 		List<String> emptyFiles = new ArrayList<String>();
+		List<String> wrongNumberOfEpisodes = new ArrayList<String>();
+
 		for (String s : observeMkvDirs) {
 			ScanVisitor v = new ScanVisitor(mkvFileExtension);
 			try {
@@ -130,6 +135,7 @@ public class BulkMakeMkv {
 			}
 			emptyDirectories.addAll(v.getEmptyDirectories());
 			emptyFiles.addAll(v.getEmptyFiles());
+			wrongNumberOfEpisodes.addAll(v.getWrongNumberOfEpisodes());
 		}
 
 		System.out.println("### SCAN RESULTS: ###");
@@ -138,6 +144,10 @@ public class BulkMakeMkv {
 		System.out.println(" ");
 		System.out.println("Empty files (files with size zero):");
 		printList(emptyFiles, "  ");
+		System.out.println(" ");
+		System.out.println("Wrong number of episodes in directory:");
+		printList(wrongNumberOfEpisodes, "  ");
+		System.out.println(" ");
 
 		System.out.println("Done scanning.");
 	}
@@ -151,6 +161,7 @@ public class BulkMakeMkv {
 	private static void convert() {
 		System.out.println("Converting... (this will definitely take a while depending on the number of "
 				+ "unconverted files in your observeMkvDirs directories)");
+		boolean resetCache = true;
 		for (String isoDir : isoDirs) {
 			File iso = new File(isoDir);
 			File[] isoFiles = iso.listFiles();
@@ -163,7 +174,8 @@ public class BulkMakeMkv {
 							System.out.println("skipping: " + name.getName() + " (is bonus disc)");
 							continue;
 						}
-						List<String> p = exists(name);
+						List<String> p = exists(name, resetCache);
+						resetCache = false;
 						if (!p.isEmpty()) {
 							String out = "skipping: " + name.getName() + ". Already exists in... ";
 							for (String s : p) {
@@ -188,6 +200,7 @@ public class BulkMakeMkv {
 						doConvert(name, isoDir);
 						List<FileName> tempFiles = scanTempDirectory();
 						moveAndRename(name, tempFiles);
+						resetCache = true;
 					}
 					else {
 						System.out.println("skipping: "
@@ -212,17 +225,36 @@ public class BulkMakeMkv {
 		}
 	}
 
-	private static List<String> exists(FileName file) {
+	private static List<String> exists(FileName file, boolean resetCache) {
 		List<String> result = new ArrayList<String>();
-		for (String s : observeMkvDirs) {
-			DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName());
-			try {
-				Files.walkFileTree(new File(s).toPath(), v);
+		boolean reset = resetCache;
+		if (cache == null) {
+			cache = new ArrayList<Path>();
+			reset = true;
+		}
+
+		if (reset) {
+			cache.clear();
+			for (String s : observeMkvDirs) {
+				DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName());
+				try {
+					Files.walkFileTree(new File(s).toPath(), v);
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+				result.addAll(v.getResult());
+				cache.addAll(v.getCache());
 			}
-			catch (IOException e) {
-				e.printStackTrace();
+		}
+		else {
+			String dirName = Tools.normalizeDirectory(file.getFolderName()).replace("/", "\\");
+			for (Path dir : cache) {
+				String curr = Tools.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
+				if (dirName.toLowerCase().equals(curr.toLowerCase())) {
+					result.add(dir.toString());
+				}
 			}
-			result.addAll(v.getResult());
 		}
 		return result;
 	}
