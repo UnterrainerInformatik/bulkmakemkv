@@ -11,8 +11,8 @@ public class FileName {
 
 	public final static String	regExRoundBrackets		= "\\([^(]*?\\)";
 	public final static String	regExSquareBrackets		= "\\[[^\\]]*?\\]";
-	public final static String	regExEpisodesLong		= "s\\d\\de\\d\\d-e\\d\\d";
-	public final static String	regExEpisodesShort		= "s\\d\\de\\d\\d";
+	public final static String	regExEpisodesLong		= "[sS]\\d\\d[eE]\\d\\d-[eE]\\d\\d";
+	public final static String	regExEpisodesShort		= "[sS]\\d\\d[eE]\\d\\d";
 
 	private File				file;
 	private long				size;
