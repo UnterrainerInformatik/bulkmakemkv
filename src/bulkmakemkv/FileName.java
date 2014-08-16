@@ -11,8 +11,8 @@ public class FileName {
 
 	public final static String	regExRoundBrackets		= "\\([^(]*?\\)";
 	public final static String	regExSquareBrackets		= "\\[[^\\]]*?\\]";
-	public final static String	regExEpisodesLong		= "[sS]\\d\\d[eE]\\d\\d-[eE]\\d\\d";
-	public final static String	regExEpisodesShort		= "[sS]\\d\\d[eE]\\d\\d";
+	public final static String	regExEpisodesLong		= "[sS](\\d+)[eE](\\d+)-[eE](\\d+)";
+	public final static String	regExEpisodesShort		= "[sS](\\d+)[eE](\\d+)";
 
 	private File				file;
 	private long				size;
@@ -23,10 +23,10 @@ public class FileName {
 	private boolean				bonusDisc;
 	private Integer				year;
 
-	private List<String>		roundBracketContents	= new ArrayList<String>();
-	private List<String>		squareBracketContents	= new ArrayList<String>();
-	private List<String>		episodesLongContents	= new ArrayList<String>();
-	private List<String>		episodesShortContents	= new ArrayList<String>();
+	private List<Match>			roundBracketContents	= new ArrayList<Match>();
+	private List<Match>			squareBracketContents	= new ArrayList<Match>();
+	private List<Match>			episodesLongContents	= new ArrayList<Match>();
+	private List<Match>			episodesShortContents	= new ArrayList<Match>();
 
 	public FileName(File file) {
 		name = file.getName().substring(0, file.getName().lastIndexOf('.'));
@@ -58,7 +58,8 @@ public class FileName {
 		calculatedCleanName = Tools.removeDashTrim(calculatedCleanName);
 
 		Calendar now = Calendar.getInstance();
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().equals("bonus")) {
 				bonusDisc = true;
 			}
@@ -110,6 +111,7 @@ public class FileName {
 			result += " (" + year + ")";
 		}
 		if (!episodesLongContents.isEmpty() || !episodesShortContents.isEmpty()) {
+			// This is a TV-series.
 			String h = " - ";
 			if (!episodesLongContents.isEmpty()) {
 				h += episodesLongContents.get(0);
@@ -117,25 +119,28 @@ public class FileName {
 			if (!episodesShortContents.isEmpty()) {
 				h += episodesShortContents.get(0);
 			}
-			// This is a TV-series.
 			result += h;
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("side")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("part")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("english")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("german")) {
 				result += " (" + s + ")";
 			}
@@ -145,22 +150,26 @@ public class FileName {
 
 	public String getFileName() {
 		String result = calculatedCleanName;
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("side")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("part")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("english")) {
 				result += " (" + s + ")";
 			}
 		}
-		for (String s : roundBracketContents) {
+		for (Match m : roundBracketContents) {
+			String s = m.getMatch();
 			if (s.toLowerCase().startsWith("german")) {
 				result += " (" + s + ")";
 			}
@@ -188,19 +197,19 @@ public class FileName {
 		return calculatedCleanName;
 	}
 
-	public List<String> getRoundBracketContents() {
+	public List<Match> getRoundBracketContents() {
 		return roundBracketContents;
 	}
 
-	public List<String> getSquareBracketContents() {
+	public List<Match> getSquareBracketContents() {
 		return squareBracketContents;
 	}
 
-	public List<String> getEpisodesLongContents() {
+	public List<Match> getEpisodesLongContents() {
 		return episodesLongContents;
 	}
 
-	public List<String> getEpisodesShortContents() {
+	public List<Match> getEpisodesShortContents() {
 		return episodesShortContents;
 	}
 
