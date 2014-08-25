@@ -24,6 +24,7 @@ public class BulkMakeMkv {
 
 	private static String			mode;
 	private static List<String>		isoDirs;
+	private static List<String>		isoRegExps;
 	private static String			tempDir;
 	private static String			mkvDir;
 	private static List<String>		observeMkvDirs;
@@ -71,6 +72,17 @@ public class BulkMakeMkv {
 		else {
 			Tools.sysout("You have to specify at least a single valid isoDirs value!");
 			System.exit(1);
+		}
+
+		// Get parameter isoRegExps.
+		t = config.getStringArray("isoRegExps");
+		isoRegExps = new ArrayList<String>();
+		if (t != null) {
+			for (String s : t) {
+				if (s != null) {
+					isoRegExps.add(s);
+				}
+			}
 		}
 
 		tempDir = Tools.normalizeDirectory(config.getString("tempDir"));
@@ -225,6 +237,20 @@ public class BulkMakeMkv {
 							if (!convertMovies) {
 								continue;
 							}
+						}
+						boolean convert = isoRegExps.isEmpty();
+						if (!convert) {
+							for (String rex : isoRegExps) {
+								List<Match> matches = Tools.getPattern(name.getFile().getName(), rex, 0);
+								if (!matches.isEmpty()) {
+									convert = true;
+									break;
+								}
+							}
+						}
+						if (!convert) {
+							Tools.sysout("skipping (no regexp match): " + name.getName());
+							continue;
 						}
 						Tools.sysout("converting: " + name.getName());
 						boolean conversionResult = doConvert(name, isoDir);
