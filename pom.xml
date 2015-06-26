@@ -1,11 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.unterrainer.java.tools.scripting</groupId>
 	<artifactId>bulkmakemkv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BulkMakeMkv</name>
 	<description>Using this tool you may convert multiple iso-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
+
+	<properties>
+		<javaVersion>1.8</javaVersion>
+		<project.compile.sourceEncoding>UTF-8</project.compile.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<build>
 		<sourceDirectory>${project.basedir}\src</sourceDirectory>
@@ -17,8 +25,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${javaVersion}</source>
+					<target>${javaVersion}</target>
 				</configuration>
 			</plugin>
 		</plugins>
