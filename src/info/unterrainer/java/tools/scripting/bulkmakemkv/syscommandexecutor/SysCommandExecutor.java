@@ -1,4 +1,4 @@
-package bulkmakemkv.syscommandexecutor;
+package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package bulkmakemkv;
+package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 public class EpisodeNumber {
 	private int	start;

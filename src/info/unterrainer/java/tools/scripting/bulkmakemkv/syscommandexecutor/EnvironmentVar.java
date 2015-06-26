@@ -1,4 +1,4 @@
-package bulkmakemkv.syscommandexecutor;
+package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
 class EnvironmentVar
 {

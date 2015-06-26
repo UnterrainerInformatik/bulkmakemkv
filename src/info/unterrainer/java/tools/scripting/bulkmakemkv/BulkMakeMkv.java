@@ -1,4 +1,4 @@
-package bulkmakemkv;
+package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,9 +11,9 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
-import bulkmakemkv.filevisitors.ScanVisitor;
-import bulkmakemkv.syscommandexecutor.SysCommandExecutor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
 
 public class BulkMakeMkv {
 

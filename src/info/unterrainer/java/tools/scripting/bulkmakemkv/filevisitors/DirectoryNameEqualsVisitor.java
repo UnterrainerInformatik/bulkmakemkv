@@ -1,4 +1,4 @@
-package bulkmakemkv.filevisitors;
+package info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
@@ -7,7 +7,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
-import bulkmakemkv.Tools;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.Tools;
 
 public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 

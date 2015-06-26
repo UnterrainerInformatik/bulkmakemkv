@@ -1,4 +1,4 @@
-package bulkmakemkv.filevisitors;
+package info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
-import bulkmakemkv.EpisodeNumber;
-import bulkmakemkv.Tools;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.EpisodeNumber;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.Tools;
 
 public class ScanVisitor extends SimpleFileVisitor<Path> {
 

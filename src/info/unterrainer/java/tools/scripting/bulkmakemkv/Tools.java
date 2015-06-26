@@ -1,4 +1,4 @@
-package bulkmakemkv;
+package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 import java.util.ArrayList;
 import java.util.List;
