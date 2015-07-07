@@ -6,6 +6,7 @@
 	<artifactId>bulkmakemkv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BulkMakeMkv</name>
+	<packaging>jar</packaging>
 	<description>Using this tool you may convert multiple iso-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
 
 	<properties>
