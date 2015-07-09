@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.unterrainer.java.tools.scripting</groupId>
 	<artifactId>bulk-makemkv</artifactId>
-	<version>0.2</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>BulkMakeMkv</name>
 	<packaging>jar</packaging>
 	<description>Using this tool you may convert multiple ISO-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
