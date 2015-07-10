@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>info.unterrainer.java.tools.scripting</groupId>
 	<artifactId>bulk-makemkv</artifactId>
@@ -8,6 +8,16 @@
 	<name>BulkMakeMkv</name>
 	<packaging>jar</packaging>
 	<description>Using this tool you may convert multiple ISO-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
+	<url>https://www.unterrainer.info:8443/projects/JAV/repos/bulkmakemkv/browse</url>
+
+	<developers>
+		<developer>
+			<name>Gerald Unterrainer</name>
+			<email>psilo@unterrainer.info</email>
+			<organization>Unterrainer Informatik OG</organization>
+			<organizationUrl>http://www.unterrainer.info</organizationUrl>
+		</developer>
+	</developers>
 
 	<properties>
 		<javaVersion>1.8</javaVersion>
@@ -30,8 +40,62 @@
 					<target>${javaVersion}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<additionalparam>-Xdoclint:none</additionalparam>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
+	<licenses>
+		<license>
+			<name>Microsoft Public License</name>
+			<url>http://opensource.org/licenses/MS-PL</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Unterrainer Informatik OG</name>
+		<url>http://www.unterrainer.info</url>
+	</organization>
 
 	<dependencies>
 		<dependency>
