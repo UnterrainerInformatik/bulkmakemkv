@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Tools {
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
+public class Utils {
 
 	public static String normalizeDirectory(String input) {
 		if (input == null || input.equals("")) {
@@ -47,8 +50,8 @@ public class Tools {
 	}
 
 	public static EpisodeNumber scanEpisodeNumber(String input) {
-		List<Match> episodesLongContents = Tools.getPattern(input, FileName.regExEpisodesLong, 0);
-		List<Match> episodesShortContents = Tools.getPattern(input, FileName.regExEpisodesShort, 0);
+		List<Match> episodesLongContents = Utils.getPattern(input, FileName.regExEpisodesLong, 0);
+		List<Match> episodesShortContents = Utils.getPattern(input, FileName.regExEpisodesShort, 0);
 
 		int start = 0;
 		int end = 0;
@@ -58,8 +61,7 @@ public class Tools {
 				start = Integer.parseInt(episodesLongContents.get(0).getMatch().substring(4, 6));
 				end = Integer.parseInt(episodesLongContents.get(0).getMatch().substring(8, 10));
 				ok = true;
-			}
-			catch (NumberFormatException e) {
+			} catch (NumberFormatException e) {
 			}
 		}
 		if (!ok && !episodesShortContents.isEmpty()) {
@@ -67,8 +69,7 @@ public class Tools {
 				start = Integer.parseInt(episodesShortContents.get(0).getMatch().substring(4, 6));
 				end = start;
 				ok = true;
-			}
-			catch (NumberFormatException e) {
+			} catch (NumberFormatException e) {
 			}
 		}
 		if (!ok) {

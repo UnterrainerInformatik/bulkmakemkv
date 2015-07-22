@@ -50,12 +50,12 @@ public class BulkMakeMkv {
 
 		mode = config.getString("mode");
 		if (mode == null || mode.isEmpty()) {
-			Tools.sysout("You have to specify a valid mode!");
+			Utils.sysout("You have to specify a valid mode!");
 			System.exit(1);
 		}
 		mode = mode.toLowerCase();
 		if (!mode.equals("convert") && !mode.equals("scan")) {
-			Tools.sysout("You have to specify a valid mode!");
+			Utils.sysout("You have to specify a valid mode!");
 			System.exit(1);
 		}
 
@@ -65,12 +65,12 @@ public class BulkMakeMkv {
 		if (t != null) {
 			for (String s : t) {
 				if (s != null && !s.equals("")) {
-					isoDirs.add(Tools.normalizeDirectory(s));
+					isoDirs.add(Utils.normalizeDirectory(s));
 				}
 			}
 		}
 		else {
-			Tools.sysout("You have to specify at least a single valid isoDirs value!");
+			Utils.sysout("You have to specify at least a single valid isoDirs value!");
 			System.exit(1);
 		}
 
@@ -85,8 +85,8 @@ public class BulkMakeMkv {
 			}
 		}
 
-		tempDir = Tools.normalizeDirectory(config.getString("tempDir"));
-		mkvDir = Tools.normalizeDirectory(config.getString("mkvDir"));
+		tempDir = Utils.normalizeDirectory(config.getString("tempDir"));
+		mkvDir = Utils.normalizeDirectory(config.getString("mkvDir"));
 
 		// Get parameter observeMkvDirs.
 		t = config.getStringArray("observeMkvDirs");
@@ -95,12 +95,12 @@ public class BulkMakeMkv {
 		if (t != null) {
 			for (String s : t) {
 				if (s != null && !s.equals("")) {
-					observeMkvDirs.add(Tools.normalizeDirectory(s));
+					observeMkvDirs.add(Utils.normalizeDirectory(s));
 				}
 			}
 		}
 		else {
-			Tools.sysout("You have to specify at least a single valid observeMkvDirs value!");
+			Utils.sysout("You have to specify at least a single valid observeMkvDirs value!");
 			System.exit(1);
 		}
 
@@ -129,11 +129,11 @@ public class BulkMakeMkv {
 		if (mode.equals("scan")) {
 			scan();
 		}
-		Tools.sysout("Done.");
+		Utils.sysout("Done.");
 	}
 
 	private static void scan() {
-		Tools.sysout("Scanning... (this may take a while depending on the number and size of your "
+		Utils.sysout("Scanning... (this may take a while depending on the number and size of your "
 				+ "observeMkvDirs directories)");
 
 		List<String> notYetConvertedIsos = new ArrayList<String>();
@@ -176,32 +176,32 @@ public class BulkMakeMkv {
 			wrongNumberOfEpisodes.addAll(v.getWrongNumberOfEpisodes());
 		}
 
-		Tools.sysout("######### SCAN RESULTS: #########");
-		Tools.sysout("Not yet converted ISOs:");
+		Utils.sysout("######### SCAN RESULTS: #########");
+		Utils.sysout("Not yet converted ISOs:");
 		printList(notYetConvertedIsos, "  ");
-		Tools.sysout();
-		Tools.sysout("Empty directories:");
+		Utils.sysout();
+		Utils.sysout("Empty directories:");
 		printList(emptyDirectories, "  ");
-		Tools.sysout();
-		Tools.sysout("Empty files (files with size zero):");
+		Utils.sysout();
+		Utils.sysout("Empty files (files with size zero):");
 		printList(emptyFiles, "  ");
-		Tools.sysout();
-		Tools.sysout("Wrong number of episodes in directory:");
+		Utils.sysout();
+		Utils.sysout("Wrong number of episodes in directory:");
 		printList(wrongNumberOfEpisodes, "  ");
-		Tools.sysout();
+		Utils.sysout();
 
-		Tools.sysout("Done scanning.");
-		Tools.sysout("#################################");
+		Utils.sysout("Done scanning.");
+		Utils.sysout("#################################");
 	}
 
 	private static void printList(List<String> list, String prefix) {
 		for (String s : list) {
-			Tools.sysout(prefix + s);
+			Utils.sysout(prefix + s);
 		}
 	}
 
 	private static void convert() {
-		Tools.sysout("Converting... (this will definitely take a while depending on the number of "
+		Utils.sysout("Converting... (this will definitely take a while depending on the number of "
 				+ "unconverted files in your observeMkvDirs directories)");
 		boolean resetCache = true;
 		for (String isoDir : isoDirs) {
@@ -213,7 +213,7 @@ public class BulkMakeMkv {
 					FileName name = new FileName(file);
 					if (name.getExtension().toLowerCase().equals("iso")) {
 						if (name.isBonusDisc()) {
-							Tools.sysout("skipping: " + name.getName() + " (is bonus disc)");
+							Utils.sysout("skipping: " + name.getName() + " (is bonus disc)");
 							continue;
 						}
 						List<String> p = exists(name, resetCache);
@@ -223,7 +223,7 @@ public class BulkMakeMkv {
 							for (String s : p) {
 								out += "\n    " + s;
 							}
-							Tools.sysout(out);
+							Utils.sysout(out);
 							continue;
 						}
 						if (!name.getEpisodesLongContents().isEmpty() || !name.getEpisodesShortContents().isEmpty()) {
@@ -241,7 +241,7 @@ public class BulkMakeMkv {
 						boolean convert = isoRegExps.isEmpty();
 						if (!convert) {
 							for (String rex : isoRegExps) {
-								List<Match> matches = Tools.getPattern(name.getFile().getName(), rex, 0);
+								List<Match> matches = Utils.getPattern(name.getFile().getName(), rex, 0);
 								if (!matches.isEmpty()) {
 									convert = true;
 									break;
@@ -249,14 +249,14 @@ public class BulkMakeMkv {
 							}
 						}
 						if (!convert) {
-							Tools.sysout("skipping (no regexp match): " + name.getName());
+							Utils.sysout("skipping (no regexp match): " + name.getName());
 							continue;
 						}
-						Tools.sysout("converting: " + name.getName());
+						Utils.sysout("converting: " + name.getName());
 						boolean conversionResult = doConvert(name, isoDir);
 						List<FileName> tempFiles = scanTempDirectory();
 						if (!conversionResult) {
-							Tools.sysout("  FAILED. Deleting temporary files. NOT copying. Source is omitted!");
+							Utils.sysout("  FAILED. Deleting temporary files. NOT copying. Source is omitted!");
 							for (FileName f : tempFiles) {
 								try {
 									Files.delete(f.getFile().toPath());
@@ -272,7 +272,7 @@ public class BulkMakeMkv {
 						}
 					}
 					else {
-						Tools.sysout("skipping: "
+						Utils.sysout("skipping: "
 								+ name.getName()
 								+ " (not an ."
 								+ isoFileExtension.toLowerCase()
@@ -281,14 +281,14 @@ public class BulkMakeMkv {
 				}
 			}
 		}
-		Tools.sysout("Done converting.");
+		Utils.sysout("Done converting.");
 	}
 
 	private static void checkExists(List<String> dirs, String parameterName) {
 		for (String dir : dirs) {
 			File d = new File(dir);
 			if (!d.exists()) {
-				Tools.sysout("The " + parameterName + " you specified [" + d.toString() + "] doesn't exist.");
+				Utils.sysout("The " + parameterName + " you specified [" + d.toString() + "] doesn't exist.");
 				System.exit(1);
 			}
 		}
@@ -317,9 +317,9 @@ public class BulkMakeMkv {
 			}
 		}
 		else {
-			String dirName = Tools.normalizeDirectory(file.getFolderName()).replace("/", "\\");
+			String dirName = Utils.normalizeDirectory(file.getFolderName()).replace("/", "\\");
 			for (Path dir : cache) {
-				String curr = Tools.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
+				String curr = Utils.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
 				if (dirName.toLowerCase().equals(curr.toLowerCase())) {
 					result.add(dir.toString());
 				}
@@ -339,7 +339,7 @@ public class BulkMakeMkv {
 				+ "\" all \""
 				+ tempDir
 				+ "\"";
-		Tools.sysout(command);
+		Utils.sysout(command);
 		return doCommand(command);
 	}
 
@@ -379,10 +379,10 @@ public class BulkMakeMkv {
 		}
 
 		if (!file.getEpisodesLongContents().isEmpty() || !file.getEpisodesShortContents().isEmpty()) {
-			Tools.sysout("This is a TV-show.");
+			Utils.sysout("This is a TV-show.");
 
 			if (sizeSum > file.getSize()) {
-				Tools.sysout("There is more data than in the source-file. Deleting biggest one.");
+				Utils.sysout("There is more data than in the source-file. Deleting biggest one.");
 				// Probably makeMKV has added a 'catch-all'-MKV file containing all data.
 				try {
 					Files.delete(biggest.getFile().toPath());
@@ -438,7 +438,7 @@ public class BulkMakeMkv {
 			}
 		}
 		else {
-			Tools.sysout("This is a movie.");
+			Utils.sysout("This is a movie.");
 			// Just copy the biggest one.
 			String year = "";
 			if (file.getYear() != null) {
@@ -498,7 +498,7 @@ public class BulkMakeMkv {
 			if (!file.isDirectory()) {
 				FileName name = new FileName(file);
 				if (name.getExtension().equals(makeMkvTempFileExtension)) {
-					Tools.sysout("Severe error: There already where temporary files in your temp-directory!");
+					Utils.sysout("Severe error: There already where temporary files in your temp-directory!");
 					System.exit(1);
 				}
 			}
@@ -522,16 +522,16 @@ public class BulkMakeMkv {
 		List<Match> o = null;
 		if (cmdError != null && !cmdError.equals("")) {
 			cmdError = "  " + cmdError.trim().replace("\n", "\n  ").trim();
-			e = Tools.getPattern(cmdError, regExMakeMkvFailedTracks, 0);
+			e = Utils.getPattern(cmdError, regExMakeMkvFailedTracks, 0);
 		}
 		if (cmdOutput != null && !cmdOutput.equals("")) {
 			cmdOutput = "  " + cmdOutput.trim().replace("\n", "\n  ").trim();
-			o = Tools.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
+			o = Utils.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
 		}
 
-		Tools.sysout("  " + exitStatus + "");
-		Tools.sysoutNNNE(cmdOutput);
-		Tools.sysoutNNNE(cmdError);
+		Utils.sysout("  " + exitStatus + "");
+		Utils.sysoutNNNE(cmdOutput);
+		Utils.sysoutNNNE(cmdError);
 
 		return !testFailed(e) && !testFailed(o);
 	}

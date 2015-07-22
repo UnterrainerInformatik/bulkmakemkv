@@ -7,7 +7,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.unterrainer.java.tools.scripting.bulkmakemkv.Tools;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.Utils;
 
 public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 
@@ -16,13 +16,13 @@ public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 	private String			dirName;
 
 	public DirectoryNameEqualsVisitor(String dirName) {
-		this.dirName = Tools.normalizeDirectory(dirName).replace("/", "\\");
+		this.dirName = Utils.normalizeDirectory(dirName).replace("/", "\\");
 	}
 
 	@Override
 	public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
 		cache.add(dir);
-		String curr = Tools.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
+		String curr = Utils.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
 		if (dirName.toLowerCase().equals(curr.toLowerCase())) {
 			result.add(dir.toString());
 		}
