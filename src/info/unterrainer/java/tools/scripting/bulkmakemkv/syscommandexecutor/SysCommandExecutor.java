@@ -27,8 +27,8 @@ import java.util.List;
  */
 public class SysCommandExecutor
 {	
-	private ILogDevice fOuputLogDevice = null;
-	private ILogDevice fErrorLogDevice = null;
+	private LogDevice fOuputLogDevice = null;
+	private LogDevice fErrorLogDevice = null;
 	private String fWorkingDirectory = null;
 	private List<EnvironmentVar> fEnvironmentVarList = null;
 	
@@ -37,12 +37,12 @@ public class SysCommandExecutor
 	private AsyncStreamReader fCmdOutputThread = null;
 	private AsyncStreamReader fCmdErrorThread = null;	
 	
-	public void setOutputLogDevice(ILogDevice logDevice)
+	public void setOutputLogDevice(LogDevice logDevice)
 	{
 		fOuputLogDevice = logDevice;
 	}
 	
-	public void setErrorLogDevice(ILogDevice logDevice)
+	public void setErrorLogDevice(LogDevice logDevice)
 	{
 		fErrorLogDevice = logDevice;
 	}
