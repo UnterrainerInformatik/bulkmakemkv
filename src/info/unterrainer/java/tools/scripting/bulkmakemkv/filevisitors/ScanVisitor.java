@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.unterrainer.java.tools.scripting.bulkmakemkv.EpisodeNumber;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.Tools;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.Utils;
 
 public class ScanVisitor extends SimpleFileVisitor<Path> {
 
@@ -30,11 +30,11 @@ public class ScanVisitor extends SimpleFileVisitor<Path> {
 			emptyDirectories.add(dir.toString());
 		}
 		else {
-			EpisodeNumber ep = Tools.scanEpisodeNumber(dir.getFileName().toString());
+			EpisodeNumber ep = Utils.scanEpisodeNumber(dir.getFileName().toString());
 			if (ep != null) {
 				int count = 0;
 				for (File file : files) {
-					EpisodeNumber fep = Tools.scanEpisodeNumber(file.getName());
+					EpisodeNumber fep = Utils.scanEpisodeNumber(file.getName());
 					if (fep != null) {
 						count += fep.getCount();
 					}

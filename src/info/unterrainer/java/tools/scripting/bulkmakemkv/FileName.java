@@ -43,19 +43,19 @@ public class FileName {
 	}
 
 	private void calculate(String name) {
-		squareBracketContents = Tools.getPattern(name, regExSquareBrackets, 1);
-		roundBracketContents = Tools.getPattern(name, regExRoundBrackets, 1);
+		squareBracketContents = Utils.getPattern(name, regExSquareBrackets, 1);
+		roundBracketContents = Utils.getPattern(name, regExRoundBrackets, 1);
 		calculatedCleanName = name.replaceAll(regExSquareBrackets, "");
 		calculatedCleanName = calculatedCleanName.replaceAll(regExRoundBrackets, "");
 		calculatedCleanName = calculatedCleanName.trim();
 
-		episodesLongContents = Tools.getPattern(calculatedCleanName, regExEpisodesLong, 0);
+		episodesLongContents = Utils.getPattern(calculatedCleanName, regExEpisodesLong, 0);
 		calculatedCleanName = calculatedCleanName.replaceAll(regExEpisodesLong, "");
-		calculatedCleanName = Tools.removeDashTrim(calculatedCleanName);
+		calculatedCleanName = Utils.removeDashTrim(calculatedCleanName);
 
-		episodesShortContents = Tools.getPattern(calculatedCleanName, regExEpisodesShort, 0);
+		episodesShortContents = Utils.getPattern(calculatedCleanName, regExEpisodesShort, 0);
 		calculatedCleanName = calculatedCleanName.replaceAll(regExEpisodesShort, "");
-		calculatedCleanName = Tools.removeDashTrim(calculatedCleanName);
+		calculatedCleanName = Utils.removeDashTrim(calculatedCleanName);
 
 		Calendar now = Calendar.getInstance();
 		for (Match m : roundBracketContents) {

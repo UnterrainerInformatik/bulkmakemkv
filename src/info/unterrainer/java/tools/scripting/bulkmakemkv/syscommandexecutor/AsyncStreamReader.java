@@ -10,11 +10,11 @@ class AsyncStreamReader extends Thread
 	private StringBuffer fBuffer = null;
 	private InputStream fInputStream = null;
 	private boolean fStop = false;
-	private ILogDevice fLogDevice = null;
+	private LogDevice fLogDevice = null;
 	
 	private String fNewLine = null;
 	
-	public AsyncStreamReader(InputStream inputStream, StringBuffer buffer, ILogDevice logDevice, String threadId)
+	public AsyncStreamReader(InputStream inputStream, StringBuffer buffer, LogDevice logDevice, String threadId)
 	{
 		fInputStream = inputStream;
 		fBuffer = buffer;
