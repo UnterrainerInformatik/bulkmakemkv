@@ -21,13 +21,26 @@
 # Disclaimer
 
 This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
-In order to get help with basic GIT commands you may try [the GIT cheat-sheet][2] on our [homepage][1].
+In order to get help with basic GIT commands you may try [the GIT cheat-sheet][coding] on our [homepage][homepage].  
+
+All of our projects facilitate the [Project Lombok][lombok]. So please download it and 'install' it in your preferred IDE by clicking on the downloaded jar-file. Then all compile-errors should vanish.  
+We use the following parts of Project Lombok:  
+
+* @Data
+* @Getter/@Setter
+* @Builder
+* @NoArgsConstructor/@AllArgsConstructor
+* @UtilityClass *(experimental - outlook: positive)*
+* @Accessors *(experimental - outlook: positive)*
+* @ExtensionMethos *(experimental - outlook: positive)*
+
+**Beware:** Project Lombok currently doesn't play well with Eclipse Mars (4.5). You'll get build-errors using the extension methods as of now.
 
 # BulkMakeMKV
 
 MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).
 
-You may get it from here [makeMKV][3]. You will need it in order to use this tool.  
+You may get it from here [makeMKV][makemkv]. You will need it in order to use this tool.  
 
 The program is used by starting the jar-file (located in the `target` directory of the project). The program is configurated using the file `config.properties` which it will expect to find next to itself (the same directory or on the path).
 
@@ -167,6 +180,6 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 *Resulting target-folder / file-name:*  
 `\Avatar - The Last Airbender - s01e14\Avatar - The Last Airbender - s01e014.mkv`  
 
-[1]: http://www.unterrainer.info
-[2]: http://www.unterrainer.info/Home/Coding
-[3]: http://www.makemkv.com/
+[homepage]: http://www.unterrainer.info
+[coding]: http://www.unterrainer.info/Home/Coding
+[makemkv]: http://www.makemkv.com/
