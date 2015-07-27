@@ -19,12 +19,19 @@
 		</developer>
 	</developers>
 
-	<properties>
-		<javaVersion>1.8</javaVersion>
-		<project.compile.sourceEncoding>UTF-8</project.compile.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+	<distributionManagement>
+		<site>
+			<id>github-project-site</id>
+			<name>GitHub Project Pages</name>
+			<url>gitsite:https://github.com/UnterrainerInformatik/bulkmakemkv</url>
+		</site>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:https://github.com/UnterrainerInformatik/bulkmakemkv</connection>
+		<developerConnection>scm:git:https://guFalcon@github.com/UnterrainerInformatik/bulkmakemkv</developerConnection>
+		<url>https://github.com/UnterrainerInformatik/bulkmakemkv</url>
+	</scm>
 
 	<build>
 		<sourceDirectory>${project.basedir}\src</sourceDirectory>
