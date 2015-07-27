@@ -23,16 +23,10 @@
 This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
 In order to get help with basic GIT commands you may try [the GIT cheat-sheet][coding] on our [homepage][homepage].  
 
-All of our projects facilitate the [Project Lombok][lombok]. So please download it and 'install' it in your preferred IDE by clicking on the downloaded jar-file. Then all compile-errors should vanish.  
-We use the following parts of Project Lombok:  
+This repository is private since this is the master- and release-branch. You may clone it, but it will be read-only.  
+If you want to contribute to our repository (push, open pull requests), please use the copy on github located here: [the public github repository][github]
 
-* @Data
-* @Getter/@Setter
-* @Builder
-* @NoArgsConstructor/@AllArgsConstructor
-* @UtilityClass *(experimental - outlook: positive)*
-* @Accessors *(experimental - outlook: positive)*
-* @ExtensionMethos *(experimental - outlook: positive)*
+All of our projects facilitate the [Project Lombok][lombok]. So please download it and 'install' it in your preferred IDE by clicking on the downloaded jar-file. Then all compile-errors should vanish.  
 
 **Beware:** Project Lombok currently doesn't play well with Eclipse Mars (4.5). You'll get build-errors using the extension methods as of now.
 
@@ -183,3 +177,4 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
 [makemkv]: http://www.makemkv.com/
+[github] : https://github.com/UnterrainerInformatik/bulkmakemkv
