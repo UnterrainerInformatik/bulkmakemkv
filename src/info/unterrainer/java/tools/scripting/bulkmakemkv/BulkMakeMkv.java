@@ -30,6 +30,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -491,16 +493,19 @@ public class BulkMakeMkv {
 			e.printStackTrace();
 		}
 
+		@Nullable
 		String cmdError = cmdExecutor.getCommandError();
 		String cmdOutput = cmdExecutor.getCommandOutput();
 
+		@Nullable
 		List<Match> e = null;
+		@Nullable
 		List<Match> o = null;
-		if (cmdError != null && !cmdError.equals("")) {
+		if (!cmdError.equals("")) {
 			cmdError = "  " + cmdError.trim().replace("\n", "\n  ").trim();
 			e = Utils.getPattern(cmdError, regExMakeMkvFailedTracks, 0);
 		}
-		if (cmdOutput != null && !cmdOutput.equals("")) {
+		if (!cmdOutput.equals("")) {
 			cmdOutput = "  " + cmdOutput.trim().replace("\n", "\n  ").trim();
 			o = Utils.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
 		}
