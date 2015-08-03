@@ -1,4 +1,27 @@
+/**************************************************************************
+ * <pre>
+ *
+ * Copyright (c) Unterrainer Informatik OG.
+ * This source is subject to the Microsoft Public License.
+ *
+ * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+ * All other rights reserved.
+ *
+ * (In other words you may copy, use, change and redistribute it without
+ * any restrictions except for not suing me because it broke something.)
+ *
+ * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+ * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ * </pre>
+ ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
+
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,44 +30,40 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
-
 public class BulkMakeMkv {
 
-	public static final String		regExMakeMkvFailedTracks	= "Copy complete\\. [\\d+] titles saved"
-																		+ ", ([\\d+]) failed\\.";
+	public static final String regExMakeMkvFailedTracks = "Copy complete\\. [\\d+] titles saved" + ", ([\\d+]) failed\\.";
 
-	private static Configuration	config;
+	private static Configuration config;
 
-	private static String			mode;
-	private static List<String>		isoDirs;
-	private static List<String>		isoRegExps;
-	private static String			tempDir;
-	private static String			mkvDir;
-	private static List<String>		observeMkvDirs;
+	private static String mode;
+	private static List<String> isoDirs;
+	private static List<String> isoRegExps;
+	private static String tempDir;
+	private static String mkvDir;
+	private static List<String> observeMkvDirs;
 
-	private static boolean			convertShows;
-	private static boolean			convertMovies;
+	private static boolean convertShows;
+	private static boolean convertMovies;
 
-	private static String			isoFileExtension;
-	private static String			mkvFileExtension;
+	private static String isoFileExtension;
+	private static String mkvFileExtension;
 
-	private static String			makeMkvCommand;
-	private static String			makeMkvTempFileExtension;
+	private static String makeMkvCommand;
+	private static String makeMkvTempFileExtension;
 
-	private static List<Path>		cache;
+	private static List<Path> cache;
 
 	public static void main(String[] args) {
 		try {
 			config = new PropertiesConfiguration(new File("config.properties"));
-		}
-		catch (ConfigurationException e) {
+		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
 
@@ -68,8 +87,7 @@ public class BulkMakeMkv {
 					isoDirs.add(Utils.normalizeDirectory(s));
 				}
 			}
-		}
-		else {
+		} else {
 			Utils.sysout("You have to specify at least a single valid isoDirs value!");
 			System.exit(1);
 		}
@@ -98,8 +116,7 @@ public class BulkMakeMkv {
 					observeMkvDirs.add(Utils.normalizeDirectory(s));
 				}
 			}
-		}
-		else {
+		} else {
 			Utils.sysout("You have to specify at least a single valid observeMkvDirs value!");
 			System.exit(1);
 		}
@@ -133,8 +150,7 @@ public class BulkMakeMkv {
 	}
 
 	private static void scan() {
-		Utils.sysout("Scanning... (this may take a while depending on the number and size of your "
-				+ "observeMkvDirs directories)");
+		Utils.sysout("Scanning... (this may take a while depending on the number and size of your " + "observeMkvDirs directories)");
 
 		List<String> notYetConvertedIsos = new ArrayList<String>();
 		boolean resetCache = true;
@@ -167,8 +183,7 @@ public class BulkMakeMkv {
 			ScanVisitor v = new ScanVisitor(mkvFileExtension);
 			try {
 				Files.walkFileTree(new File(s).toPath(), v);
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			emptyDirectories.addAll(v.getEmptyDirectories());
@@ -201,8 +216,7 @@ public class BulkMakeMkv {
 	}
 
 	private static void convert() {
-		Utils.sysout("Converting... (this will definitely take a while depending on the number of "
-				+ "unconverted files in your observeMkvDirs directories)");
+		Utils.sysout("Converting... (this will definitely take a while depending on the number of " + "unconverted files in your observeMkvDirs directories)");
 		boolean resetCache = true;
 		for (String isoDir : isoDirs) {
 			File iso = new File(isoDir);
@@ -231,8 +245,7 @@ public class BulkMakeMkv {
 							if (!convertShows) {
 								continue;
 							}
-						}
-						else {
+						} else {
 							// This is a movie.
 							if (!convertMovies) {
 								continue;
@@ -260,23 +273,16 @@ public class BulkMakeMkv {
 							for (FileName f : tempFiles) {
 								try {
 									Files.delete(f.getFile().toPath());
-								}
-								catch (IOException e) {
+								} catch (IOException e) {
 									e.printStackTrace();
 								}
 							}
-						}
-						else {
+						} else {
 							moveAndRename(name, tempFiles);
 							resetCache = true;
 						}
-					}
-					else {
-						Utils.sysout("skipping: "
-								+ name.getName()
-								+ " (not an ."
-								+ isoFileExtension.toLowerCase()
-								+ " file)");
+					} else {
+						Utils.sysout("skipping: " + name.getName() + " (not an ." + isoFileExtension.toLowerCase() + " file)");
 					}
 				}
 			}
@@ -308,15 +314,13 @@ public class BulkMakeMkv {
 				DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName());
 				try {
 					Files.walkFileTree(new File(s).toPath(), v);
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 				result.addAll(v.getResult());
 				cache.addAll(v.getCache());
 			}
-		}
-		else {
+		} else {
 			String dirName = Utils.normalizeDirectory(file.getFolderName()).replace("/", "\\");
 			for (Path dir : cache) {
 				String curr = Utils.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
@@ -329,16 +333,7 @@ public class BulkMakeMkv {
 	}
 
 	private static boolean doConvert(FileName file, String isoDir) {
-		String command = "\""
-				+ makeMkvCommand
-				+ "\" mkv iso:\""
-				+ isoDir
-				+ file.getName()
-				+ "."
-				+ file.getExtension()
-				+ "\" all \""
-				+ tempDir
-				+ "\"";
+		String command = "\"" + makeMkvCommand + "\" mkv iso:\"" + isoDir + file.getName() + "." + file.getExtension() + "\" all \"" + tempDir + "\"";
 		Utils.sysout(command);
 		return doCommand(command);
 	}
@@ -372,8 +367,7 @@ public class BulkMakeMkv {
 		String dString = (d.toPath() + "/").replace("/", "\\");
 		try {
 			Files.createDirectory(d.toPath());
-		}
-		catch (IOException e1) {
+		} catch (IOException e1) {
 			e1.printStackTrace();
 			System.exit(1);
 		}
@@ -385,9 +379,10 @@ public class BulkMakeMkv {
 				Utils.sysout("There is more data than in the source-file. Deleting biggest one.");
 				// Probably makeMKV has added a 'catch-all'-MKV file containing all data.
 				try {
-					Files.delete(biggest.getFile().toPath());
-				}
-				catch (IOException e) {
+					if (biggest != null) {
+						Files.delete(biggest.getFile().toPath());
+					}
+				} catch (IOException e) {
 					e.printStackTrace();
 					System.exit(1);
 				}
@@ -409,35 +404,25 @@ public class BulkMakeMkv {
 				try {
 					start = "- s" + file.getEpisodesLongContents().get(0).getGroups().get(0) + "e";
 					i = Integer.parseInt(file.getEpisodesLongContents().get(0).getGroups().get(1));
-				}
-				catch (NumberFormatException e) {
+				} catch (NumberFormatException e) {
 				}
 			}
 			if (!file.getEpisodesShortContents().isEmpty()) {
 				try {
 					start = "- s" + file.getEpisodesShortContents().get(0).getGroups().get(0) + "e";
 					i = Integer.parseInt(file.getEpisodesShortContents().get(0).getGroups().get(1));
-				}
-				catch (NumberFormatException e) {
+				} catch (NumberFormatException e) {
 				}
 			}
 			for (FileName f : tempFiles) {
 				try {
-					Files.move(f.getFile().toPath(), (new File(dString
-							+ file.getFileName()
-							+ " "
-							+ start
-							+ makeTwoDigits(i)
-							+ "."
-							+ mkvFileExtension)).toPath());
+					Files.move(f.getFile().toPath(), new File(dString + file.getFileName() + " " + start + makeTwoDigits(i) + "." + mkvFileExtension).toPath());
 					i++;
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-		}
-		else {
+		} else {
 			Utils.sysout("This is a movie.");
 			// Just copy the biggest one.
 			String year = "";
@@ -445,18 +430,14 @@ public class BulkMakeMkv {
 				year = " (" + file.getYear() + ")";
 			}
 			try {
-				Files.move(biggest.getFile().toPath(), (new File(dString
-						+ file.getFileName()
-						+ year
-						+ "."
-						+ mkvFileExtension)).toPath());
-				tempFiles.remove(biggest);
-
+				if (biggest != null) {
+					Files.move(biggest.getFile().toPath(), new File(dString + file.getFileName() + year + "." + mkvFileExtension).toPath());
+					tempFiles.remove(biggest);
+				}
 				for (FileName f : tempFiles) {
 					Files.delete(f.getFile().toPath());
 				}
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -474,8 +455,7 @@ public class BulkMakeMkv {
 		if (!tDir.exists()) {
 			try {
 				Files.createDirectory(tDir.toPath());
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(1);
 			}
@@ -487,8 +467,7 @@ public class BulkMakeMkv {
 		if (!tDir.exists()) {
 			try {
 				Files.createDirectory(tDir.toPath());
-			}
-			catch (IOException e) {
+			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(1);
 			}
@@ -510,21 +489,23 @@ public class BulkMakeMkv {
 		int exitStatus = 0;
 		try {
 			exitStatus = cmdExecutor.runCommand(command);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		@Nullable
 		String cmdError = cmdExecutor.getCommandError();
 		String cmdOutput = cmdExecutor.getCommandOutput();
 
+		@Nullable
 		List<Match> e = null;
+		@Nullable
 		List<Match> o = null;
-		if (cmdError != null && !cmdError.equals("")) {
+		if (!cmdError.equals("")) {
 			cmdError = "  " + cmdError.trim().replace("\n", "\n  ").trim();
 			e = Utils.getPattern(cmdError, regExMakeMkvFailedTracks, 0);
 		}
-		if (cmdOutput != null && !cmdOutput.equals("")) {
+		if (!cmdOutput.equals("")) {
 			cmdOutput = "  " + cmdOutput.trim().replace("\n", "\n  ").trim();
 			o = Utils.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
 		}
@@ -545,8 +526,7 @@ public class BulkMakeMkv {
 				if (i > 0) {
 					return true;
 				}
-			}
-			catch (NumberFormatException ex) {
+			} catch (NumberFormatException ex) {
 			}
 		}
 		return false;

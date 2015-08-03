@@ -10,7 +10,7 @@
 	<description>Using this tool you may convert multiple ISO-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
 	<url>https://www.unterrainer.info:8443/projects/JAV/repos/bulkmakemkv/browse</url>
 
-	<developers>
+	<developers> 
 		<developer>
 			<name>Gerald Unterrainer</name>
 			<email>psilo@unterrainer.info</email>
@@ -63,6 +63,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
+					<useStandardDocletOptions>false</useStandardDocletOptions>
 					<additionalparam>-Xdoclint:none</additionalparam>
 				</configuration>
 				<executions>
@@ -105,6 +106,13 @@
 	</organization>
 
 	<dependencies>
+		<dependency>
+			<groupId>info.unterrainer.java.tools</groupId>
+			<artifactId>nullannotations</artifactId>
+			<version>0.2</version>
+			<optional>true</optional>
+			<!-- for annotations only -->
+		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
