@@ -19,6 +19,8 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
+import info.unterrainer.java.tools.utils.NullUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +29,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Nullable;
+
+import lombok.experimental.ExtensionMethod;
+
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Usage of following class can go as ...
@@ -49,7 +55,7 @@ import javax.annotation.Nullable;
  * <CODE>
  * 		SysCommandExecutor cmdExecutor = new SysCommandExecutor();
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
- * 
+ *
  * 		String cmdError = cmdExecutor.getCommandError();
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
@@ -57,15 +63,25 @@ import javax.annotation.Nullable;
  *
  * </P>
  */
+
+@ExtensionMethod({ NullUtils.class })
 public class SysCommandExecutor {
+	@Nullable
 	private LogDevice fOuputLogDevice;
+	@Nullable
 	private LogDevice fErrorLogDevice;
+	@Nullable
 	private String fWorkingDirectory;
+	@Nullable
 	private List<EnvironmentVar> fEnvironmentVarList;
 
+	@Nullable
 	private StringBuffer fCmdOutput;
+	@Nullable
 	private StringBuffer fCmdError;
+	@Nullable
 	private AsyncStreamReader fCmdOutputThread;
+	@Nullable
 	private AsyncStreamReader fCmdErrorThread;
 
 	public void setOutputLogDevice(LogDevice logDevice) {
@@ -85,15 +101,21 @@ public class SysCommandExecutor {
 			fEnvironmentVarList = new ArrayList<EnvironmentVar>();
 		}
 
-		fEnvironmentVarList.add(new EnvironmentVar(name, value));
+		fEnvironmentVarList.noNull().add(new EnvironmentVar(name, value));
 	}
 
 	public String getCommandOutput() {
-		return fCmdOutput.toString();
+		if (fCmdOutput == null) {
+			return StringUtils.EMPTY;
+		}
+		return fCmdOutput.noNull().toString();
 	}
 
 	public String getCommandError() {
-		return fCmdError.toString();
+		if (fCmdError == null) {
+			return StringUtils.EMPTY;
+		}
+		return fCmdError.noNull().toString();
 	}
 
 	public int runCommand(String commandLine) throws Exception {
@@ -132,17 +154,17 @@ public class SysCommandExecutor {
 
 	private void startOutputAndErrorReadThreads(InputStream processOut, InputStream processErr) {
 		fCmdOutput = new StringBuffer();
-		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput, fOuputLogDevice, "OUTPUT");
+		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice.noNull(), "OUTPUT");
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
-		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError, fErrorLogDevice, "ERROR");
+		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError.noNull(), fErrorLogDevice.noNull(), "ERROR");
 		fCmdErrorThread.start();
 	}
 
 	private void notifyOutputAndErrorReadThreadsToStopReading() {
-		fCmdOutputThread.stopReading();
-		fCmdErrorThread.stopReading();
+		fCmdOutputThread.noNull().stopReading();
+		fCmdErrorThread.noNull().stopReading();
 	}
 
 	@Nullable
@@ -151,8 +173,8 @@ public class SysCommandExecutor {
 			return new String[0];
 		}
 
-		String[] envTokenArray = new String[fEnvironmentVarList.size()];
-		Iterator<EnvironmentVar> envVarIter = fEnvironmentVarList.iterator();
+		String[] envTokenArray = new String[fEnvironmentVarList.noNull().size()];
+		Iterator<EnvironmentVar> envVarIter = fEnvironmentVarList.noNull().iterator();
 		int nEnvVarIndex = 0;
 		while (envVarIter.hasNext() == true) {
 			EnvironmentVar envVar = envVarIter.next();

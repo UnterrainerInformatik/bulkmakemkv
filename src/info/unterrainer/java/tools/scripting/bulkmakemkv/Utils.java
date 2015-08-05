@@ -1,3 +1,22 @@
+/**************************************************************************
+ * <pre>
+ *
+ * Copyright (c) Unterrainer Informatik OG.
+ * This source is subject to the Microsoft Public License.
+ *
+ * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
+ * All other rights reserved.
+ *
+ * (In other words you may copy, use, change and redistribute it without
+ * any restrictions except for not suing me because it broke something.)
+ *
+ * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+ * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+ * PURPOSE.
+ *
+ * </pre>
+ ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 import java.util.ArrayList;
@@ -5,21 +24,25 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Nullable;
+
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Utils {
 
-	public static String normalizeDirectory(String input) {
+	@Nullable
+	public static String normalizeDirectory(@Nullable String input) {
 		if (input == null || input.equals("")) {
 			return input;
 		}
 
 		String result = input.replace('\\', '/');
-		return (result.endsWith("/")) ? result : result + "/";
+		return result.endsWith("/") ? result : result + "/";
 	}
 
-	public static String removeDashTrim(String text) {
+	@Nullable
+	public static String removeDashTrim(@Nullable String text) {
 		if (text == null || text.equals("")) {
 			return text;
 		}
@@ -49,6 +72,7 @@ public class Utils {
 		return result;
 	}
 
+	@Nullable
 	public static EpisodeNumber scanEpisodeNumber(String input) {
 		List<Match> episodesLongContents = Utils.getPattern(input, FileName.regExEpisodesLong, 0);
 		List<Match> episodesShortContents = Utils.getPattern(input, FileName.regExEpisodesShort, 0);
@@ -78,13 +102,13 @@ public class Utils {
 		return new EpisodeNumber(start, end, end - start + 1);
 	}
 
-	public static void sysoutNN(String input) {
+	public static void sysoutNN(@Nullable String input) {
 		if (input != null) {
 			sysout(input);
 		}
 	}
 
-	public static void sysoutNNNE(String input) {
+	public static void sysoutNNNE(@Nullable String input) {
 		if (input != null && !input.equals("")) {
 			sysout(input);
 		}
