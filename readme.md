@@ -36,6 +36,7 @@ MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as 
 
 You may get it from here [makeMKV][makemkv]. You will need it in order to use this tool.  
 
+The program BulkMakeMKV eases the task of bulk-converting those rips from various directories into various other directories. It checks if those MKV-files exist for existing rips, converting only missing ones on startup.  
 The program is used by starting the jar-file (located in the `target` directory of the project). The program is configurated using the file `config.properties` which it will expect to find next to itself (the same directory or on the path).
 
 Start the program, as you would start any jar by typing:
