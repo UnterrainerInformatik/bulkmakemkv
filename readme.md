@@ -58,7 +58,7 @@ Here is an example of a config-file. I like to think it is very self-descriptive
 # at your disposal which are described in detail below.
 #
 # Currently supported modes are:
-#  scan    		Don't do a conversion but only scan target-directories
+#  scan        	Don't do a conversion but only scan target-directories
 #				for peculiar things (zero-size files, empty directories,
 #				etc...) and display a summary at the end.
 #  convert		Do a real conversion of all files and scan afterwards.
@@ -178,4 +178,5 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
 [makemkv]: http://www.makemkv.com/
-[github] : https://github.com/UnterrainerInformatik/bulkmakemkv
+[lombok]: https://projectlombok.org
+[github]: https://github.com/UnterrainerInformatik/bulkmakemkv

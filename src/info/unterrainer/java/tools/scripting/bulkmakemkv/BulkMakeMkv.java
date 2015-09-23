@@ -22,6 +22,7 @@ package info.unterrainer.java.tools.scripting.bulkmakemkv;
 import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
 import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
 import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
+import info.unterrainer.java.tools.utils.NullUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,10 +31,17 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import lombok.experimental.ExtensionMethod;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
+@ExtensionMethod({ NullUtils.class })
+@ParametersAreNonnullByDefault({})
 public class BulkMakeMkv {
 
 	public static final String regExMakeMkvFailedTracks = "Copy complete\\. [\\d+] titles saved" + ", ([\\d+]) failed\\.";
@@ -309,7 +317,7 @@ public class BulkMakeMkv {
 		if (reset) {
 			cache.clear();
 			for (String s : observeMkvDirs) {
-				DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName());
+				DirectoryNameEqualsVisitor v = new DirectoryNameEqualsVisitor(file.getFolderName().noNull());
 				try {
 					Files.walkFileTree(new File(s).toPath(), v);
 				} catch (IOException e) {
@@ -491,16 +499,19 @@ public class BulkMakeMkv {
 			e.printStackTrace();
 		}
 
+		@Nullable
 		String cmdError = cmdExecutor.getCommandError();
 		String cmdOutput = cmdExecutor.getCommandOutput();
 
+		@Nullable
 		List<Match> e = null;
+		@Nullable
 		List<Match> o = null;
-		if (cmdError != null && !cmdError.equals("")) {
+		if (!cmdError.equals("")) {
 			cmdError = "  " + cmdError.trim().replace("\n", "\n  ").trim();
 			e = Utils.getPattern(cmdError, regExMakeMkvFailedTracks, 0);
 		}
-		if (cmdOutput != null && !cmdOutput.equals("")) {
+		if (!cmdOutput.equals("")) {
 			cmdOutput = "  " + cmdOutput.trim().replace("\n", "\n  ").trim();
 			o = Utils.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
 		}
