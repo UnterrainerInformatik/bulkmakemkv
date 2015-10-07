@@ -64,6 +64,8 @@ public class BulkMakeMkv {
 	private static String makeMkvCommand;
 	private static String makeMkvTempFileExtension;
 
+	private static String os;
+
 	private static List<Path> cache;
 
 	public static void main(String[] args) {
@@ -82,6 +84,11 @@ public class BulkMakeMkv {
 		if (!mode.equals("convert") && !mode.equals("scan")) {
 			Utils.sysout("You have to specify a valid mode!");
 			System.exit(1);
+		}
+
+		os = config.getString("os");
+		if (os == null || os.isEmpty() || !os.equals("mac")) {
+			os = "windows";
 		}
 
 		// Get parameter isoDirs.
@@ -340,6 +347,13 @@ public class BulkMakeMkv {
 
 	private static boolean doConvert(FileName file, String isoDir) {
 		String command = "\"" + makeMkvCommand + "\" mkv iso:\"" + isoDir + file.getName() + "." + file.getExtension() + "\" all \"" + tempDir + "\"";
+		if (os.equals("mac")) {
+			command = makeMkvCommand.replace(" ", "\\ ")
+					+ " mkv iso:"
+					+ (isoDir + file.getName() + "." + file.getExtension()).replace(" ", "\\ ")
+					+ " all "
+					+ tempDir.replace(" ", "\\ ");
+		}
 		Utils.sysout(command);
 		return doCommand(command);
 	}
