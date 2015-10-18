@@ -118,6 +118,16 @@ public class Utils {
 		System.out.println(input);
 	}
 
+	public static void sysout(String[] input) {
+		for (int i = 0; i < input.length; i++) {
+			if (i > 0) {
+				System.out.print(" ");
+			}
+			System.out.print(input[i]);
+		}
+		System.out.println();
+	}
+
 	public static void sysout() {
 		System.out.println();
 	}

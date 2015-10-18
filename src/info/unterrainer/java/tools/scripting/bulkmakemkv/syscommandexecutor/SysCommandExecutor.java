@@ -55,7 +55,7 @@ import org.apache.commons.lang.StringUtils;
  * <CODE>
  * 		SysCommandExecutor cmdExecutor = new SysCommandExecutor();
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
- *
+ * 
  * 		String cmdError = cmdExecutor.getCommandError();
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
@@ -154,11 +154,11 @@ public class SysCommandExecutor {
 
 	private void startOutputAndErrorReadThreads(InputStream processOut, InputStream processErr) {
 		fCmdOutput = new StringBuffer();
-		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice.noNull(), "OUTPUT");
+		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice, "OUTPUT");
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
-		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError.noNull(), fErrorLogDevice.noNull(), "ERROR");
+		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError.noNull(), fErrorLogDevice, "ERROR");
 		fCmdErrorThread.start();
 	}
 
