@@ -58,17 +58,20 @@ Here is an example of a config-file. I like to think it is very self-descriptive
 # at your disposal which are described in detail below.
 #
 # Currently supported modes are:
-#  scan        	Don't do a conversion but only scan target-directories
+#  scan            Don't do a conversion but only scan target-directories
 #				for peculiar things (zero-size files, empty directories,
 #				etc...) and display a summary at the end.
 #  convert		Do a real conversion of all files and scan afterwards.
 mode = scan
 
+# This option manipulates escaping when it comes to paths. Use windows or mac.
+os = windows
+
 # The directories where your ISO-files are located.
 #
 # If you want to specify more than one, just add another isoDirs-parameter
 # (same name) below the current one.
-isoDirs = \\\\computername\\f$
+isoDirs = //computername/f$
 
 # This is the temporary directory which is used when makeMKV is working.
 # Be sure it doesn't contain files named "title<NN>.mkv" (the program 
@@ -78,11 +81,11 @@ isoDirs = \\\\computername\\f$
 # It stands to reason for this directory to be on the same drive as the
 # mkvDir, since the copy-process won't involve any real data-transfer this
 # way.
-tempDir = \\\\computername\\Movies1\\temp
+tempDir = //computername/Movies1/temp
 
 # This is the directory where the program will create the right directories 
 # in containing the resulting MKV-files.
-mkvDir = d\:\\temp\\VIDEO\\mkv
+mkvDir = d:/temp/VIDEO/mkv
 
 # This is a list of directories the program will look for already converted
 # MKV-files in. The directories will be searched recursively.
@@ -90,14 +93,14 @@ mkvDir = d\:\\temp\\VIDEO\\mkv
 #
 # If you want to specify more than one, just add another observeMkvDirs-
 # parameter (same name) below the current one.
-observeMkvDirs = \\\\computername\\Movies1\\SERIES
-observeMkvDirs = \\\\computername\\Movies1\\SERIES_18
-observeMkvDirs = \\\\computername\\Movies1\\MOVIES
-observeMkvDirs = \\\\computername\\Movies1\\MOVIES_18
-observeMkvDirs = \\\\computername\\Movies2\\SERIES
-observeMkvDirs = \\\\computername\\Movies2\\SERIES_18
-observeMkvDirs = \\\\computername\\Movies2\\MOVIES
-observeMkvDirs = \\\\computername\\Movies2\\MOVIES_18
+observeMkvDirs = //computername/Movies1/SERIES
+observeMkvDirs = //computername/Movies1/SERIES_18
+observeMkvDirs = //computername/Movies1/MOVIES
+observeMkvDirs = //computername/Movies1/MOVIES_18
+observeMkvDirs = //computername/Movies2/SERIES
+observeMkvDirs = //computername/Movies2/SERIES_18
+observeMkvDirs = //computername/Movies2/MOVIES
+observeMkvDirs = //computername/Movies2/MOVIES_18
 
 # If set to true, then all series are converted. If not present or set to
 # false, all series are omitted.
@@ -139,23 +142,23 @@ The script doesn't convert bonus-discs. A bonus disc is identified by a trailing
 *ISO-file name:* (normal DVD/BR)  
 `A Crime [A Crime - Spaete Rache] (o).iso`  
 *Resulting target-folder / file-name:*  
-`\A Crime [A Crime - Spaete Rache]\A Crime.mkv`  
+`/A Crime [A Crime - Spaete Rache]/A Crime.mkv`  
 
 *ISO-file name:* (normal DVD/BR bonus disc)  
 `A Crime [A Crime - Spaete Rache] - bonus (o).iso` or  
 `A Crime Bonus [A Crime - Spaete Rache] (o).iso`  
 *Resulting target-folder / file-name:*  
-`\A Crime [A Crime - Spaete Rache]\A Crime.mkv`  
+`/A Crime [A Crime - Spaete Rache]/A Crime.mkv`  
 
 *ISO-file name:* (normal DVD/BR)  
 `Dogma (c) (german).iso`  
 *Resulting target-folder / file-name:*  
-`\Dogma (german)\Dogma (german).mkv`  
+`/Dogma (german)/Dogma (german).mkv`  
 
 *ISO-file name:* (two-sided DVD/BR)  
 `Analyze This [Reine Nervensache] (side A) (o).iso`  
 *Resulting target-folder / file-name:*  
-`\Analyze This [Reine Nervensache] (side A)\Analyze This (side A).mkv`  
+`/Analyze This [Reine Nervensache] (side A)/Analyze This (side A).mkv`  
 
 #### TV-Series Only  
 In order for the program to recognize a file as part of a series, you have to add a string in the form of:
@@ -165,15 +168,15 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 *ISO-file name:* (multiple episodes on disc)  
 `Avatar - The Last Airbender - s01e05-e08 (c).iso`  
 *Resulting target-folder / file-names:*  
-`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e05.mkv`  
-`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e06.mkv`  
-`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e07.mkv`  
-`\Avatar - The Last Airbender - s01e05-e08\Avatar - The Last Airbender - s01e08.mkv`  
+`/Avatar - The Last Airbender - s01e05-e08/Avatar - The Last Airbender - s01e05.mkv`  
+`/Avatar - The Last Airbender - s01e05-e08/Avatar - The Last Airbender - s01e06.mkv`  
+`/Avatar - The Last Airbender - s01e05-e08/Avatar - The Last Airbender - s01e07.mkv`  
+`/Avatar - The Last Airbender - s01e05-e08/Avatar - The Last Airbender - s01e08.mkv`  
 
 *ISO-file name:* (single episode on disc)  
 `Avatar - The Last Airbender - s01e14 (c).iso`  
 *Resulting target-folder / file-name:*  
-`\Avatar - The Last Airbender - s01e14\Avatar - The Last Airbender - s01e014.mkv`  
+`/Avatar - The Last Airbender - s01e14/Avatar - The Last Airbender - s01e014.mkv`  
 
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
