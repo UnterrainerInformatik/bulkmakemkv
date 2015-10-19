@@ -69,6 +69,12 @@ os = windows
 
 # The directories where your ISO-files are located.
 #
+# IMPORTANT FOR ALL PATH-SPECIFICATIONS:
+# Always use forward slashes ('/') like in the examples below!
+# Don't ever use backslashes ('\') since there are multiple issues with the
+# JVM on different systems (non-windows) causing the command-line calls
+# to fail!
+#
 # If you want to specify more than one, just add another isoDirs-parameter
 # (same name) below the current one.
 isoDirs = //computername/f$
