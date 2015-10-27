@@ -39,6 +39,9 @@ You may get it from here [makeMKV][makemkv]. You will need it in order to use th
 The program BulkMakeMKV eases the task of bulk-converting those rips from various directories into various other directories. It checks if those MKV-files exist for existing rips, converting only missing ones on startup.  
 The program is used by starting the jar-file (located in the `target` directory of the project). The program is configurated using the file `config.properties` which it will expect to find next to itself (the same directory or on the path).
 
+First, you'll need the Java **JRE version 1.8** (**Java SE 8**) or higher.
+Make sure that java.exe is on your path, or start the following commands with the path to your java installation (the `/bin` directory of the one you've just downloaded).
+
 Start the program, as you would start any jar by typing:
 ```
 java -jar bulkMakeMkv.jar
@@ -59,7 +62,7 @@ Here is an example of a config-file. I like to think it is very self-descriptive
 #
 # Currently supported modes are:
 #  scan            Don't do a conversion but only scan target-directories
-#				for peculiar things (zero-size files, empty directories,
+#    			for peculiar things (zero-size files, empty directories,
 #				etc...) and display a summary at the end.
 #  convert		Do a real conversion of all files and scan afterwards.
 mode = scan
