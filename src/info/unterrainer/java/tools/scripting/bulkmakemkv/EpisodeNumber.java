@@ -1,9 +1,9 @@
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 public class EpisodeNumber {
-	private int	start;
-	private int	end;
-	private int	count;
+	private int start;
+	private int end;
+	private int count;
 
 	public EpisodeNumber(int start, int end, int count) {
 		super();
