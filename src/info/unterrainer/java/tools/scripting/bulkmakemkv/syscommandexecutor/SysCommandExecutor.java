@@ -55,7 +55,7 @@ import org.apache.commons.lang.StringUtils;
  * <CODE>
  * 		SysCommandExecutor cmdExecutor = new SysCommandExecutor();
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
- * 
+ *
  * 		String cmdError = cmdExecutor.getCommandError();
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
@@ -83,6 +83,12 @@ public class SysCommandExecutor {
 	private AsyncStreamReader fCmdOutputThread;
 	@Nullable
 	private AsyncStreamReader fCmdErrorThread;
+
+	public SysCommandExecutor(@Nullable LogDevice fOuputLogDevice, @Nullable LogDevice fErrorLogDevice) {
+		super();
+		this.fOuputLogDevice = fOuputLogDevice;
+		this.fErrorLogDevice = fErrorLogDevice;
+	}
 
 	public void setOutputLogDevice(LogDevice logDevice) {
 		fOuputLogDevice = logDevice;

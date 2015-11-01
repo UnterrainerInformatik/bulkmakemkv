@@ -25,23 +25,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 class AsyncStreamReader extends Thread {
-	private StringBuffer fBuffer;
-	private InputStream fInputStream;
-	private boolean fStop;
-	private LogDevice fLogDevice;
+	private StringBuffer buffer;
+	private InputStream inputStream;
+	private boolean stop;
+	private LogDevice logDevice;
+	private String threadId;
 
-	private String fNewLine;
+	private String newLine;
 
 	public AsyncStreamReader(InputStream inputStream, StringBuffer buffer, LogDevice logDevice, String threadId) {
-		fInputStream = inputStream;
-		fBuffer = buffer;
-		fLogDevice = logDevice;
+		this.inputStream = inputStream;
+		this.buffer = buffer;
+		this.logDevice = logDevice;
+		this.threadId = threadId;
 
-		fNewLine = System.getProperty("line.separator");
+		newLine = System.getProperty("line.separator");
 	}
 
 	public String getBuffer() {
-		return fBuffer.toString();
+		return buffer.toString();
 	}
 
 	@Override
@@ -49,26 +51,26 @@ class AsyncStreamReader extends Thread {
 		try {
 			readCommandOutput();
 		} catch (Exception ex) {
-			// ex.printStackTrace(); //DEBUG
+			// ex.printStackTrace(); // DEBUG
 		}
 	}
 
 	private void readCommandOutput() throws IOException {
-		BufferedReader bufOut = new BufferedReader(new InputStreamReader(fInputStream));
+		BufferedReader bufOut = new BufferedReader(new InputStreamReader(inputStream));
 		String line = null;
-		while (fStop == false && (line = bufOut.readLine()) != null) {
-			fBuffer.append(line + fNewLine);
+		while (stop == false && (line = bufOut.readLine()) != null) {
+			buffer.append(line + newLine);
 			printToDisplayDevice(line);
 		}
 		bufOut.close();
-		// System.out.println("END OF: " + fThreadId); //DEBUG
+		// System.out.println("END OF: " + threadId); // DEBUG
 	}
 
 	public void stopReading() {
-		fStop = true;
+		stop = true;
 	}
 
 	private void printToDisplayDevice(String line) {
-		fLogDevice.log(line);
+		logDevice.log(line);
 	}
 }

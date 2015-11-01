@@ -21,6 +21,7 @@ package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
 import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.ConsoleLogDevice;
 import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
 import info.unterrainer.java.tools.utils.NullUtils;
 
@@ -505,7 +506,7 @@ public class BulkMakeMkv {
 	}
 
 	private static boolean doCommand(String command) {
-		SysCommandExecutor cmdExecutor = new SysCommandExecutor();
+		SysCommandExecutor cmdExecutor = new SysCommandExecutor(new ConsoleLogDevice(), new ConsoleLogDevice());
 		int exitStatus = 0;
 		try {
 			exitStatus = cmdExecutor.runCommand(command);
