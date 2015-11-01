@@ -81,11 +81,14 @@ public class BulkMakeMkv {
 			System.exit(1);
 		}
 		mode = mode.toLowerCase();
-		if (!mode.equals("convert") && !mode.equals("scan")) {
-			Utils.sysout("You have to specify a valid mode!");
+		if (!mode.contains("convert") && !mode.contains("scan")) {
+			Utils.sysout("You have to specify a valid mode! It has to contain either 'convert' or 'scan'.");
 			System.exit(1);
 		}
-
+		if (mode.contains("convert") && mode.contains("scan")) {
+			Utils.sysout("You have to specify a valid mode! It has to contain either 'convert' or 'scan'. Not both.");
+			System.exit(1);
+		}
 		os = config.getString("os");
 		if (os == null || os.isEmpty() || !os.equals("mac")) {
 			os = "windows";
@@ -146,17 +149,17 @@ public class BulkMakeMkv {
 		checkTempDir();
 		checkMkvDir();
 
-		if (!mode.equals("scan")) {
+		if (!mode.contains("scan")) {
 			checkExists(isoDirs, "isoDirs");
 		}
 		checkExists(observeMkvDirs, "observeMkvDirs");
 
-		if (mode.equals("convert")) {
+		if (mode.contains("convert")) {
 			convert();
 			scan();
 		}
 
-		if (mode.equals("scan")) {
+		if (mode.contains("scan")) {
 			scan();
 		}
 		Utils.sysout("Done.");
@@ -346,12 +349,21 @@ public class BulkMakeMkv {
 	}
 
 	private static boolean doConvert(FileName file, String isoDir) {
-		String command = "\"" + makeMkvCommand + "\" mkv iso:\"" + isoDir + file.getName() + "." + file.getExtension() + "\" all \"" + tempDir + "\"";
+		String command = "\""
+				+ makeMkvCommand
+				+ "\" mkv iso:\""
+				+ isoDir
+				+ file.getName()
+				+ "."
+				+ file.getExtension()
+				+ "\" all  -r --progress=-same \""
+				+ tempDir
+				+ "\"";
 		if (os.equals("mac")) {
 			command = makeMkvCommand.replace(" ", "\\ ")
 					+ " mkv iso:"
 					+ (isoDir + file.getName() + "." + file.getExtension()).replace(" ", "\\ ")
-					+ " all "
+					+ " all -r --progress=-same "
 					+ tempDir.replace(" ", "\\ ");
 		}
 
@@ -506,7 +518,13 @@ public class BulkMakeMkv {
 	}
 
 	private static boolean doCommand(String command) {
-		SysCommandExecutor cmdExecutor = new SysCommandExecutor(new ConsoleLogDevice(), new ConsoleLogDevice());
+		ConsoleLogDevice outputLog = new ConsoleLogDevice();
+		outputLog.setDebugMode(mode.contains("debug"));
+
+		ConsoleLogDevice errorLog = new ConsoleLogDevice();
+		errorLog.setDebugMode(mode.contains("debug"));
+
+		SysCommandExecutor cmdExecutor = new SysCommandExecutor(outputLog, errorLog);
 		int exitStatus = 0;
 		try {
 			exitStatus = cmdExecutor.runCommand(command);
@@ -531,10 +549,7 @@ public class BulkMakeMkv {
 			o = Utils.getPattern(cmdOutput, regExMakeMkvFailedTracks, 0);
 		}
 
-		Utils.sysout("  " + exitStatus + "");
-		Utils.sysoutNNNE(cmdOutput);
-		Utils.sysoutNNNE(cmdError);
-
+		Utils.sysout("  exitValue: " + exitStatus + "");
 		return !testFailed(e) && !testFailed(o);
 	}
 

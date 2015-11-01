@@ -126,6 +126,11 @@
 			<version>0.2</version>
 		</dependency>
 		<dependency>
+			<groupId>info.unterrainer.java.tools.reporting</groupId>
+			<artifactId>console-progressbar</artifactId>
+			<version>0.2</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>

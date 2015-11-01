@@ -65,7 +65,14 @@ Here is an example of a config-file. I like to think it is very self-descriptive
 #    			for peculiar things (zero-size files, empty directories,
 #				etc...) and display a summary at the end.
 #  convert		Do a real conversion of all files and scan afterwards.
+#
+# You may add the word 'debug' to any of these modes in order to get the full
+# output of the makeMKV tool when it is called to convert. The order of the
+# words doesn't matter.
 mode = scan
+#mode = convert
+#mode = debug scan
+#mode = convert debug
 
 # This option manipulates escaping when it comes to paths. Use windows or mac.
 os = windows
