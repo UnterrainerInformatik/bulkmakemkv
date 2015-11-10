@@ -1,12 +1,17 @@
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-import info.unterrainer.java.tools.reporting.consoleprogressbar.ConsoleProgressBar;
-import info.unterrainer.java.tools.reporting.consoleprogressbar.drawablecomponents.ProgressBar;
-import lombok.Getter;
-import lombok.Setter;
+import javax.annotation.Nullable;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+import info.unterrainer.java.tools.reporting.consoleprogressbar.ConsoleProgressBar;
+import info.unterrainer.java.tools.reporting.consoleprogressbar.drawablecomponents.ProgressBar;
+import info.unterrainer.java.tools.utils.NullUtils;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.ExtensionMethod;
+
+@ExtensionMethod({ NullUtils.class })
 public class ConsoleLogDevice implements LogDevice {
 
 	@Getter
@@ -32,19 +37,21 @@ public class ConsoleLogDevice implements LogDevice {
 	}
 
 	@Override
-	public synchronized void log(String input) {
+	public synchronized void log(@Nullable String input) {
+		if (input != null) {
+			input = input.trim();
+			if (!debugMode) {
+				input = unescape(process(input.noNull()));
+			}
 
-		input = input.trim();
-		if (!debugMode) {
-			input = unescape(process(input));
-		}
-
-		if (input != null && input.length() > 0 && !input.trim().equals("0")) {
-			write("  " + input.trim().replace("\r", "").replace("\n", "\n  ").trim());
+			if (input != null && input.length() > 0 && !input.trim().equals("0")) {
+				write("  " + input.trim().replace("\r", "").replace("\n", "\n  ").trim());
+			}
 		}
 	}
 
-	private String unescape(String input) {
+	@Nullable
+	private String unescape(@Nullable String input) {
 		if (input == null) {
 			return null;
 		}
@@ -61,6 +68,7 @@ public class ConsoleLogDevice implements LogDevice {
 		return result;
 	}
 
+	@Nullable
 	private String process(String input) {
 		String command = input.substring(0, input.indexOf(':'));
 		String content = input.substring(input.indexOf(':') + 1);
@@ -81,7 +89,7 @@ public class ConsoleLogDevice implements LogDevice {
 			return null;
 		case "PRGT":
 			String t = unescape(contents[2]);
-			if (t.equals("Saving all titles to MKV files")) {
+			if (t != null && t.equals("Saving all titles to MKV files")) {
 				t = "Saving titles";
 			}
 			removeProgressBars();
@@ -90,11 +98,13 @@ public class ConsoleLogDevice implements LogDevice {
 			return null;
 		case "PRGC":
 			String c = unescape(contents[2]);
-			if (c.equals("Analyzing seamless segments")) {
-				c = "Analyzing Segments";
-			}
-			if (c.equals("Saving to MKV file")) {
-				c = "Saving file";
+			if (c != null) {
+				if (c.equals("Analyzing seamless segments")) {
+					c = "Analyzing Segments";
+				}
+				if (c.equals("Saving to MKV file")) {
+					c = "Saving file";
+				}
 			}
 			removeProgressBars();
 			barComponentCurrent.setPrefix(" " + c + ":");
@@ -110,14 +120,16 @@ public class ConsoleLogDevice implements LogDevice {
 			// Return message suitable for output from message-array.
 			if (contents.length > 3) {
 				String s = unescape(contents[3]);
-				if (s.startsWith("DEBUG:")) {
-					return null;
-				}
-				if (s.equals("Program reads data faster than it can write to disk")) {
-					if (speedHintWrittenOnce) {
+				if (s != null) {
+					if (s.startsWith("DEBUG:")) {
 						return null;
-					} else {
-						speedHintWrittenOnce = true;
+					}
+					if (s.equals("Program reads data faster than it can write to disk")) {
+						if (speedHintWrittenOnce) {
+							return null;
+						} else {
+							speedHintWrittenOnce = true;
+						}
 					}
 				}
 				return s;

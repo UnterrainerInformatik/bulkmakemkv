@@ -19,8 +19,6 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-import info.unterrainer.java.tools.utils.NullUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,9 +28,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import lombok.experimental.ExtensionMethod;
-
 import org.apache.commons.lang.StringUtils;
+
+import info.unterrainer.java.tools.utils.NullUtils;
+import lombok.experimental.ExtensionMethod;
 
 /**
  * Usage of following class can go as ...
@@ -46,7 +45,6 @@ import org.apache.commons.lang.StringUtils;
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
  * </CODE>
  * </PRE>
- *
  * </P>
  * OR
  * <P>
@@ -60,7 +58,6 @@ import org.apache.commons.lang.StringUtils;
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
  * </PRE>
- *
  * </P>
  */
 
@@ -160,11 +157,11 @@ public class SysCommandExecutor {
 
 	private void startOutputAndErrorReadThreads(InputStream processOut, InputStream processErr) {
 		fCmdOutput = new StringBuffer();
-		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice, "OUTPUT");
+		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice.orNoNull(new ConsoleLogDevice()), "OUTPUT");
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
-		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError.noNull(), fErrorLogDevice, "ERROR");
+		fCmdErrorThread = new AsyncStreamReader(processErr, fCmdError.noNull(), fErrorLogDevice.orNoNull(new ConsoleLogDevice()), "ERROR");
 		fCmdErrorThread.start();
 	}
 
