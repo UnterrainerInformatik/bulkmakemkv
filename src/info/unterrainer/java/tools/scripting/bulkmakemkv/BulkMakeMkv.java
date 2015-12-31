@@ -337,9 +337,9 @@ public class BulkMakeMkv {
 				cache.addAll(v.getCache());
 			}
 		} else {
-			String dirName = Utils.normalizeDirectory(file.getFolderName()).replace("/", "\\");
+			String dirName = Utils.normalizeDirectory(file.getFolderName());
 			for (Path dir : cache) {
-				String curr = Utils.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
+				String curr = Utils.normalizeDirectory(dir.getFileName().toString());
 				if (dirName.toLowerCase().equals(curr.toLowerCase())) {
 					result.add(dir.toString());
 				}
@@ -396,8 +396,8 @@ public class BulkMakeMkv {
 			}
 		}
 
-		File d = new File((mkvDir + file.getFolderName() + "/").replace("/", "\\"));
-		String dString = (d.toPath() + "/").replace("/", "\\");
+		String dString = mkvDir + file.getFolderName() + "/";
+		File d = new File(dString);
 		try {
 			Files.createDirectory(d.toPath());
 		} catch (IOException e1) {
@@ -449,7 +449,10 @@ public class BulkMakeMkv {
 			}
 			for (FileName f : tempFiles) {
 				try {
-					Files.move(f.getFile().toPath(), new File(dString + file.getFileName() + " " + start + makeTwoDigits(i) + "." + mkvFileExtension).toPath());
+					Path source = f.getFile().toPath();
+					String targetString = dString + file.getFileName() + " " + start + makeTwoDigits(i) + "." + mkvFileExtension;
+					Path target = new File(targetString).toPath();
+					Files.move(source, target);
 					i++;
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -464,7 +467,10 @@ public class BulkMakeMkv {
 			}
 			try {
 				if (biggest != null) {
-					Files.move(biggest.getFile().toPath(), new File(dString + file.getFileName() + year + "." + mkvFileExtension).toPath());
+					Path source = biggest.getFile().toPath();
+					String targetString = dString + file.getFileName() + year + "." + mkvFileExtension;
+					Path target = new File(targetString).toPath();
+					Files.move(source, target);
 					tempFiles.remove(biggest);
 				}
 				for (FileName f : tempFiles) {

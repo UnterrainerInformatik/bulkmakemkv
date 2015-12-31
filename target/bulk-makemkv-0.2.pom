@@ -1,0 +1,193 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>info.unterrainer.java.tools.scripting</groupId>
+	<artifactId>bulk-makemkv</artifactId>
+	<version>0.2</version>
+	<name>BulkMakeMkv</name>
+	<packaging>jar</packaging>
+	<description>Using this tool you may convert multiple ISO-files containing blue-ray or DVD images to MKVs utilizing the MakeMKV library.</description>
+	<url>https://www.unterrainer.info:8443/projects/JAV/repos/bulkmakemkv/browse</url>
+
+	<properties>
+		<javaVersion>1.8</javaVersion>
+		<project.compile.sourceEncoding>UTF-8</project.compile.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<developers>
+		<developer>
+			<name>Gerald Unterrainer</name>
+			<email>psilo@unterrainer.info</email>
+			<organization>Unterrainer Informatik OG</organization>
+			<organizationUrl>http://www.unterrainer.info</organizationUrl>
+		</developer>
+	</developers>
+
+	<distributionManagement>
+		<site>
+			<id>github-project-site</id>
+			<name>GitHub Project Pages</name>
+			<url>gitsite:https://github.com/UnterrainerInformatik/bulkmakemkv</url>
+		</site>
+	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:https://github.com/UnterrainerInformatik/bulkmakemkv</connection>
+		<developerConnection>scm:git:https://guFalcon@github.com/UnterrainerInformatik/bulkmakemkv</developerConnection>
+		<url>https://github.com/UnterrainerInformatik/bulkmakemkv</url>
+	</scm>
+
+	<build>
+		<sourceDirectory>${project.basedir}\src</sourceDirectory>
+		<outputDirectory>${project.basedir}\target\classes</outputDirectory>
+		<testSourceDirectory>${project.basedir}\test</testSourceDirectory>
+		<testOutputDirectory>${project.basedir}\target\test-classes</testOutputDirectory>
+		<plugins>
+			<!-- Build an executable jar including all dependent jars -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>info.unterrainer.java.tools.scripting.bulkmakemkv.BulkMakeMkv</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${javaVersion}</source>
+					<target>${javaVersion}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<useStandardDocletOptions>false</useStandardDocletOptions>
+					<additionalparam>-Xdoclint:none</additionalparam>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<licenses>
+		<license>
+			<name>Microsoft Public License</name>
+			<url>http://opensource.org/licenses/MS-PL</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Unterrainer Informatik OG</name>
+		<url>http://www.unterrainer.info</url>
+	</organization>
+
+	<dependencies>
+		<dependency>
+			<groupId>info.unterrainer.java.tools</groupId>
+			<artifactId>nullannotations</artifactId>
+			<version>0.2</version>
+			<optional>true</optional>
+			<!-- for annotations only -->
+		</dependency>
+		<dependency>
+			<groupId>info.unterrainer.java.tools</groupId>
+			<artifactId>utils</artifactId>
+			<version>0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>info.unterrainer.java.tools.reporting</groupId>
+			<artifactId>console-progressbar</artifactId>
+			<version>0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.4</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<repositories>
+				<repository>
+					<id>mvnrepository</id>
+					<name>mvnrepository</name>
+					<url>http://www.mvnrepository.com</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+</project>
