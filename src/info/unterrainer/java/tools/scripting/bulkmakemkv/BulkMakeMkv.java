@@ -19,12 +19,6 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.ConsoleLogDevice;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
-import info.unterrainer.java.tools.utils.NullUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,16 +29,23 @@ import java.util.List;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import lombok.experimental.ExtensionMethod;
-
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-@ExtensionMethod({ NullUtils.class })
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.ConsoleLogDevice;
+import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
+import info.unterrainer.java.tools.utils.NullUtils;
+import info.unterrainer.java.tools.utils.StringUtils;
+import lombok.experimental.ExtensionMethod;
+
+@ExtensionMethod({ NullUtils.class, StringUtils.class })
 @ParametersAreNonnullByDefault({})
 public class BulkMakeMkv {
 
+	private static final String fallbackConfigFn = "config.properties";
 	public static final String regExMakeMkvFailedTracks = "Copy complete\\. [\\d+] titles saved" + ", ([\\d+]) failed\\.";
 
 	private static Configuration config;
@@ -69,11 +70,12 @@ public class BulkMakeMkv {
 	private static List<Path> cache;
 
 	public static void main(String[] args) {
-		try {
-			config = new PropertiesConfiguration(new File("config.properties"));
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+
+		if (args.length > 1) {
+			wrongNumberOfArguments("bulkmakemkv", fallbackConfigFn);
 		}
+		String configFileName = parseArg(args, 0);
+		config = readConfigurationFile(configFileName, fallbackConfigFn);
 
 		mode = config.getString("mode");
 		if (mode == null || mode.isEmpty()) {
@@ -163,6 +165,79 @@ public class BulkMakeMkv {
 			scan();
 		}
 		Utils.sysout("Done.");
+	}
+
+	private static void wrongNumberOfArguments(String program, String fallbackConfigFn) {
+		Utils.sysout("Wrong number of arguments. Usage:\n"
+				+ program
+				+ "\n"
+				+ "or\n"
+				+ program
+				+ " <configFilePathAndName>\n\n"
+				+ "If you specify a config file, it has to be a valid apache-configuration file. "
+				+ "If you don't, the program will try to fall back on a file named '"
+				+ fallbackConfigFn
+				+ "' located in the directory you started the application from.");
+		System.exit(1);
+	}
+
+	/**
+	 * Parses the arguments array at the position 'index' and returns the value as a string.
+	 *
+	 * @param args the argument-array
+	 * @param index the index of the argument to retrieve
+	 * @return the argument at position index or null if an error occurred
+	 */
+	private static String parseArg(String[] args, int index) {
+		String result = null;
+		if (args.length <= index) {
+			return result;
+		}
+
+		result = args[index];
+		if (!result.isBlank()) {
+			result = result.stripQuotes();
+		}
+		return result;
+	}
+
+	/**
+	 * After executing this part, the global variable config is either set, or the application exited.
+	 *
+	 * @param configFileName
+	 */
+	private static Configuration readConfigurationFile(String fn, String fallbackFn) {
+		Configuration result = null;
+		if (fn != null) {
+			result = loadConfigurationFile(fn,
+					"The file you specified via the parameter '%s' is missing.\nTrying to fall back to config.properties in execution directory.",
+					"The file you specified via the parameter '%s' is not a valid config file.\nTrying to fall back to property file in execution directory.");
+		}
+		if (result == null) {
+			result = loadConfigurationFile(fallbackFn,
+					"Config file not found.\nSee to it that there is a proper config file called '%s' in the execution directory or take any other config "
+							+ "file and start the program with the path (to that file) and name as a commandline argument.",
+					"Config file '%s' is not a valid config file.");
+		}
+		if (result == null) {
+			System.exit(1);
+		}
+		return result;
+	}
+
+	private static Configuration loadConfigurationFile(String fn, String errorMessageNotFound, String errorMessageWrongFormat) {
+		Configuration result = null;
+		File f = new File(fn);
+		if (f.exists()) {
+			try {
+				result = new PropertiesConfiguration(f);
+			} catch (ConfigurationException e) {
+				Utils.sysout(String.format(errorMessageWrongFormat, fn));
+			}
+		} else {
+			Utils.sysout(String.format(errorMessageNotFound, fn));
+		}
+		return result;
 	}
 
 	private static void scan() {
