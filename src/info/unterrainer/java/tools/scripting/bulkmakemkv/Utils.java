@@ -36,9 +36,7 @@ public class Utils {
 		if (input == null || input.equals("")) {
 			return input;
 		}
-
-		String result = input.replace('\\', '/');
-		return result.endsWith("/") ? result : result + "/";
+		return input.endsWith("/") ? input : input + "/";
 	}
 
 	@Nullable

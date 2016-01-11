@@ -17,7 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<developers> 
+	<developers>
 		<developer>
 			<name>Gerald Unterrainer</name>
 			<email>psilo@unterrainer.info</email>
@@ -46,13 +46,13 @@
 		<testSourceDirectory>${project.basedir}\test</testSourceDirectory>
 		<testOutputDirectory>${project.basedir}\target\test-classes</testOutputDirectory>
 		<plugins>
-		<!-- Build an executable jar including all dependent jars -->
+			<!-- Build an executable jar including all dependent jars -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>parser.LogParser</mainClass>
+							<mainClass>info.unterrainer.java.tools.scripting.bulkmakemkv.BulkMakeMkv</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

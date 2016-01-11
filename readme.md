@@ -44,11 +44,11 @@ Make sure that java.exe is on your path, or start the following commands with th
 
 Start the program, as you would start any jar by typing:
 ```
-java -jar bulkMakeMkv.jar
+java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 ```
 or put these lines in a batch-file (should be more convenient):
 ```
-java -jar bulkMakeMkv.jar
+java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 pause
 ```
 
@@ -87,6 +87,9 @@ os = windows
 #
 # If you want to specify more than one, just add another isoDirs-parameter
 # (same name) below the current one.
+# try:
+# isoDirs = /path to dir
+# for absolute paths on linux based systems like mac.
 isoDirs = //computername/f$
 
 # This is the temporary directory which is used when makeMKV is working.
