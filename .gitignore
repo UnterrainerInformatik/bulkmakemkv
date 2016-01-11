@@ -8,3 +8,4 @@ target/
 database/dbdoc/
 *.orig
 generated-sources/
+*.iml
