@@ -197,6 +197,11 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 *Resulting target-folder / file-name:*  
 `/Avatar - The Last Airbender - s01e14/Avatar - The Last Airbender - s01e014.mkv`  
 
+---
+This program is brought to you by [Unterrainer Informatik][homepage]  
+Project lead is [Gerald Unterrainer][geraldmail]
+
+[geraldmail]: mailto:gerald@unterrainer.info
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
 [makemkv]: http://www.makemkv.com/
