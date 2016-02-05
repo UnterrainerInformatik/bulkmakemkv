@@ -19,6 +19,9 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +33,10 @@ class AsyncStreamReader extends Thread {
 	private boolean stop;
 	private LogDevice logDevice;
 	private String threadId;
+
+	@Getter
+	@Setter
+	private boolean debug;
 
 	private String newLine;
 
@@ -51,19 +58,23 @@ class AsyncStreamReader extends Thread {
 		try {
 			readCommandOutput();
 		} catch (Exception ex) {
-			// ex.printStackTrace(); // DEBUG
+			if(debug){
+				ex.printStackTrace();
+			}
 		}
 	}
 
 	private void readCommandOutput() throws IOException {
 		BufferedReader bufOut = new BufferedReader(new InputStreamReader(inputStream));
-		String line = null;
-		while (stop == false && (line = bufOut.readLine()) != null) {
-			buffer.append(line + newLine);
+		String line;
+		while (!stop && (line = bufOut.readLine()) != null) {
+			buffer.append(line).append(newLine);
 			printToDisplayDevice(line);
 		}
 		bufOut.close();
-		// System.out.println("END OF: " + threadId); // DEBUG
+		if(debug){
+			System.out.println("END OF: " + threadId);
+		}
 	}
 
 	public void stopReading() {

@@ -19,14 +19,13 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
+import lombok.experimental.UtilityClass;
+
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.annotation.Nullable;
-
-import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Utils {
@@ -54,13 +53,13 @@ public class Utils {
 	}
 
 	public static List<Match> getPattern(String name, String pattern, int cut) {
-		List<Match> result = new ArrayList<Match>();
+		List<Match> result = new ArrayList<>();
 
 		Pattern regex = Pattern.compile(pattern);
 		Matcher matcher = regex.matcher(name);
 		while (matcher.find()) {
 			String match = matcher.group().substring(cut, matcher.group().length() - cut).trim();
-			List<String> groups = new ArrayList<String>();
+			List<String> groups = new ArrayList<>();
 			for (int i = 0; i < matcher.groupCount(); i++) {
 				groups.add(matcher.group(i + 1));
 			}
@@ -83,7 +82,7 @@ public class Utils {
 				start = Integer.parseInt(episodesLongContents.get(0).getMatch().substring(4, 6));
 				end = Integer.parseInt(episodesLongContents.get(0).getMatch().substring(8, 10));
 				ok = true;
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 		if (!ok && !episodesShortContents.isEmpty()) {
@@ -91,7 +90,7 @@ public class Utils {
 				start = Integer.parseInt(episodesShortContents.get(0).getMatch().substring(4, 6));
 				end = start;
 				ok = true;
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 		if (!ok) {

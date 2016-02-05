@@ -1,17 +1,14 @@
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-import javax.annotation.Nullable;
-
-import org.apache.commons.lang.StringEscapeUtils;
-
 import info.unterrainer.java.tools.reporting.consoleprogressbar.ConsoleProgressBar;
 import info.unterrainer.java.tools.reporting.consoleprogressbar.drawablecomponents.ProgressBar;
 import info.unterrainer.java.tools.utils.NullUtils;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.ExtensionMethod;
+import org.apache.commons.lang.StringEscapeUtils;
 
-@ExtensionMethod({ NullUtils.class })
+import javax.annotation.Nullable;
+
 public class ConsoleLogDevice implements LogDevice {
 
 	@Getter
@@ -41,7 +38,7 @@ public class ConsoleLogDevice implements LogDevice {
 		if (input != null) {
 			input = input.trim();
 			if (!debugMode) {
-				input = unescape(process(input.noNull()));
+				input = unescape(process(NullUtils.noNull(input)));
 			}
 
 			if (input != null && input.length() > 0 && !input.trim().equals("0")) {

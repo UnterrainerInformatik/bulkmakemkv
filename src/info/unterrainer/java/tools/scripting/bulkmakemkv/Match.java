@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Match {
 	String match;
-	List<String> groups = new ArrayList<String>();
+	List<String> groups = new ArrayList<>();
 
 	public Match(String match, List<String> groups) {
 		super();

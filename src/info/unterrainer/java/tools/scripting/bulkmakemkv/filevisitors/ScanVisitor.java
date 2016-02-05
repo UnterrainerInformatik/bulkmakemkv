@@ -34,9 +34,9 @@ import java.util.List;
 @javax.annotation.ParametersAreNonnullByDefault({})
 public class ScanVisitor extends SimpleFileVisitor<Path> {
 
-	private List<String> emptyDirectories = new ArrayList<String>();
-	private List<String> emptyFiles = new ArrayList<String>();
-	private List<String> wrongNumberOfEpisodes = new ArrayList<String>();
+	private List<String> emptyDirectories = new ArrayList<>();
+	private List<String> emptyFiles = new ArrayList<>();
+	private List<String> wrongNumberOfEpisodes = new ArrayList<>();
 	private String mkvFileExtension;
 
 	public ScanVisitor(String mkvFileExtension) {
@@ -75,13 +75,13 @@ public class ScanVisitor extends SimpleFileVisitor<Path> {
 			}
 		}
 		return FileVisitResult.CONTINUE;
-	};
+	}
 
 	// If there is some error accessing the file, let the user know. If you don't override this method and an error
 	// occurs, an IOException is thrown.
 	@Override
 	public FileVisitResult visitFileFailed(Path file, IOException exc) {
-		System.err.println(exc);
+		exc.printStackTrace(System.err);
 		return FileVisitResult.CONTINUE;
 	}
 

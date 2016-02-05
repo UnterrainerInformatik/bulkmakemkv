@@ -21,6 +21,7 @@ package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
 import info.unterrainer.java.tools.utils.NullUtils;
 
+import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,11 +29,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
-import lombok.experimental.ExtensionMethod;
-
-@ExtensionMethod({ NullUtils.class })
 public class FileName {
 
 	public final static String regExRoundBrackets = "\\([^(]*?\\)";
@@ -51,10 +47,10 @@ public class FileName {
 	@Nullable
 	private Integer year;
 
-	private List<Match> roundBracketContents = new ArrayList<Match>();
-	private List<Match> squareBracketContents = new ArrayList<Match>();
-	private List<Match> episodesLongContents = new ArrayList<Match>();
-	private List<Match> episodesShortContents = new ArrayList<Match>();
+	private List<Match> roundBracketContents = new ArrayList<>();
+	private List<Match> squareBracketContents = new ArrayList<>();
+	private List<Match> episodesLongContents = new ArrayList<>();
+	private List<Match> episodesShortContents = new ArrayList<>();
 
 	public FileName(File file) {
 		name = file.getName().substring(0, file.getName().lastIndexOf('.'));
@@ -73,15 +69,15 @@ public class FileName {
 		squareBracketContents = Utils.getPattern(name, regExSquareBrackets, 1);
 		roundBracketContents = Utils.getPattern(name, regExRoundBrackets, 1);
 		calculatedCleanName = name.replaceAll(regExSquareBrackets, "");
-		calculatedCleanName = calculatedCleanName.noNull().replaceAll(regExRoundBrackets, "");
-		calculatedCleanName = calculatedCleanName.noNull().trim();
+		calculatedCleanName = NullUtils.noNull(calculatedCleanName).replaceAll(regExRoundBrackets, "");
+		calculatedCleanName = NullUtils.noNull(calculatedCleanName).trim();
 
-		episodesLongContents = Utils.getPattern(calculatedCleanName.noNull(), regExEpisodesLong, 0);
-		calculatedCleanName = calculatedCleanName.noNull().replaceAll(regExEpisodesLong, "");
+		episodesLongContents = Utils.getPattern(NullUtils.noNull(calculatedCleanName), regExEpisodesLong, 0);
+		calculatedCleanName = NullUtils.noNull(calculatedCleanName).replaceAll(regExEpisodesLong, "");
 		calculatedCleanName = Utils.removeDashTrim(calculatedCleanName);
 
-		episodesShortContents = Utils.getPattern(calculatedCleanName.noNull(), regExEpisodesShort, 0);
-		calculatedCleanName = calculatedCleanName.noNull().replaceAll(regExEpisodesShort, "");
+		episodesShortContents = Utils.getPattern(NullUtils.noNull(calculatedCleanName), regExEpisodesShort, 0);
+		calculatedCleanName = NullUtils.noNull(calculatedCleanName).replaceAll(regExEpisodesShort, "");
 		calculatedCleanName = Utils.removeDashTrim(calculatedCleanName);
 
 		Calendar now = Calendar.getInstance();
@@ -92,15 +88,15 @@ public class FileName {
 			}
 			try {
 				year = Integer.parseInt(s);
-				if (year.noNull() < 1800 || year.noNull() > now.get(Calendar.YEAR)) {
+				if (NullUtils.noNull(year) < 1800 || NullUtils.noNull(year) > now.get(Calendar.YEAR)) {
 					// Plausibility-check.
 					year = null;
 				}
-			} catch (NumberFormatException e) {
+			} catch (NumberFormatException ignored) {
 			}
 		}
 
-		if (calculatedCleanName.noNull().toLowerCase().endsWith("bonus")) {
+		if (NullUtils.noNull(calculatedCleanName).toLowerCase().endsWith("bonus")) {
 			bonusDisc = true;
 		}
 	}

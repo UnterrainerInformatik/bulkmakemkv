@@ -31,20 +31,26 @@ import java.util.List;
 @javax.annotation.ParametersAreNonnullByDefault({})
 public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 
-	private List<Path> cache = new ArrayList<Path>();
-	private List<String> result = new ArrayList<String>();
+	private List<Path> cache = new ArrayList<>();
+	private List<String> result = new ArrayList<>();
 	private String dirName;
 
-	public DirectoryNameEqualsVisitor(String dirName) {
-		this.dirName = Utils.normalizeDirectory(dirName).replace("/", "\\");
+	public DirectoryNameEqualsVisitor(String dn) {
+		dirName = Utils.normalizeDirectory(dn);
+		if(dirName != null) {
+			dirName = dirName.replace("/", "\\");
+		}
 	}
 
 	@Override
 	public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
 		cache.add(dir);
-		String curr = Utils.normalizeDirectory(dir.getFileName().toString()).replace("/", "\\");
-		if (dirName.toLowerCase().equals(curr.toLowerCase())) {
-			result.add(dir.toString());
+		String curr = Utils.normalizeDirectory(dir.getFileName().toString());
+		if(curr != null) {
+			curr = curr.replace("/", "\\");
+			if (dirName.toLowerCase().equals(curr.toLowerCase())) {
+				result.add(dir.toString());
+			}
 		}
 		return FileVisitResult.CONTINUE;
 	}
@@ -53,7 +59,7 @@ public class DirectoryNameEqualsVisitor extends SimpleFileVisitor<Path> {
 	// occurs, an IOException is thrown.
 	@Override
 	public FileVisitResult visitFileFailed(Path file, IOException exc) {
-		System.err.println(exc);
+		exc.printStackTrace(System.err);
 		return FileVisitResult.CONTINUE;
 	}
 

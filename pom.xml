@@ -142,14 +142,14 @@
 		<dependency>
 			<groupId>info.unterrainer.java.tools</groupId>
 			<artifactId>nullannotations</artifactId>
-			<version>0.2</version>
+			<version>0.3</version>
 			<optional>true</optional>
 			<!-- for annotations only -->
 		</dependency>
 		<dependency>
 			<groupId>info.unterrainer.java.tools</groupId>
 			<artifactId>utils</artifactId>
-			<version>0.2</version>
+			<version>0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>info.unterrainer.java.tools.reporting</groupId>
@@ -185,6 +185,7 @@
 
 	<profiles>
 		<profile>
+			<id>mvnrepository</id>
 			<repositories>
 				<repository>
 					<id>mvnrepository</id>
