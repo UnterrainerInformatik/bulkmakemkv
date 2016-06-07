@@ -17,7 +17,9 @@
  * 
  ***************************************************************************/
 ```
- 
+[![Travis branch](https://img.shields.io/travis/UnterrainerInformatik/bulkmakemkv/develop.svg?maxAge=2592000)]()
+
+
 # Disclaimer
 
 This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
