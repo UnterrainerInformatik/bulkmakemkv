@@ -32,7 +32,7 @@ All of our projects facilitate the [Project Lombok][lombok]. So please download 
 
 **Beware:** Project Lombok currently doesn't play well with Eclipse Mars (4.5). You'll get build-errors using the extension methods as of now.
 
-# [![BulkMakeMKV Icon](http://unterrainer.info/icons/bulkmakemkv128.png)] BulkMakeMKV
+# [![BulkMakeMKV Icon](http://unterrainer.info/logos/bulkmakemkv128.png)] BulkMakeMKV
 
 MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).
 
