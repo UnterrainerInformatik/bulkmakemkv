@@ -19,8 +19,6 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-import info.unterrainer.java.tools.utils.NullUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,13 +28,13 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import lombok.experimental.ExtensionMethod;
-
 import org.apache.commons.lang.StringUtils;
 
+import info.unterrainer.java.tools.utils.NullUtils;
+import lombok.experimental.ExtensionMethod;
+
 /**
- * Usage of following class can go as ...
- * <P>
+ * Usage of following class can go as ... <br>
  *
  * <PRE>
  * <CODE>
@@ -47,9 +45,7 @@ import org.apache.commons.lang.StringUtils;
  * </CODE>
  * </PRE>
  *
- * </P>
- * OR
- * <P>
+ * OR <br>
  *
  * <PRE>
  * <CODE>
@@ -60,8 +56,6 @@ import org.apache.commons.lang.StringUtils;
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
  * </PRE>
- *
- * </P>
  */
 
 @ExtensionMethod({ NullUtils.class })
@@ -84,47 +78,44 @@ public class SysCommandExecutor {
 	@Nullable
 	private AsyncStreamReader fCmdErrorThread;
 
-	public SysCommandExecutor(@Nullable LogDevice fOuputLogDevice, @Nullable LogDevice fErrorLogDevice) {
+	public SysCommandExecutor(@Nullable final LogDevice fOuputLogDevice, @Nullable final LogDevice fErrorLogDevice) {
 		super();
 		this.fOuputLogDevice = fOuputLogDevice;
 		this.fErrorLogDevice = fErrorLogDevice;
 	}
 
-	public void setOutputLogDevice(LogDevice logDevice) {
+	public void setOutputLogDevice(final LogDevice logDevice) {
 		fOuputLogDevice = logDevice;
 	}
 
-	public void setErrorLogDevice(LogDevice logDevice) {
+	public void setErrorLogDevice(final LogDevice logDevice) {
 		fErrorLogDevice = logDevice;
 	}
 
-	public void setWorkingDirectory(String workingDirectory) {
+	public void setWorkingDirectory(final String workingDirectory) {
 		fWorkingDirectory = workingDirectory;
 	}
 
-	public void setEnvironmentVar(String name, String value) {
-		if (fEnvironmentVarList == null) {
-			fEnvironmentVarList = new ArrayList<EnvironmentVar>();
-		}
+	public void setEnvironmentVar(final String name, final String value) {
+		if (fEnvironmentVarList == null)
+			fEnvironmentVarList = new ArrayList<>();
 
 		fEnvironmentVarList.noNull().add(new EnvironmentVar(name, value));
 	}
 
 	public String getCommandOutput() {
-		if (fCmdOutput == null) {
+		if (fCmdOutput == null)
 			return StringUtils.EMPTY;
-		}
 		return fCmdOutput.noNull().toString();
 	}
 
 	public String getCommandError() {
-		if (fCmdError == null) {
+		if (fCmdError == null)
 			return StringUtils.EMPTY;
-		}
 		return fCmdError.noNull().toString();
 	}
 
-	public int runCommand(String commandLine) throws Exception {
+	public int runCommand(final String commandLine) throws Exception {
 		/* run command */
 		Process process = runCommandHelper(commandLine);
 
@@ -147,18 +138,17 @@ public class SysCommandExecutor {
 		return exitStatus;
 	}
 
-	private Process runCommandHelper(String commandLine) throws IOException {
+	private Process runCommandHelper(final String commandLine) throws IOException {
 		Process process = null;
-		if (fWorkingDirectory == null) {
+		if (fWorkingDirectory == null)
 			process = Runtime.getRuntime().exec(commandLine, getEnvTokens());
-		} else {
+		else
 			process = Runtime.getRuntime().exec(commandLine, getEnvTokens(), new File(fWorkingDirectory));
-		}
 
 		return process;
 	}
 
-	private void startOutputAndErrorReadThreads(InputStream processOut, InputStream processErr) {
+	private void startOutputAndErrorReadThreads(final InputStream processOut, final InputStream processErr) {
 		fCmdOutput = new StringBuffer();
 		fCmdOutputThread = new AsyncStreamReader(processOut, fCmdOutput.noNull(), fOuputLogDevice, "OUTPUT");
 		fCmdOutputThread.start();
@@ -175,9 +165,8 @@ public class SysCommandExecutor {
 
 	@Nullable
 	private String[] getEnvTokens() {
-		if (fEnvironmentVarList == null) {
+		if (fEnvironmentVarList == null)
 			return new String[0];
-		}
 
 		String[] envTokenArray = new String[fEnvironmentVarList.noNull().size()];
 		Iterator<EnvironmentVar> envVarIter = fEnvironmentVarList.noNull().iterator();
