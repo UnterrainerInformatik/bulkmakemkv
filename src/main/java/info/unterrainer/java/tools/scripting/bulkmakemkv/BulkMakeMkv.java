@@ -604,13 +604,13 @@ public class BulkMakeMkv {
 			e.printStackTrace();
 		}
 
-		@Nullable
+		
 		String cmdError = cmdExecutor.getCommandError();
 		String cmdOutput = cmdExecutor.getCommandOutput();
 
-		@Nullable
+		
 		List<Match> e = null;
-		@Nullable
+		
 		List<Match> o = null;
 		if (cmdError != null && !cmdError.equals("")) {
 			cmdError = "  " + cmdError.trim().replace("\n", "\n  ").trim();

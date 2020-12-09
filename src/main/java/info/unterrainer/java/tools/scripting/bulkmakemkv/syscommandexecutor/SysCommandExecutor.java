@@ -19,10 +19,6 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-import info.unterrainer.java.tools.utils.NullUtils;
-import org.apache.commons.lang.StringUtils;
-
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,9 +26,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
+import org.apache.commons.lang.StringUtils;
+
+import info.unterrainer.java.tools.utils.NullUtils;
+
 /**
  * Usage of following class can go as ...
- * <P>
  *
  * <PRE>
  * <CODE>
@@ -42,9 +43,8 @@ import java.util.List;
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
  * </CODE>
  * </PRE>
- * </P>
+ * 
  * OR
- * <P>
  *
  * <PRE>
  * <CODE>
@@ -55,69 +55,65 @@ import java.util.List;
  * 		String cmdOutput = cmdExecutor.getCommandOutput();
  * </CODE>
  * </PRE>
- * </P>
  */
 
 public class SysCommandExecutor {
-	@Nullable
+	
 	private LogDevice fOutputLogDevice;
-	@Nullable
+	
 	private LogDevice fErrorLogDevice;
-	@Nullable
+	
 	private String fWorkingDirectory;
-	@Nullable
+	
 	private List<EnvironmentVar> fEnvironmentVarList;
 
-	@Nullable
+	
 	private StringBuffer fCmdOutput;
-	@Nullable
+	
 	private StringBuffer fCmdError;
-	@Nullable
+	
 	private AsyncStreamReader fCmdOutputThread;
-	@Nullable
+	
 	private AsyncStreamReader fCmdErrorThread;
 
-	public SysCommandExecutor(@Nullable LogDevice fOutputLogDevice, @Nullable LogDevice fErrorLogDevice) {
+	public SysCommandExecutor( final LogDevice fOutputLogDevice,  final LogDevice fErrorLogDevice) {
 		super();
 		this.fOutputLogDevice = fOutputLogDevice;
 		this.fErrorLogDevice = fErrorLogDevice;
 	}
 
-	public void setOutputLogDevice(LogDevice logDevice) {
+	public void setOutputLogDevice(final LogDevice logDevice) {
 		fOutputLogDevice = logDevice;
 	}
 
-	public void setErrorLogDevice(LogDevice logDevice) {
+	public void setErrorLogDevice(final LogDevice logDevice) {
 		fErrorLogDevice = logDevice;
 	}
 
-	public void setWorkingDirectory(String workingDirectory) {
+	public void setWorkingDirectory(final String workingDirectory) {
 		fWorkingDirectory = workingDirectory;
 	}
 
-	public void setEnvironmentVar(String name, String value) {
-		if (fEnvironmentVarList == null) {
+	public void setEnvironmentVar(final String name, final String value) {
+		if (fEnvironmentVarList == null)
 			fEnvironmentVarList = new ArrayList<>();
-		}
 
 		NullUtils.noNull(fEnvironmentVarList).add(new EnvironmentVar(name, value));
 	}
 
 	public String getCommandOutput() {
-		if (fCmdOutput == null) {
+		if (fCmdOutput == null)
 			return StringUtils.EMPTY;
-		}
 		return NullUtils.noNull(fCmdOutput).toString();
 	}
 
 	public String getCommandError() {
-		if (fCmdError == null) {
+		if (fCmdError == null)
 			return StringUtils.EMPTY;
-		}
 		return NullUtils.noNull(fCmdError).toString();
 	}
 
-	public int runCommand(String commandLine) throws Exception {
+	public int runCommand(final String commandLine) throws Exception {
 		/* run command */
 		Process process = runCommandHelper(commandLine);
 
@@ -140,25 +136,25 @@ public class SysCommandExecutor {
 		return exitStatus;
 	}
 
-	private Process runCommandHelper(String commandLine) throws IOException {
+	private Process runCommandHelper(final String commandLine) throws IOException {
 		Process process;
-		if (fWorkingDirectory == null) {
+		if (fWorkingDirectory == null)
 			process = Runtime.getRuntime().exec(commandLine, getEnvTokens());
-		} else {
+		else
 			process = Runtime.getRuntime().exec(commandLine, getEnvTokens(), new File(fWorkingDirectory));
-		}
 
 		return process;
 	}
 
-	private void startOutputAndErrorReadThreads(InputStream processOut, InputStream processErr) {
+	private void startOutputAndErrorReadThreads(final InputStream processOut, final InputStream processErr) {
 		fCmdOutput = new StringBuffer();
-		fCmdOutputThread = new AsyncStreamReader(processOut, NullUtils.noNull(fCmdOutput), NullUtils.orNoNull(fOutputLogDevice, new ConsoleLogDevice()),
-				"OUTPUT");
+		fCmdOutputThread = new AsyncStreamReader(processOut, NullUtils.noNull(fCmdOutput),
+				NullUtils.orNoNull(fOutputLogDevice, new ConsoleLogDevice()), "OUTPUT");
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
-		fCmdErrorThread = new AsyncStreamReader(processErr, NullUtils.noNull(fCmdError), NullUtils.orNoNull(fErrorLogDevice, new ConsoleLogDevice()), "ERROR");
+		fCmdErrorThread = new AsyncStreamReader(processErr, NullUtils.noNull(fCmdError),
+				NullUtils.orNoNull(fErrorLogDevice, new ConsoleLogDevice()), "ERROR");
 		fCmdErrorThread.start();
 	}
 
@@ -167,11 +163,10 @@ public class SysCommandExecutor {
 		NullUtils.noNull(fCmdErrorThread).stopReading();
 	}
 
-	@Nullable
+	
 	private String[] getEnvTokens() {
-		if (fEnvironmentVarList == null) {
+		if (fEnvironmentVarList == null)
 			return new String[0];
-		}
 
 		String[] envTokenArray = new String[NullUtils.noNull(fEnvironmentVarList).size()];
 		Iterator<EnvironmentVar> envVarIter = NullUtils.noNull(fEnvironmentVarList).iterator();

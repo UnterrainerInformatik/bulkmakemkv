@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
-	    <groupId>info.unterrainer.commons</groupId>
-	    <artifactId>parent-pom</artifactId>
-	    <version>0.0.25</version>
+		<groupId>info.unterrainer.commons</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>0.0.25</version>
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
@@ -130,65 +130,6 @@
 					</execution>
 				</executions>
 			</plugin>
-		</plugins>
-	</build>
-
-	<licenses>
-		<license>
-			<name>Microsoft Public License</name>
-			<url>http://opensource.org/licenses/MS-PL</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<organization>
-		<name>Unterrainer Informatik OG</name>
-		<url>http://www.unterrainer.info</url>
-	</organization>
-
-	<dependencies>
-		<dependency>
-			<groupId>info.unterrainer.java.tools</groupId>
-			<artifactId>data-structures</artifactId>
-			<version>0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>info.unterrainer.java.tools</groupId>
-			<artifactId>nullannotations</artifactId>
-			<version>0.3</version>
-			<optional>true</optional>
-			<!-- for annotations only -->
-		</dependency>
-		<dependency>
-			<groupId>info.unterrainer.java.tools</groupId>
-			<artifactId>utils</artifactId>
-			<version>0.3</version>
-		</dependency>
-		<dependency>
-			<groupId>info.unterrainer.java.tools.reporting</groupId>
-			<artifactId>console-progressbar</artifactId>
-			<version>0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-configuration</groupId>
-			<artifactId>commons-configuration</artifactId>
-			<version>1.10</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.6</version>
-		</dependency>
-	</dependencies>
-
-	<build>
-
-		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -220,6 +161,52 @@
 				</executions>
 			</plugin>
 		</plugins>
-
 	</build>
+
+	<licenses>
+		<license>
+			<name>Microsoft Public License</name>
+			<url>http://opensource.org/licenses/MS-PL</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Unterrainer Informatik OG</name>
+		<url>http://www.unterrainer.info</url>
+	</organization>
+
+	<dependencies>
+		<dependency>
+			<groupId>info.unterrainer.java.tools</groupId>
+			<artifactId>data-structures</artifactId>
+			<version>0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>info.unterrainer.java.tools</groupId>
+			<artifactId>utils</artifactId>
+			<version>0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>info.unterrainer.java.tools.reporting</groupId>
+			<artifactId>console-progressbar</artifactId>
+			<version>0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.6</version>
+		</dependency>
+	</dependencies>
+
 </project>

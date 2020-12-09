@@ -30,16 +30,16 @@ import java.util.regex.Pattern;
 @UtilityClass
 public class Utils {
 
-	@Nullable
-	public static String normalizeDirectory(@Nullable String input) {
+	
+	public static String normalizeDirectory( String input) {
 		if (input == null || input.equals("")) {
 			return input;
 		}
 		return input.endsWith("/") ? input : input + "/";
 	}
 
-	@Nullable
-	public static String removeDashTrim(@Nullable String text) {
+	
+	public static String removeDashTrim( String text) {
 		if (text == null || text.equals("")) {
 			return text;
 		}
@@ -69,7 +69,7 @@ public class Utils {
 		return result;
 	}
 
-	@Nullable
+	
 	public static EpisodeNumber scanEpisodeNumber(String input) {
 		List<Match> episodesLongContents = Utils.getPattern(input, FileName.regExEpisodesLong, 0);
 		List<Match> episodesShortContents = Utils.getPattern(input, FileName.regExEpisodesShort, 0);
@@ -99,13 +99,13 @@ public class Utils {
 		return new EpisodeNumber(start, end, end - start + 1);
 	}
 
-	public static void sysoutNN(@Nullable String input) {
+	public static void sysoutNN( String input) {
 		if (input != null) {
 			sysout(input);
 		}
 	}
 
-	public static void sysoutNNNE(@Nullable String input) {
+	public static void sysoutNNNE( String input) {
 		if (input != null && !input.equals("")) {
 			sysout(input);
 		}

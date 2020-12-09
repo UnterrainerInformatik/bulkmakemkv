@@ -34,7 +34,7 @@ public class ConsoleLogDevice implements LogDevice {
 	}
 
 	@Override
-	public synchronized void log(@Nullable String input) {
+	public synchronized void log( String input) {
 		if (input != null) {
 			input = input.trim();
 			if (!debugMode) {
@@ -47,8 +47,8 @@ public class ConsoleLogDevice implements LogDevice {
 		}
 	}
 
-	@Nullable
-	private String unescape(@Nullable String input) {
+	
+	private String unescape( String input) {
 		if (input == null) {
 			return null;
 		}
@@ -65,7 +65,7 @@ public class ConsoleLogDevice implements LogDevice {
 		return result;
 	}
 
-	@Nullable
+	
 	private String process(String input) {
 		String command = input.substring(0, input.indexOf(':'));
 		String content = input.substring(input.indexOf(':') + 1);

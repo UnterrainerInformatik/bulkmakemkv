@@ -40,11 +40,11 @@ public class FileName {
 	private long size;
 	private String name;
 	private String extension;
-	@Nullable
+	
 	private String calculatedCleanName;
 
 	private boolean bonusDisc;
-	@Nullable
+	
 	private Integer year;
 
 	private List<Match> roundBracketContents = new ArrayList<>();
@@ -124,7 +124,7 @@ public class FileName {
 				+ "]";
 	}
 
-	@Nullable
+	
 	public String getFolderName() {
 		String result = calculatedCleanName;
 		if (!squareBracketContents.isEmpty()) {
@@ -171,7 +171,7 @@ public class FileName {
 		return result;
 	}
 
-	@Nullable
+	
 	public String getFileName() {
 		String result = calculatedCleanName;
 		for (Match m : roundBracketContents) {
@@ -217,7 +217,7 @@ public class FileName {
 		return extension;
 	}
 
-	@Nullable
+	
 	public String getCalculatedCleanName() {
 		return calculatedCleanName;
 	}
@@ -242,7 +242,7 @@ public class FileName {
 		return bonusDisc;
 	}
 
-	@Nullable
+	
 	public Integer getYear() {
 		return year;
 	}
