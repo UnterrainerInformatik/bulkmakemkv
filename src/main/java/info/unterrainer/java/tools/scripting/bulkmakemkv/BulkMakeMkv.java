@@ -84,7 +84,7 @@ public class BulkMakeMkv {
 			System.exit(1);
 		}
 		os = config.getString("os");
-		if (os == null || os.isEmpty() || !os.equals("mac"))
+		if (os == null || os.isEmpty() || !os.equals("mac") && !os.equals("linux"))
 			os = "windows";
 
 		// Get parameter isoDirs.
@@ -393,6 +393,9 @@ public class BulkMakeMkv {
 			command = makeMkvCommand.replace(" ", "\\ ") + " mkv iso:"
 					+ (isoDir + file.getName() + "." + file.getExtension()).replace(" ", "\\ ")
 					+ " all -r --progress=-same " + tempDir.replace(" ", "\\ ");
+		if (os.equals("linux"))
+			command = "'" + makeMkvCommand + "'" + " mkv iso:" + "'" + isoDir + file.getName() + "."
+					+ file.getExtension() + "'" + " all -r --progress=-same " + "'" + tempDir + "'";
 
 		Utils.sysout(command);
 		return doCommand(command);
@@ -541,7 +544,7 @@ public class BulkMakeMkv {
 		SysCommandExecutor cmdExecutor = new SysCommandExecutor(outputLog, errorLog);
 		int exitStatus = 0;
 		try {
-			exitStatus = cmdExecutor.runCommand(command);
+			exitStatus = cmdExecutor.runCommand(command, os.equals("linux"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
