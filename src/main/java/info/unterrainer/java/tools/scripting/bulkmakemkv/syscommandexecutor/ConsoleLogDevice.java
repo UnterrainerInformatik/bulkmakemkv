@@ -1,13 +1,12 @@
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 import info.unterrainer.java.tools.reporting.consoleprogressbar.ConsoleProgressBar;
 import info.unterrainer.java.tools.reporting.consoleprogressbar.drawablecomponents.ProgressBar;
 import info.unterrainer.java.tools.utils.NullUtils;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang.StringEscapeUtils;
-
-import javax.annotation.Nullable;
 
 public class ConsoleLogDevice implements LogDevice {
 
@@ -20,53 +19,56 @@ public class ConsoleLogDevice implements LogDevice {
 	private double progressMax = 65000;
 
 	private ProgressBar barComponentTotal = ProgressBar.builder().build();
-	private ConsoleProgressBar barTotal = ConsoleProgressBar.builder().width(10).minValue(0d).maxValue(progressMax).component(barComponentTotal).build();
+	private ConsoleProgressBar barTotal = ConsoleProgressBar.builder()
+			.width(10)
+			.minValue(0d)
+			.maxValue(progressMax)
+			.component(barComponentTotal)
+			.build();
 
 	private ProgressBar barComponentCurrent = ProgressBar.builder().build();
-	private ConsoleProgressBar barCurrent = ConsoleProgressBar.builder().width(10).minValue(0d).maxValue(progressMax).component(barComponentCurrent).build();
+	private ConsoleProgressBar barCurrent = ConsoleProgressBar.builder()
+			.width(10)
+			.minValue(0d)
+			.maxValue(progressMax)
+			.component(barComponentCurrent)
+			.build();
 
 	private boolean speedHintWrittenOnce;
 
-	private void write(String input) {
+	private void write(final String input) {
 		removeProgressBars();
 		System.out.println(input);
 		drawProgressBars();
 	}
 
 	@Override
-	public synchronized void log( String input) {
+	public synchronized void log(String input) {
 		if (input != null) {
 			input = input.trim();
-			if (!debugMode) {
+			if (!debugMode)
 				input = unescape(process(NullUtils.noNull(input)));
-			}
 
-			if (input != null && input.length() > 0 && !input.trim().equals("0")) {
+			if (input != null && input.length() > 0 && !input.trim().equals("0"))
 				write("  " + input.trim().replace("\r", "").replace("\n", "\n  ").trim());
-			}
 		}
 	}
 
-	
-	private String unescape( String input) {
-		if (input == null) {
+	private String unescape(final String input) {
+		if (input == null)
 			return null;
-		}
 
 		String result = input.trim();
 		result = StringEscapeUtils.unescapeJava(result.trim());
-		if (result.startsWith("\"")) {
+		if (result.startsWith("\""))
 			result = result.substring(1);
-		}
-		if (result.endsWith("\"")) {
+		if (result.endsWith("\""))
 			result = result.substring(0, result.length() - 1);
-		}
 
 		return result;
 	}
 
-	
-	private String process(String input) {
+	private String process(final String input) {
 		String command = input.substring(0, input.indexOf(':'));
 		String content = input.substring(input.indexOf(':') + 1);
 		String[] contents = content.split(",");
@@ -86,9 +88,8 @@ public class ConsoleLogDevice implements LogDevice {
 			return null;
 		case "PRGT":
 			String t = unescape(contents[2]);
-			if (t != null && t.equals("Saving all titles to MKV files")) {
+			if (t != null && t.equals("Saving all titles to MKV files"))
 				t = "Saving titles";
-			}
 			removeProgressBars();
 			barComponentTotal.setPrefix(t + ":");
 			drawProgressBars();
@@ -96,12 +97,10 @@ public class ConsoleLogDevice implements LogDevice {
 		case "PRGC":
 			String c = unescape(contents[2]);
 			if (c != null) {
-				if (c.equals("Analyzing seamless segments")) {
+				if (c.equals("Analyzing seamless segments"))
 					c = "Analyzing Segments";
-				}
-				if (c.equals("Saving to MKV file")) {
+				if (c.equals("Saving to MKV file"))
 					c = "Saving file";
-				}
 			}
 			removeProgressBars();
 			barComponentCurrent.setPrefix(" " + c + ":");
@@ -118,16 +117,13 @@ public class ConsoleLogDevice implements LogDevice {
 			if (contents.length > 3) {
 				String s = unescape(contents[3]);
 				if (s != null) {
-					if (s.startsWith("DEBUG:")) {
+					if (s.startsWith("DEBUG:"))
 						return null;
-					}
-					if (s.equals("Program reads data faster than it can write to disk")) {
-						if (speedHintWrittenOnce) {
+					if (s.equals("Program reads data faster than it can write to disk"))
+						if (speedHintWrittenOnce)
 							return null;
-						} else {
+						else
 							speedHintWrittenOnce = true;
-						}
-					}
 				}
 				return s;
 			}

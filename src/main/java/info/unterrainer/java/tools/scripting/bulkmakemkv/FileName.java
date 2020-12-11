@@ -19,15 +19,14 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv;
 
-import info.unterrainer.java.tools.utils.NullUtils;
-
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import info.unterrainer.java.tools.utils.NullUtils;
 
 public class FileName {
 
@@ -40,11 +39,11 @@ public class FileName {
 	private long size;
 	private String name;
 	private String extension;
-	
+
 	private String calculatedCleanName;
 
 	private boolean bonusDisc;
-	
+
 	private Integer year;
 
 	private List<Match> roundBracketContents = new ArrayList<>();
@@ -52,7 +51,7 @@ public class FileName {
 	private List<Match> episodesLongContents = new ArrayList<>();
 	private List<Match> episodesShortContents = new ArrayList<>();
 
-	public FileName(File file) {
+	public FileName(final File file) {
 		name = file.getName().substring(0, file.getName().lastIndexOf('.'));
 		extension = file.getName().substring(file.getName().lastIndexOf('.') + 1).toLowerCase();
 		try {
@@ -65,7 +64,7 @@ public class FileName {
 		calculate(name);
 	}
 
-	private void calculate(String name) {
+	private void calculate(final String name) {
 		squareBracketContents = Utils.getPattern(name, regExSquareBrackets, 1);
 		roundBracketContents = Utils.getPattern(name, regExRoundBrackets, 1);
 		calculatedCleanName = name.replaceAll(regExSquareBrackets, "");
@@ -83,120 +82,87 @@ public class FileName {
 		Calendar now = Calendar.getInstance();
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().equals("bonus")) {
+			if (s.toLowerCase().equals("bonus"))
 				bonusDisc = true;
-			}
 			try {
 				year = Integer.parseInt(s);
-				if (NullUtils.noNull(year) < 1800 || NullUtils.noNull(year) > now.get(Calendar.YEAR)) {
+				if (NullUtils.noNull(year) < 1800 || NullUtils.noNull(year) > now.get(Calendar.YEAR))
 					// Plausibility-check.
 					year = null;
-				}
 			} catch (NumberFormatException ignored) {
 			}
 		}
 
-		if (NullUtils.noNull(calculatedCleanName).toLowerCase().endsWith("bonus")) {
+		if (NullUtils.noNull(calculatedCleanName).toLowerCase().endsWith("bonus"))
 			bonusDisc = true;
-		}
 	}
 
 	@Override
 	public String toString() {
-		return calculatedCleanName
-				+ " ex:["
-				+ extension
-				+ "] sz:["
-				+ size
-				+ "]"
-				+ " rb:"
-				+ roundBracketContents
-				+ " sb:"
-				+ squareBracketContents
-				+ " el:"
-				+ episodesLongContents
-				+ " es:"
-				+ episodesShortContents
-				+ " yr:["
-				+ year
-				+ "] bd:["
-				+ bonusDisc
-				+ "]";
+		return calculatedCleanName + " ex:[" + extension + "] sz:[" + size + "]" + " rb:" + roundBracketContents
+				+ " sb:" + squareBracketContents + " el:" + episodesLongContents + " es:" + episodesShortContents
+				+ " yr:[" + year + "] bd:[" + bonusDisc + "]";
 	}
 
-	
 	public String getFolderName() {
 		String result = calculatedCleanName;
-		if (!squareBracketContents.isEmpty()) {
+		if (!squareBracketContents.isEmpty())
 			result += " [" + squareBracketContents.get(0) + "]";
-		}
-		if (year != null) {
+		if (year != null)
 			result += " (" + year + ")";
-		}
 		if (!episodesLongContents.isEmpty() || !episodesShortContents.isEmpty()) {
 			// This is a TV-series.
 			String h = " - ";
-			if (!episodesLongContents.isEmpty()) {
+			if (!episodesLongContents.isEmpty())
 				h += episodesLongContents.get(0);
-			}
-			if (!episodesShortContents.isEmpty()) {
+			if (!episodesShortContents.isEmpty())
 				h += episodesShortContents.get(0);
-			}
 			result += h;
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("side")) {
+			if (s.toLowerCase().startsWith("side"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("part")) {
+			if (s.toLowerCase().startsWith("part"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("english")) {
+			if (s.toLowerCase().startsWith("english"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("german")) {
+			if (s.toLowerCase().startsWith("german"))
 				result += " (" + s + ")";
-			}
 		}
 		return result;
 	}
 
-	
 	public String getFileName() {
 		String result = calculatedCleanName;
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("side")) {
+			if (s.toLowerCase().startsWith("side"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("part")) {
+			if (s.toLowerCase().startsWith("part"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("english")) {
+			if (s.toLowerCase().startsWith("english"))
 				result += " (" + s + ")";
-			}
 		}
 		for (Match m : roundBracketContents) {
 			String s = m.getMatch();
-			if (s.toLowerCase().startsWith("german")) {
+			if (s.toLowerCase().startsWith("german"))
 				result += " (" + s + ")";
-			}
 		}
 		return result;
 	}
@@ -217,7 +183,6 @@ public class FileName {
 		return extension;
 	}
 
-	
 	public String getCalculatedCleanName() {
 		return calculatedCleanName;
 	}
@@ -242,7 +207,6 @@ public class FileName {
 		return bonusDisc;
 	}
 
-	
 	public Integer getYear() {
 		return year;
 	}

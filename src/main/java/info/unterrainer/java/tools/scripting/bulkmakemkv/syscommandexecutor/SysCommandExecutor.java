@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import org.apache.commons.lang.StringUtils;
 
 import info.unterrainer.java.tools.utils.NullUtils;
@@ -43,7 +41,7 @@ import info.unterrainer.java.tools.utils.NullUtils;
  * 		int exitStatus = cmdExecutor.runCommand(commandLine);
  * </CODE>
  * </PRE>
- * 
+ *
  * OR
  *
  * <PRE>
@@ -58,25 +56,24 @@ import info.unterrainer.java.tools.utils.NullUtils;
  */
 
 public class SysCommandExecutor {
-	
+
 	private LogDevice fOutputLogDevice;
-	
+
 	private LogDevice fErrorLogDevice;
-	
+
 	private String fWorkingDirectory;
-	
+
 	private List<EnvironmentVar> fEnvironmentVarList;
 
-	
 	private StringBuffer fCmdOutput;
-	
+
 	private StringBuffer fCmdError;
-	
+
 	private AsyncStreamReader fCmdOutputThread;
-	
+
 	private AsyncStreamReader fCmdErrorThread;
 
-	public SysCommandExecutor( final LogDevice fOutputLogDevice,  final LogDevice fErrorLogDevice) {
+	public SysCommandExecutor(final LogDevice fOutputLogDevice, final LogDevice fErrorLogDevice) {
 		super();
 		this.fOutputLogDevice = fOutputLogDevice;
 		this.fErrorLogDevice = fErrorLogDevice;
@@ -163,7 +160,6 @@ public class SysCommandExecutor {
 		NullUtils.noNull(fCmdErrorThread).stopReading();
 	}
 
-	
 	private String[] getEnvTokens() {
 		if (fEnvironmentVarList == null)
 			return new String[0];
