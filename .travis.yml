@@ -1,0 +1,55 @@
+########################
+### VARIABLES NEEDED ###
+########################
+# RELEASE           Set to true to release a ZIP-file on github (there has to be a
+#                   target/ directory for that)
+#
+### Deploy
+# GITHUB_API_KEY    The api-key of github used to push a release-file
+# GPG_EXECUTABLE    should be 'gpg2'
+# GPG_OWNERTRUST    The 'ownertrust' export from the key-file used to sign (base64 encoded)
+# GPG_SECRET_KEYS   The 'secret-key' export from the key-file used to sign (base64 encoded)
+# GPG_PASSPHRASE    The passphrase used when generating the GPG-key you're now importing
+# MAVEN_CENTRAL     'true' if you want to deploy to maven-central; 'false' or undefined if not
+# SONATYPE_PASSWORD The password of your sonatype-account used to push to maven-central
+# SONATYPE_USERNAME The userName of your sonatype-account used to push to maven-central
+#
+####################
+### GENERAL INFO ###
+####################
+# - The 'deploy' step in Travis isn't the same process as the rest. So you have to re-source
+#   the functions into that process. More than that it isn't a full sh process like with the
+#   script-phase. So you cannot even source from there directly. That's why the source
+#   command is IN the deploy.sh script.
+
+language: java
+jdk:
+    - openjdk14
+before_install:
+    - git clone https://github.com/UnterrainerInformatik/Travis-Scripts.git travis
+    - source travis/functions.Java.sh
+    - tr_setProjectSubdir Java
+    - source $TRAVIS/before_install.sh
+install:
+    - source $TRAVIS/install.sh
+before_script:
+    - source $TRAVIS/before_script.sh
+script:
+    - source $TRAVIS/script.sh
+
+before_deploy: ./$TRAVIS/before_deploy.sh
+deploy:
+    - provider: script
+      skip_cleanup: true
+      script: ./$TRAVIS/deploy.sh
+      on:
+        branch: master
+    - provider: releases
+      skip_cleanup: true
+      overwrite: true
+      api_key:
+          secure: $GITHUB_API_KEY
+      file: $ARTIFACT_ID.$POM_VERSION.zip
+      on:
+        tags: true
+        branch: master

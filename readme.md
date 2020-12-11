@@ -17,7 +17,9 @@
  * 
  ***************************************************************************/
 ```
- 
+[![Travis branch](https://img.shields.io/travis/UnterrainerInformatik/bulkmakemkv/develop.svg?maxAge=2592000)]()
+
+
 # Disclaimer
 
 This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
@@ -30,7 +32,7 @@ All of our projects facilitate the [Project Lombok][lombok]. So please download 
 
 **Beware:** Project Lombok currently doesn't play well with Eclipse Mars (4.5). You'll get build-errors using the extension methods as of now.
 
-# BulkMakeMKV
+# ![BulkMakeMKV Icon](http://unterrainer.info/logos/bulkmakemkv128.png) BulkMakeMKV
 
 MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).
 
@@ -44,11 +46,11 @@ Make sure that java.exe is on your path, or start the following commands with th
 
 Start the program, as you would start any jar by typing:
 ```
-java -jar bulkMakeMkv.jar
+java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 ```
 or put these lines in a batch-file (should be more convenient):
 ```
-java -jar bulkMakeMkv.jar
+java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 pause
 ```
 
@@ -87,6 +89,9 @@ os = windows
 #
 # If you want to specify more than one, just add another isoDirs-parameter
 # (same name) below the current one.
+# try:
+# isoDirs = /path to dir
+# for absolute paths on linux based systems like mac.
 isoDirs = //computername/f$
 
 # This is the temporary directory which is used when makeMKV is working.
@@ -194,6 +199,11 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 *Resulting target-folder / file-name:*  
 `/Avatar - The Last Airbender - s01e14/Avatar - The Last Airbender - s01e014.mkv`  
 
+---
+This program is brought to you by [Unterrainer Informatik][homepage]  
+Project lead is [Gerald Unterrainer][geraldmail]
+
+[geraldmail]: mailto:gerald@unterrainer.info
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
 [makemkv]: http://www.makemkv.com/
