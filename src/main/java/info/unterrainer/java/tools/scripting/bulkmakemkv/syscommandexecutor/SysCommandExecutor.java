@@ -110,9 +110,9 @@ public class SysCommandExecutor {
 		return NullUtils.noNull(fCmdError).toString();
 	}
 
-	public int runCommand(final String commandLine) throws Exception {
+	public int runCommand(final String commandLine, final boolean isLinux) throws Exception {
 		/* run command */
-		Process process = runCommandHelper(commandLine);
+		Process process = runCommandHelper(commandLine, isLinux);
 
 		/* start output and error read threads */
 		startOutputAndErrorReadThreads(process.getInputStream(), process.getErrorStream());
@@ -133,10 +133,16 @@ public class SysCommandExecutor {
 		return exitStatus;
 	}
 
-	private Process runCommandHelper(final String commandLine) throws IOException {
+	private Process runCommandHelper(final String commandLine, final boolean isLinux) throws IOException {
 		Process process;
 		if (fWorkingDirectory == null)
-			process = Runtime.getRuntime().exec(commandLine, getEnvTokens());
+			if (isLinux)
+				process = Runtime.getRuntime().exec(new String[] { "bash", "-c", commandLine }, getEnvTokens());
+			else
+				process = Runtime.getRuntime().exec(commandLine, getEnvTokens());
+		else if (isLinux)
+			process = Runtime.getRuntime()
+					.exec(new String[] { "bash", "-c", commandLine }, getEnvTokens(), new File(fWorkingDirectory));
 		else
 			process = Runtime.getRuntime().exec(commandLine, getEnvTokens(), new File(fWorkingDirectory));
 

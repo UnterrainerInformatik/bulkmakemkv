@@ -1,38 +1,10 @@
-```
-/**************************************************************************
- * 
- * Copyright (c) Unterrainer Informatik OG.
- * This source is subject to the Microsoft Public License.
- * 
- * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
- * All other rights reserved.
- * 
- * (In other words you may copy, use, change and redistribute it without
- * any restrictions except for not suing me because it broke something.)
- * 
- * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
- * PURPOSE.
- * 
- ***************************************************************************/
-```
-[![Travis branch](https://img.shields.io/travis/UnterrainerInformatik/bulkmakemkv/develop.svg?maxAge=2592000)]()
+![GitHub forks](https://img.shields.io/github/forks/UnterrainerInformatik/bulkmakemkv?style=social) ![GitHub stars](https://img.shields.io/github/stars/UnterrainerInformatik/bulkmakemkv?style=social) ![GitHub repo size](https://img.shields.io/github/repo-size/UnterrainerInformatik/bulkmakemkv) [![GitHub issues](https://img.shields.io/github/issues/UnterrainerInformatik/bulkmakemkv)](https://github.com/UnterrainerInformatik/bulkmakemkv/issues)
+
+[![license](https://img.shields.io/github/license/unterrainerinformatik/FiniteStateMachine.svg?maxAge=2592000)](http://unlicense.org) [![Travis-build](https://travis-ci.org/UnterrainerInformatik/bulkmakemkv.svg?branch=master)](https://travis-ci.org/github/UnterrainerInformatik/bulkmakemkv) [![Twitter Follow](https://img.shields.io/twitter/follow/throbax.svg?style=social&label=Follow&maxAge=2592000)](https://twitter.com/throbax)
 
 
-# Disclaimer
 
-This section of our GIT repository is free. You may copy, use or rewrite every single one of its contained projects to your hearts content.
-In order to get help with basic GIT commands you may try [the GIT cheat-sheet][coding] on our [homepage][homepage].  
-
-This repository is private since this is the master- and release-branch. You may clone it, but it will be read-only.  
-If you want to contribute to our repository (push, open pull requests), please use the copy on github located here: [the public github repository][github]
-
-All of our projects facilitate the [Project Lombok][lombok]. So please download it and 'install' it in your preferred IDE by clicking on the downloaded jar-file. Then all compile-errors should vanish.  
-
-**Beware:** Project Lombok currently doesn't play well with Eclipse Mars (4.5). You'll get build-errors using the extension methods as of now.
-
-# ![BulkMakeMKV Icon](http://unterrainer.info/logos/bulkmakemkv128.png) BulkMakeMKV
+# ![BulkMakeMKV Icon](http://files.unterrainer.info/logos/bulkmakemkv128.png) BulkMakeMKV
 
 MakeMKV is a program that extracts MKV-files from DVD/BR-rips that are saved as an image (ISO) or a DVD/BR in general (a mounted one, preferably).
 
@@ -76,7 +48,8 @@ mode = scan
 #mode = debug scan
 #mode = convert debug
 
-# This option manipulates escaping when it comes to paths. Use windows or mac.
+# This option manipulates escaping when it comes to paths. Use windows,
+# linux or mac.
 os = windows
 
 # The directories where your ISO-files are located.
