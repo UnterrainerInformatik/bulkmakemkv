@@ -19,12 +19,15 @@
  ***************************************************************************/
 package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
 
-class EnvironmentVar {
-	public String fName;
-	public String fValue;
+import lombok.Builder;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-	public EnvironmentVar(String name, String value) {
-		fName = name;
-		fValue = value;
-	}
+@Data
+@Builder
+@Accessors(fluent = true)
+class EnvironmentVar {
+
+	private String name;
+	private String value;
 }

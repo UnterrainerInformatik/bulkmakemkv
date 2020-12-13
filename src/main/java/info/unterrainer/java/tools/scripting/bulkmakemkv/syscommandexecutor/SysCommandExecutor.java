@@ -95,7 +95,7 @@ public class SysCommandExecutor {
 		if (fEnvironmentVarList == null)
 			fEnvironmentVarList = new ArrayList<>();
 
-		NullUtils.noNull(fEnvironmentVarList).add(new EnvironmentVar(name, value));
+		NullUtils.noNull(fEnvironmentVarList).add(EnvironmentVar.builder().name(name).value(value).build());
 	}
 
 	public String getCommandOutput() {
@@ -153,11 +153,13 @@ public class SysCommandExecutor {
 		fCmdOutput = new StringBuffer();
 		fCmdOutputThread = new AsyncStreamReader(processOut, NullUtils.noNull(fCmdOutput),
 				NullUtils.orNoNull(fOutputLogDevice, new ConsoleLogDevice()), "OUTPUT");
+		fCmdOutputThread.setDebug(true);
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
 		fCmdErrorThread = new AsyncStreamReader(processErr, NullUtils.noNull(fCmdError),
 				NullUtils.orNoNull(fErrorLogDevice, new ConsoleLogDevice()), "ERROR");
+		fCmdErrorThread.setDebug(true);
 		fCmdErrorThread.start();
 	}
 
@@ -175,7 +177,7 @@ public class SysCommandExecutor {
 		int nEnvVarIndex = 0;
 		while (envVarIter.hasNext()) {
 			EnvironmentVar envVar = envVarIter.next();
-			String envVarToken = envVar.fName + "=" + envVar.fValue;
+			String envVarToken = envVar.name() + "=" + envVar.value();
 			envTokenArray[nEnvVarIndex++] = envVarToken;
 		}
 
