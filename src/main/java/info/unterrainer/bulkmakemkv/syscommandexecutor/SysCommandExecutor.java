@@ -1,23 +1,4 @@
-/**************************************************************************
- * <pre>
- *
- * Copyright (c) Unterrainer Informatik OG.
- * This source is subject to the Microsoft Public License.
- *
- * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
- * All other rights reserved.
- *
- * (In other words you may copy, use, change and redistribute it without
- * any restrictions except for not suing me because it broke something.)
- *
- * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
- * PURPOSE.
- *
- * </pre>
- ***************************************************************************/
-package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
+package info.unterrainer.bulkmakemkv.syscommandexecutor;
 
 import java.io.File;
 import java.io.IOException;
@@ -95,7 +76,7 @@ public class SysCommandExecutor {
 		if (fEnvironmentVarList == null)
 			fEnvironmentVarList = new ArrayList<>();
 
-		NullUtils.noNull(fEnvironmentVarList).add(new EnvironmentVar(name, value));
+		NullUtils.noNull(fEnvironmentVarList).add(EnvironmentVar.builder().name(name).value(value).build());
 	}
 
 	public String getCommandOutput() {
@@ -153,11 +134,13 @@ public class SysCommandExecutor {
 		fCmdOutput = new StringBuffer();
 		fCmdOutputThread = new AsyncStreamReader(processOut, NullUtils.noNull(fCmdOutput),
 				NullUtils.orNoNull(fOutputLogDevice, new ConsoleLogDevice()), "OUTPUT");
+		fCmdOutputThread.setDebug(true);
 		fCmdOutputThread.start();
 
 		fCmdError = new StringBuffer();
 		fCmdErrorThread = new AsyncStreamReader(processErr, NullUtils.noNull(fCmdError),
 				NullUtils.orNoNull(fErrorLogDevice, new ConsoleLogDevice()), "ERROR");
+		fCmdErrorThread.setDebug(true);
 		fCmdErrorThread.start();
 	}
 
@@ -175,7 +158,7 @@ public class SysCommandExecutor {
 		int nEnvVarIndex = 0;
 		while (envVarIter.hasNext()) {
 			EnvironmentVar envVar = envVarIter.next();
-			String envVarToken = envVar.fName + "=" + envVar.fValue;
+			String envVarToken = envVar.name() + "=" + envVar.value();
 			envTokenArray[nEnvVarIndex++] = envVarToken;
 		}
 

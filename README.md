@@ -17,16 +17,18 @@ First, you'll need the Java **JRE version 1.8** (**Java SE 8**) or higher.
 Make sure that java.exe is on your path, or start the following commands with the path to your java installation (the `/bin` directory of the one you've just downloaded).
 
 Start the program, as you would start any jar by typing:
-```
+```bash
 java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 ```
 or put these lines in a batch-file (should be more convenient):
-```
+```bash
 java -jar bulk-makemkv-0.2-jar-with-dependencies.jar
 pause
 ```
 
-## The Config File  
+All of our projects facilitate the [Project Lombok][lombok]. So please download it and 'install' it in your preferred IDE by clicking on the downloaded jar-file. Then all compile-errors should vanish.  
+
+## The Config File
 
 Here is an example of a config-file. I like to think it is very self-descriptive:
 
@@ -174,9 +176,9 @@ Sometimes, when dealing with series, makeMKV sometimes does a 'catch-all' track 
 
 ---
 This program is brought to you by [Unterrainer Informatik][homepage]  
-Project lead is [Gerald Unterrainer][geraldmail]
+Project lead is [Psilo][psilomail]
 
-[geraldmail]: mailto:gerald@unterrainer.info
+[psilomail]: mailto:psilo@unterrainer.info
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
 [makemkv]: http://www.makemkv.com/

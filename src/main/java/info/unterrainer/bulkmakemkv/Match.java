@@ -1,4 +1,4 @@
-package info.unterrainer.java.tools.scripting.bulkmakemkv;
+package info.unterrainer.bulkmakemkv;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class Match {
 	String match;
 	List<String> groups = new ArrayList<>();
 
-	public Match(String match, List<String> groups) {
+	public Match(final String match, final List<String> groups) {
 		super();
 		this.match = match;
 		this.groups = groups;

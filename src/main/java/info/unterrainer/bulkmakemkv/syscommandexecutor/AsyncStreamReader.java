@@ -1,31 +1,12 @@
-/**************************************************************************
- * <pre>
- *
- * Copyright (c) Unterrainer Informatik OG.
- * This source is subject to the Microsoft Public License.
- *
- * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
- * All other rights reserved.
- *
- * (In other words you may copy, use, change and redistribute it without
- * any restrictions except for not suing me because it broke something.)
- *
- * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
- * PURPOSE.
- *
- * </pre>
- ***************************************************************************/
-package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
-
-import lombok.Getter;
-import lombok.Setter;
+package info.unterrainer.bulkmakemkv.syscommandexecutor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import lombok.Getter;
+import lombok.Setter;
 
 class AsyncStreamReader extends Thread {
 	private StringBuffer buffer;
@@ -40,7 +21,8 @@ class AsyncStreamReader extends Thread {
 
 	private String newLine;
 
-	public AsyncStreamReader(InputStream inputStream, StringBuffer buffer, LogDevice logDevice, String threadId) {
+	public AsyncStreamReader(final InputStream inputStream, final StringBuffer buffer, final LogDevice logDevice,
+			final String threadId) {
 		this.inputStream = inputStream;
 		this.buffer = buffer;
 		this.logDevice = logDevice;
@@ -58,9 +40,8 @@ class AsyncStreamReader extends Thread {
 		try {
 			readCommandOutput();
 		} catch (Exception ex) {
-			if(debug){
+			if (debug)
 				ex.printStackTrace();
-			}
 		}
 	}
 
@@ -72,16 +53,15 @@ class AsyncStreamReader extends Thread {
 			printToDisplayDevice(line);
 		}
 		bufOut.close();
-		if(debug){
+		if (debug)
 			System.out.println("END OF: " + threadId);
-		}
 	}
 
 	public void stopReading() {
 		stop = true;
 	}
 
-	private void printToDisplayDevice(String line) {
+	private void printToDisplayDevice(final String line) {
 		logDevice.log(line);
 	}
 }
