@@ -1,4 +1,4 @@
-package info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor;
+package info.unterrainer.bulkmakemkv.syscommandexecutor;
 
 import org.apache.commons.lang.StringEscapeUtils;
 

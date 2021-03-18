@@ -1,23 +1,4 @@
-/**************************************************************************
- * <pre>
- *
- * Copyright (c) Unterrainer Informatik OG.
- * This source is subject to the Microsoft Public License.
- *
- * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
- * All other rights reserved.
- *
- * (In other words you may copy, use, change and redistribute it without
- * any restrictions except for not suing me because it broke something.)
- *
- * THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
- * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
- * PURPOSE.
- *
- * </pre>
- ***************************************************************************/
-package info.unterrainer.java.tools.scripting.bulkmakemkv;
+package info.unterrainer.bulkmakemkv;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,10 +11,10 @@ import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.filevisitors.ScanVisitor;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.ConsoleLogDevice;
-import info.unterrainer.java.tools.scripting.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
+import info.unterrainer.bulkmakemkv.filevisitors.DirectoryNameEqualsVisitor;
+import info.unterrainer.bulkmakemkv.filevisitors.ScanVisitor;
+import info.unterrainer.bulkmakemkv.syscommandexecutor.ConsoleLogDevice;
+import info.unterrainer.bulkmakemkv.syscommandexecutor.SysCommandExecutor;
 import info.unterrainer.java.tools.utils.NullUtils;
 import info.unterrainer.java.tools.utils.StringUtils;
 

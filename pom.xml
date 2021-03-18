@@ -13,7 +13,7 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>info.unterrainer.tools</groupId>
+	<groupId>info.unterrainer</groupId>
 	<artifactId>bulk-makemkv</artifactId>
 	<version>0.1.0</version>
 	<name>BulkMakeMkv</name>
