@@ -5,11 +5,14 @@
 	<parent>
 		<groupId>info.unterrainer.commons</groupId>
 		<artifactId>parent-pom</artifactId>
-		<version>0.1.3</version>
+		<version>0.1.5</version>
 	</parent>
 
 	<properties>
 		<mainclass>info.unterrainer.java.tools.scripting.bulkmakemkv.BulkMakeMkv</mainclass>
+		<name>BulkMakeMKV</name>
+		<package-path>info/unterrainer/java/tools/scripting/bulkmakemkv</package-path>
+		<packg-string>info.unterrainer.java.tools.scripting.bulkmakemkv</packg-string>
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
