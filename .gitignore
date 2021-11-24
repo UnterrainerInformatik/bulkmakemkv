@@ -24,3 +24,7 @@ hs_err_pid*
 /target/
 
 src/main/java/info/unterrainer/java/tools/scripting/bulkmakemkv/Information.java
+
+.classpath
+
+.settings/org.eclipse.core.resources.prefs
