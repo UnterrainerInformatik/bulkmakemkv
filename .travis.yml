@@ -22,6 +22,9 @@
 #   script-phase. So you cannot even source from there directly. That's why the source
 #   command is IN the deploy.sh script.
 
+branches:
+  only:
+    - master
 language: java
 jdk:
     - openjdk14
